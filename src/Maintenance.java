@@ -1,38 +1,38 @@
 public class Maintenance {
     // atributos
+    private int idEmployee;
     private String processType;
-    //private Employee employee;
     private int idAnimal;
     private String processDate;
     private String observations;
     // constructores
-    public Maintenance(String processType, /*Employee employee, */ int idAnimal, String processDate, String observations){
+    public Maintenance(int idEmployee, String processType, int idAnimal, String processDate, String observations){
+        this.idEmployee = idEmployee;
         this.processType = processType;
-        //this.employee = employee;
         this.idAnimal = idAnimal;
         this.processDate = processDate;
         this.observations = observations;
     }
-    public Maintenance(String processType, /*Employee employee, */ int idAnimal, String processDate){
+    public Maintenance(int idEmployee, String processType, int idAnimal, String processDate){
+        this.idEmployee = idEmployee;
         this.processType = processType;
-        //this.employee = employee;
         this.idAnimal = idAnimal;
         this.processDate = processDate;
     }
 
     // getters - setters
+    public int getIdEmployee() {
+        return idEmployee;
+    }
+    public void setIdEmployee(int idEmployee) {
+        this.idEmployee = idEmployee;
+    }
     public String getProcessType() {
         return processType;
     }
     public void setProcessType(String processType) {
         this.processType = processType;
     }
-    /*public Employee getEmployee() {
-        return employee;
-    }
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }*/
     public int getIdAnimal() {
         return idAnimal;
     }

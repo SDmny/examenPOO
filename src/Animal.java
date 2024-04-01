@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Animal {
     // variables
     int idsAux=1;
@@ -6,25 +8,26 @@ public class Animal {
     private String type;
     private String dateAdmission;
     private String birthdate;
-    private String[] diseases;
     private double weight;
+    private ArrayList<String> diseases = new ArrayList<>();
     private String feeding;
     private String feedingFrequencyHrs;
     private boolean haveVaccines;
 
     // constructor
-    public Animal(String type, String dateAdmission, String birthdate, String[] diseases, double weight, String feeding, String feedingFrequencyHrs, boolean haveVaccines){
+    public Animal(String type, String dateAdmission, String birthdate, double weight, ArrayList<String> diseases, String feeding, String feedingFrequencyHrs, boolean haveVaccines){
         this.type = type;
         this.dateAdmission = dateAdmission;
         this.birthdate = birthdate;
-        this.diseases = diseases;
         this.weight = weight;
+        this.diseases = diseases;
         this.feeding = feeding;
         this.feedingFrequencyHrs = feedingFrequencyHrs;
         this.haveVaccines = haveVaccines;
         this.idAnimal = idsAux;
         idsAux++;
     }
+
 
     // getters - setters
     public int getIdAnimal() {
@@ -51,10 +54,7 @@ public class Animal {
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
-    public String[] getDiseases() {
-        return diseases;
-    }
-    public void setDiseases(String[] diseases) {
+    public void setDiseases(ArrayList<String> diseases) {
         this.diseases = diseases;
     }
     public double getWeight() {

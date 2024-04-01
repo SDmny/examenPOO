@@ -314,4 +314,156 @@ public class Menu {
 
 
     }
+
+    //METODOS DE ANIMALES
+    ArrayList<Animal> animals = new ArrayList<>();
+
+    //Lista de enfermedades
+    public ArrayList<String> diseasesList(){
+        ArrayList<String> diseases = new ArrayList<>();
+        String disease;
+        System.out.print("Enfermedades\n0 - Terminar lista\n");
+        disease = scan.next();
+        if (disease!="0"){
+            diseases.add(disease);
+        }
+        return diseases;
+    }
+    //Vacunas
+    public boolean animalVaccines(){
+        boolean vaccines = false;
+        String aux;
+        System.out.println("¿El animal cuenta con vacunas?\n0 - No\n 1 - Sí");
+        aux = scan.next();
+        if (aux == "1"){
+            vaccines = true;
+        }
+        return vaccines;
+    }
+    //Añadir animal
+    public void addAnimal() {
+        // variables
+        String type, dateAdmission, birthdate, feeding, feedingFrequencyHrs;
+        double weight;
+        ArrayList<String> diseases;
+        boolean haveVaccines;
+        // asignar valor
+        System.out.println(" - - - Añadir animal - - -");
+        System.out.print("Tipo de animal: ");
+        type = scan.next();
+        System.out.print("Fecha de ingreso: ");
+        dateAdmission = scan.next();
+        System.out.print("Fecha de nacimiento: ");
+        birthdate = scan.next();
+        System.out.print("Peso del animal: ");
+        weight = scan.nextDouble();
+        diseases = diseasesList();
+        System.out.print("Tipo de alimentacion: ");
+        feeding = scan.next();
+        System.out.print("Frecuencia de alimentacion en horas: ");
+        feedingFrequencyHrs = scan.next();
+        haveVaccines = animalVaccines();
+        // crear y añadir
+        Animal animal = new Animal(type, dateAdmission, birthdate, weight, diseases, feeding, feedingFrequencyHrs, haveVaccines);
+        animals.add(animal);
+    }
+    //Comprobar acontecimientos
+    //Eliminar animal
+    public void deleteAnimal(int id) {
+        id--;
+        if (id>=0 && id<animals.size()){
+            animals.remove(animals.get(id));
+        }
+    }
+    //Modificar animal
+
+    //METODOS DE MANTENIMIENTOS
+    ArrayList<Maintenance> maintenances = new ArrayList<>();
+
+    //Verificar empleado de mantenimiento
+    public int employeeRolMaintenance(){
+        int idEmployee, empInArray=-1;
+        System.out.print("ID del empleado encargado del mantenimiento: ");
+        idEmployee = scan.nextInt();
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId() == idEmployee){
+                empInArray = i;
+            }
+        }
+        if (empInArray < 0){
+            System.out.println("ID incorrecta");
+            idEmployee = -1;
+        }
+        if (employees.get(empInArray).getRol() != 'm'){
+            System.out.println("El empleado no es del rol mantenimiento");
+            idEmployee = -1;
+        }
+        return idEmployee;
+    }
+    //Tipo de mantenimiento
+    public String maintenanceType(){
+        String processType = "", type;
+        System.out.println("Tipo de proceso: \n0 - Cancelar\n1 - Mantenimiento\n2 - Limpieza\n3 - Alimentación\n4 - Otro\n");
+        type = scan.next();
+        switch (type){
+            case "1": processType = "Mantenimiento";
+                break;
+            case "2": processType = "Limpieza";
+                break;
+            case "3": processType = "Alimentación";
+                break;
+            case "4":
+                System.out.println("Ingrese tipo de mantenimiento: ");
+                processType = scan.next();
+                break;
+            default:
+        }
+        return processType;
+    }
+    //Observaciones mantenimiento
+    public String observationsMaintenance(){
+        String observations = "", aux;
+        System.out.println("¿Observaciones?\n0 - No\n1 - Sí\n");
+        aux = scan.next();
+        if (aux == "1"){
+            System.out.print("Ingrese observaciones: ");
+            observations = scan.next();
+        }
+        return observations;
+    }
+    //Añadir mantenimiento
+    public void addMaintenance() {
+        // variables
+        String processType, processDate, observations;
+        int idEmployee, idAnimal;
+        // asignar valor
+        System.out.println(" - - - Añadir acontecimiento de mantenimiento - - -");
+        idEmployee = employeeRolMaintenance();
+        if (idEmployee != -1){
+            processType = maintenanceType();
+            if (processType != ""){
+                System.out.print("ID del animal: ");
+                idAnimal = scan.nextInt();
+                System.out.print("Fecha del proceso: ");
+                processDate = scan.next();
+                observations = observationsMaintenance();
+                // crear y añadir
+                if (observations != ""){
+                    Maintenance maintenance = new Maintenance(idEmployee, processType, idAnimal, processDate, observations);
+                    maintenances.add(maintenance);
+                }
+                else {
+                    Maintenance maintenance = new Maintenance(idEmployee, processType, idAnimal, processDate);
+                    maintenances.add(maintenance);
+                }
+            }
+            else {
+                System.out.println("Mantenimiento cancelado, tipo de proceso incorrecto");
+            }
+        }
+        else {
+            System.out.println("Mantenimiento cancelado, empleado encargado incorrecto");
+        }
+    }
+
 }
