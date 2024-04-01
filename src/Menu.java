@@ -40,10 +40,12 @@ public class Menu {
                         MenuEmployees();
                         break;
                     case 2:
+                        MenuAnimals();
                         break;
                     case 3:
                         break;
                     case 4:
+                        MenuMaintenance();
                         break;
                     case 5:
                         break;
@@ -318,14 +320,59 @@ public class Menu {
     //METODOS DE ANIMALES
     ArrayList<Animal> animals = new ArrayList<>();
 
+    //Menu de animales
+    public void MenuAnimals() {
+        int choice=0, idAnimal;
+        while (choice != 6) {
+            System.out.println("Menu de animales");
+            System.out.println("1 Registrar animal");
+            System.out.println("2 Eliminar animal");
+            System.out.println("3 Modificar datos de un animal");
+            System.out.println("4 Consultar a todos los animales");
+            System.out.println("5 Consultar datos de un animal");
+            System.out.println("6 Salir del menú de animales");
+            choice = scan.nextInt();
+            switch (choice) {
+                case 1:
+                    addAnimal();
+                    break;
+                case 2:
+                    System.out.println("ID del animal: ");
+                    idAnimal = scan.nextInt();
+                    deleteAnimal(idAnimal);
+                    break;
+                case 3:
+                    modifyAnimal();
+                    break;
+                case 4:
+                    for (Animal animal : animals) {
+                        animal.showData();
+                    }
+                    break;
+                case 5:
+                    System.out.println("ID del animal a mostrar: ");
+                    idAnimal = scan.nextInt();
+                    animals.get(idAnimal).showData();
+                    break;
+                case 6:
+                    System.out.println("Volviendo a menú principal");
+                    break;
+                default:
+                    System.out.println("Esa opción no se encuentra en el menú");
+            }
+        }
+    }
+
     //Lista de enfermedades
     public ArrayList<String> diseasesList(){
         ArrayList<String> diseases = new ArrayList<>();
         String disease;
-        System.out.print("Enfermedades\n0 - Terminar lista\n");
+        System.out.print("Enfermedades:\n0 - Cancelar\n");
         disease = scan.next();
-        if (disease!="0"){
+        while (disease!="0") {
             diseases.add(disease);
+            System.out.print("\n0 - Terminar lista\nEnfermedad: ");
+            disease = scan.next();
         }
         return diseases;
     }
@@ -367,18 +414,115 @@ public class Menu {
         Animal animal = new Animal(type, dateAdmission, birthdate, weight, diseases, feeding, feedingFrequencyHrs, haveVaccines);
         animals.add(animal);
     }
-    //Comprobar acontecimientos
     //Eliminar animal
     public void deleteAnimal(int id) {
+        boolean busy = false;
         id--;
         if (id>=0 && id<animals.size()){
-            animals.remove(animals.get(id));
+            for (int i = 0; i < maintenances.size(); i++) {
+                if (maintenances.get(i).getIdAnimal() == id){
+                    busy = true;
+                }
+            }
+            if (busy == true){
+                System.out.println("Operacion cancelada, el animal tiene un acontecimiento pendiente");
+            }
+            else {
+                animals.remove(animals.get(id));
+            }
         }
     }
     //Modificar animal
+    public void modifyAnimal(){
+        int idAnimal;
+        double weight;
+        String action, text;
+        System.out.print("ID del animal a modificar: ");
+        idAnimal = scan.nextInt()-1;
+        if (idAnimal>=0 && idAnimal<animals.size()){
+            animalModifyOptions();
+            action = scan.next();
+            while (action != "0"){
+                switch (action){
+                    case "1":
+                        System.out.print("Nuevo tipo de animal: ");
+                        text = scan.next();
+                        animals.get(idAnimal).setType(text);
+                        break;
+                    case "2":
+                        System.out.print("Nueva fecha de llegada: ");
+                        text = scan.next();
+                        animals.get(idAnimal).setDateAdmission(text);
+                        break;
+                    case "3":
+                        System.out.print("Nueva fecha de nacimiento: ");
+                        text = scan.next();
+                        animals.get(idAnimal).setBirthdate(text);
+                        break;
+                    case "4":
+                        System.out.print("Nuevo peso: ");
+                        weight = scan.nextDouble();
+                        animals.get(idAnimal).setWeight(weight);
+                        break;
+                    case "5":
+                        animals.get(idAnimal).setDiseases(diseasesList());
+                        break;
+                    case "6":
+                        System.out.print("Nuevo tipo de alimentación: ");
+                        text = scan.next();
+                        animals.get(idAnimal).setFeeding(text);
+                        break;
+                    case "7":
+                        System.out.print("Nueva frecuencia de alimentación por horas: ");
+                        text = scan.next();
+                        animals.get(idAnimal).setFeedingFrequencyHrs(text);
+                        break;
+                    case "8":
+                        animals.get(idAnimal).setVaccines(animalVaccines());
+                        break;
+                    default:
+                }
+                animalModifyOptions();
+                action = scan.next();
+            }
+        }
+        else {
+            System.out.println("Operación cancelada, ID incorrecta");
+        }
+    }
+    public void animalModifyOptions(){
+        System.out.println("\nOpciones\n0 - Cancelar\n1 - Tipo de animal\n2 - Fecha de llegada\n3 - Fecha de nacimiento\n4 - Peso\n5 - Enfermedades\n6 - Tipo de alimentación\n7 - Frecuencia de alimentación\n8 - Vacunas\n");
+    }
 
     //METODOS DE MANTENIMIENTOS
     ArrayList<Maintenance> maintenances = new ArrayList<>();
+
+    //Menu de mantenimiento
+    public void MenuMaintenance() {
+        int choice=0;
+        while (choice != 3) {
+            System.out.println("Menu de mantenimiento");
+            System.out.println("1 Registrar mantenimiento");
+            System.out.println("2 Consultar todos los mantenimientos");
+            System.out.println("3 Salir del menú de mantenimiento");
+            choice = scan.nextInt();
+            switch (choice) {
+                case 1:
+                    addMaintenance();
+                    break;
+                case 2:
+                    for (Maintenance maintenance : maintenances) {
+                        maintenance.showData();
+                    }
+                    break;
+                case 3:
+                    System.out.println("Volviendo a menú principal");
+                    break;
+                default:
+                    System.out.println("Esa opción no se encuentra en el menú");
+            }
+        }
+    }
 
     //Verificar empleado de mantenimiento
     public int employeeRolMaintenance(){
@@ -437,7 +581,7 @@ public class Menu {
         String processType, processDate, observations;
         int idEmployee, idAnimal;
         // asignar valor
-        System.out.println(" - - - Añadir acontecimiento de mantenimiento - - -");
+        System.out.println(" - - - Añadir mantenimiento - - -");
         idEmployee = employeeRolMaintenance();
         if (idEmployee != -1){
             processType = maintenanceType();

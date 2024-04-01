@@ -52,4 +52,11 @@ public class Maintenance {
         this.observations = observations;
     }
 
+    // show data
+    public void showData(){
+        System.out.print("\nID del empleado a cargo: "+getIdEmployee()+"; Proceso realizado: "+getProcessType()+"; ID del animal involucrado: "+getIdAnimal()+"; Fecha del proceso: "+getProcessDate());
+        if (getObservations() != ""){
+            System.out.print("; Observaciones: "+getObservations()+"\n");
+        }
+    }
 }

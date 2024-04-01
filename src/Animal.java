@@ -12,10 +12,10 @@ public class Animal {
     private ArrayList<String> diseases = new ArrayList<>();
     private String feeding;
     private String feedingFrequencyHrs;
-    private boolean haveVaccines;
+    private boolean vaccines;
 
     // constructor
-    public Animal(String type, String dateAdmission, String birthdate, double weight, ArrayList<String> diseases, String feeding, String feedingFrequencyHrs, boolean haveVaccines){
+    public Animal(String type, String dateAdmission, String birthdate, double weight, ArrayList<String> diseases, String feeding, String feedingFrequencyHrs, boolean vaccines){
         this.type = type;
         this.dateAdmission = dateAdmission;
         this.birthdate = birthdate;
@@ -23,7 +23,7 @@ public class Animal {
         this.diseases = diseases;
         this.feeding = feeding;
         this.feedingFrequencyHrs = feedingFrequencyHrs;
-        this.haveVaccines = haveVaccines;
+        this.vaccines = vaccines;
         this.idAnimal = idsAux;
         idsAux++;
     }
@@ -54,6 +54,9 @@ public class Animal {
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
+    public ArrayList<String> getDiseases() {
+        return diseases;
+    }
     public void setDiseases(ArrayList<String> diseases) {
         this.diseases = diseases;
     }
@@ -75,11 +78,31 @@ public class Animal {
     public void setFeedingFrequencyHrs(String feedingFrequencyHrs) {
         this.feedingFrequencyHrs = feedingFrequencyHrs;
     }
-    public boolean isHaveVaccines() {
-        return haveVaccines;
+    public boolean getVaccines() {
+        return vaccines;
     }
-    public void setHaveVaccines(boolean haveVaccines) {
-        this.haveVaccines = haveVaccines;
+    public void setVaccines(boolean vaccines) {
+        this.vaccines = vaccines;
     }
 
+    // show data
+    public void showData(){
+        System.out.print("\nID: "+getIdAnimal()+"; Tipo de animal: "+getType()+"; Fecha de llegada: "+getDateAdmission()+"; Fecha de nacimiento: "+getBirthdate()+"; Peso: "+getWeight()+"; Enfermedades: ");
+        for (int i = 0; i < getDiseases().size(); i++) {
+            System.out.print(getDiseases().get(i));
+            if (i+1 < getDiseases().size()){
+                System.out.print(", ");
+            }
+            else {
+                System.out.print("; ");
+            }
+        }
+        System.out.print("Tipo de alimentación: "+getFeeding()+"; Frecuencia de alimentación por horas: "+getFeedingFrequencyHrs()+"; Vacunas: ");
+        if (getVaccines() == true){
+            System.out.print("Sí.\n");
+        }
+        else {
+            System.out.print("No.\n");
+        }
+    }
 }
