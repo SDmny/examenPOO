@@ -1,79 +1,71 @@
-import java.util.*;
-public class ZooVisitor {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        // Registro de usuario
-        System.out.println("Bienvenido al registro de visitantes.");
-        System.out.print("Ingrese su nombre: ");
-        String nombre = scanner.nextLine();
-        System.out.print("Ingrese su apellido: ");
-        String apellidos = scanner.nextLine();
-        String fechaNacimiento;
-        do {
-            System.out.print("Ingrese su fecha de nacimiento (dia-mes-año): ");
-            fechaNacimiento = scanner.nextLine();
-        } while (!fechaEsValida(fechaNacimiento));
-        System.out.print("Ingrese su CURP: ");
-        String curp = scanner.nextLine();
-        String fechaRegistro = scanner.nextLine();
+public class Visitor {
+    private String name;
+    private String lastName;
+    private String birthDate;
+    private String CURP;
+    private int visitCount;
+    private String registrationDate;
 
-        Visitante visitante = new Visitante(nombre, apellidos, fechaNacimiento, curp, fechaRegistro);
-        System.out.println("¡Registro exitoso!");
-
-        // Información de visita
-        ArrayList<Visitante> visitantes = new ArrayList<>();
-        visitantes.add(visitante);
-
-        System.out.print("Ingrese el nombre del guía de la visita: ");
-        String guia = scanner.nextLine();
-        String fechaVisita = scanner.nextLine();
-
-        Visit visita = new Visit(guia, visitantes, fechaVisita);
-
-        System.out.println("\nInformación de la visita registrada:");
-        System.out.println("Guía a cargo: " + visita.getGuia());
-        System.out.println("Fecha de la visita: " + visita.getFechaVisita());
-        System.out.println("Costo total de la visita: $" + visita.getCostoTotal());
-        System.out.println("Cantidad de niños: " + visita.getCantidadNinos());
-        System.out.println("Cantidad de adultos: " + visita.getCantidadAdultos());
+    public Visitor(String name, String lastName, String birthDate, String CURP, String registrationDate) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.CURP = CURP;
+        this.visitCount = 0;
+        this.registrationDate = registrationDate;
     }
 
-    // Método para validar si una fecha es válida
-    private static boolean fechaEsValida(String fecha) {
+    // Getters and setters
+    public String getName() {
+        return name;
+    }
 
-            String[] partesFecha = fecha.split("-");
-            int dia = Integer.parseInt(partesFecha[0]);
-            int mes = Integer.parseInt(partesFecha[1]);
-            int anio = Integer.parseInt(partesFecha[2]);
-            boolean band=true;
+    public void setName(String name) {
+        this.name = name;
+    }
 
-            if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 1700 || anio > 2024) {
-                band=false;
-            }
+    public String getLastName() {
+        return lastName;
+    }
 
-            // Comprobar febrero
-            if (mes == 2) {
-                if (dia > 29) {
-                    band=false;
-                }
-                if (dia == 29 && !((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0)) {
-                    band=false;
-                }
-            }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-            // Comprobar meses con 30 días
-            if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
-                if (dia > 30) {
-                    band=false;
-                }
-            }
-            if (band=false){
-            System.out.println("La fecha introducida no es válida. Por favor, inténtelo de nuevo.");
-            return false;
-        } else {
-            return true;
-        }
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getCURP() {
+        return CURP;
+    }
+
+    public void setCURP(String CURP) {
+        this.CURP = CURP;
+    }
+
+    public int getVisitCount() {
+        return visitCount;
+    }
+
+    public void setVisitCount(int visitCount) {
+        this.visitCount = visitCount;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public void incrementVisitCount() {
+        visitCount++;
     }
 }
-    

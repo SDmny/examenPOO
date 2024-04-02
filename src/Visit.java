@@ -1,137 +1,86 @@
-import java.util.*;
-public class Visitors {
-    public static void main(String[] args) {
-        Scanner read = new Scanner(System.in);
+import java.util.ArrayList;
+class Visit {
+    private String guideName;
+    private ArrayList<Visitor> visitors;
+    private double totalCost;
+    private String visitDate;
+    private int numChildren;
+    private int numAdults;
+
+    public Visit(String guideName, ArrayList<Visitor> visitors, String visitDate) {
+        this.guideName = guideName;
+        this.visitors = visitors;
+        this.visitDate = visitDate;
+        this.totalCost = calculateTotalCost();
+        calculateVisitorsAge();
+    }
+
+    // getters y setters
+    public String getGuideName() {
+        return guideName;
+    }
+
+    public ArrayList<Visitor> getVisitors() {
+        return visitors;
+    }
+
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    public String getVisitDate() {
+        return visitDate;
+    }
+
+    public int getNumChildren() {
+        return numChildren;
+    }
+
+    public int getNumAdults() {
+        return numAdults;
+    }
+
+    private double calculateTotalCost() {
+        double cost = 0;
+        for (Visitor visitor : visitors) {
+            double baseCost = (visitor.getBirthDate().compareTo("2005") < 0) ? 50 : 100; 
+            double discountedCost = (visitor.getVisitCount() % 5 == 0) ? baseCost * 0.8 : baseCost; 
+            cost += discountedCost;
+        }
+        return cost;
+    }
+
+    private void calculateVisitorsAge() {
+        numChildren = 0;
+        numAdults = 0;
+        for (Visitor visitor : visitors) {
+            if (isValidBirthDate(visitor.getBirthDate())) {
+                if (visitor.getBirthDate().compareTo("2005") < 0) {
+                    numChildren++;
+                } else {
+                    numAdults++;
+                }
+            }
+        }
+    }
+
+    private boolean isValidBirthDate(String birthDate) {
+        if (birthDate.length() != 7 || birthDate.charAt(4) != '-') {
+            return false;
+        }
     
-        // Registro de usuario
-        System.out.println("----REGISTRO DE VISITANTES----");
-        System.out.print("Introduzca su nombre: ");
-        String name = read.nextLine();
-        System.out.print("Introduzca su apellido: ");
-        String surnames = read.nextLine();
-        String birthDate;
-        do {
-            System.out.print("Introduza su fecha de nacimiento (dia-mes-año): ");
-            birthDate = read.nextLine();
-        } while (!fechaEsValida(birthDate));
-        System.out.print("Introduzca su CURP: ");
-        String curp = read.nextLine();
-        String registrationDate = read.nextLine();
+        // Obtener el año actual
+        int currentYear = java.time.LocalDate.now().getYear();
     
-        Visitors visitor = new Visitors(name, surnames, birthDate, curp, registrationDate);
-        System.out.println("Se ha registrado exitosamente");
-    }
-    // Método para validar si una fecha es válida
-    private static boolean fechaEsValida(String fecha) {
-
-        String[] partsDate = fecha.split("-");
-        int day = Integer.parseInt(partsDate[0]);
-        int month = Integer.parseInt(partsDate[1]);
-        int year = Integer.parseInt(partsDate[2]);
-        boolean band=true;
-
-        if (day < 1 || day > 31 || month < 1 || month > 12 || year < 1700 || year > 2024) {
-            band=false;
+        int birthYear;
+        String birthYearString = birthDate.substring(0, 4);
+        if (birthYearString.matches("\\d{4}")) { 
+            birthYear = Integer.parseInt(birthYearString);
+        } else {
+            return false;
         }
-        // Comprobar febrero
-        if (month == 2) {
-            if (day > 29) {
-                band=false;
-            }
-            if (day == 29 && !((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)) {
-                band=false;
-            }
-        }
-        // Comprobar meses con 30 días
-        if (month == 4 || month == 6 || month == 9 || month == 11) {
-            if (day > 30) {
-                band=false;
-            }
-        }
-        if (band=false){
-        System.out.println("La fecha introducida no es válida. Intente de nuevo.");
-        return false;
-    } else {
-        return true;
-    }
-    }
-
-    private String name;
-    private String surnames;
-    private String birthDate;
-    private String curp;
-    private int numVisits;
-    private String registrationDate;
-
-    // Constructor
-    public Visitors(String name, String surnames, String birthDate, String curp, String registrationDate) {
-        this.name = name;
-        this.surnames = surnames;
-        this.birthDate = birthDate;
-        this.curp = curp;
-        this.numVisits = 0;
-        this.registrationDate = registrationDate;
-    }
-
-    // Getters y Setters
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurnames() {
-        return surnames;
-    }
-
-    public void setSurnames(String surnames) {
-        this.surnames = surnames;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getCurp() {
-        return curp;
-    }
-
-    public void setCurp(String curp) {
-        this.curp = curp;
-    }
-
-    public int getNumVisits() {
-        return numVisits;
-    }
-
-    public void setNumVisits(int numVisits) {
-        this.numVisits = numVisits;
-    }
-
-    public String getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(String registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    // Incrementar el número de visitas
-    public void increaseVisits() {
-        this.numVisits++;
-    }
-
-    // Método para determinar si el visitante es adulto
-    public boolean isAdult() {
-        return Integer.parseInt(registrationDate.split("-")[0]) - Integer.parseInt(birthDate.split("-")[0]) >= 18;
+    
+        return birthYear <= currentYear && birthYear >= currentYear - 150;
     }
 }
-
-
-
+    
