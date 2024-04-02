@@ -82,5 +82,16 @@ class Visit {
     
         return birthYear <= currentYear && birthYear >= currentYear - 150;
     }
+
+    public void showData() {
+        System.out.println("Guía: " + guideName);
+        System.out.println("Costo total de la visita: $" + totalCost);
+        System.out.println("Cantidad de niños: " + numChildren);
+        System.out.println("Cantidad de adultos: " + numAdults);
+        System.out.println("Visitantes:");
+        for (Visitor visitor : visitors) {
+            System.out.println("- " + visitor.getName() + " " + visitor.getLastName());
+        }
+        System.out.println("Fecha de la visita: " + visitDate);
+    }
 }
-    

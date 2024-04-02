@@ -43,11 +43,13 @@ public class Menu {
                         MenuAnimals();
                         break;
                     case 3:
+                        MenuVisitor();
                         break;
                     case 4:
                         MenuMaintenance();
                         break;
                     case 5:
+                        MenuVisit();
                         break;
                     case 6:
 
@@ -494,6 +496,152 @@ public class Menu {
         System.out.println("\nOpciones\n0 - Cancelar\n1 - Tipo de animal\n2 - Fecha de llegada\n3 - Fecha de nacimiento\n4 - Peso\n5 - Enfermedades\n6 - Tipo de alimentación\n7 - Frecuencia de alimentación\n8 - Vacunas\n");
     }
 
+    //METODOS DE VISITANTES
+    ArrayList<Visitor> visitors = new ArrayList<>();
+
+    //Menu de visitantes
+    public void MenuVisitor() {
+        int choice=0;
+        String CURP;
+        while (choice != 6) {
+            System.out.println("Menu de visitantes");
+            System.out.println("1 Registrar visitante");
+            System.out.println("2 Eliminar viitante");
+            System.out.println("3 Modificar datos de un vistante");
+            System.out.println("4 Consultar a todos los visitantes");
+            System.out.println("5 Consultar datos de un visitante");
+            System.out.println("6 Salir del menú de visitantes");
+            choice = scan.nextInt();
+            scan.nextLine();
+            switch (choice) {
+                case 1:
+                    addVisitor();
+                    break;
+                case 2:
+                    System.out.println("CURP del visitante: ");
+                    CURP = scan.nextLine();
+                    deleteVisitor(CURP);
+                    break;
+                case 3:
+                    System.out.println("CURP del visitante: ");
+                    CURP = scan.nextLine();
+                    modifyVisitor(CURP);
+                    break;
+                case 4:
+                    for (Visitor visitor : visitors) {
+                        visitor.showData();
+                    }
+                    break;
+                case 5:
+                System.out.println("CURP del visitante a mostrar: ");
+                CURP = scan.nextLine();
+                boolean visitorFound = false;
+                for (Visitor visitor : visitors) {
+                    if (visitor.getCURP().equals(CURP)) {
+                        visitor.showData();
+                        visitorFound = true;
+                        break;
+                    }
+                }
+                if (!visitorFound) {
+                    System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
+                }
+                break;
+                case 6:
+                    System.out.println("Volviendo a menú principal");
+                    break;
+                default:
+                    System.out.println("Esa opción no se encuentra en el menú");
+            }
+        }
+    }
+    //Añadir visitante
+    public void addVisitor(){
+        System.out.println("- - - Añadir visitante - - -");
+        System.out.print("Introduzca el nombre: ");
+        String name = scan.nextLine();
+        System.out.print("Introduzca los Apellidos: ");
+        String lastName = scan.nextLine();
+        System.out.print("Introduzca la fecha de nacimiento (año-mes): ");
+        String birthDate = scan.nextLine();
+        System.out.print("Introduzca la CURP: ");
+        String CURP = scan.nextLine();
+        System.out.print("Introduzca la fecha de registro (año-mes): ");
+        String registrationDate = scan.nextLine();
+
+        Visitor visitor = new Visitor(name, lastName, birthDate, CURP, registrationDate);
+        visitors.add(visitor);
+        System.out.println("¡Visitante registrado exitosamente!");
+    }
+
+    //Eliminar visitante
+    public void deleteVisitor(String CURP){
+        boolean visitorFound = false;
+        for (Visitor visitor : visitors) {
+            if (visitor.getCURP().equals(CURP)) {
+                visitors.remove(visitor);
+                visitorFound = true;
+                System.out.println("Visitante con la curp: " + CURP + " eliminado");
+                break; 
+            }
+        }
+        if (!visitorFound) {
+            System.out.println("El visitante con la curp:  " + CURP + " no fue encontrado");
+        }
+    }
+
+    //Modificar visitante
+    public void modifyVisitor(String CURP) {
+        String name, lastname, birthDate, registrationDate;
+        int opcion = 99;
+        for (Visitor visitor : visitors) {
+            if (visitor.getCURP() == CURP) {
+                while (opcion != 0) {
+                    System.out.println("Ingrese la opción a modificar:");
+                    System.out.println("1 Nombre");
+                    System.out.println("2 Apellidos");
+                    System.out.println("3 Fecha de Nacimiento");
+                    System.out.println("4 Fecha de Registro");
+                    System.out.println("0 Salir del menu de modificar");
+                    opcion = scan.nextInt();
+                    scan.nextLine();
+                    switch (opcion) {
+                        case 0:
+                            System.out.println("Volviendo al menú de visitantes");
+                            break;
+                        case 1:
+                            System.out.print("Ingrese nuevo nombre: ");
+                            name = scan.nextLine();
+                            visitor.setName(name);
+
+                            break;
+                        case 2:
+                            System.out.print("Ingrese nuevo apellido: ");
+                            lastname = scan.nextLine();
+                            visitor.setLastName(lastname);
+                            break;
+                        case 3:
+                            System.out.print("Ingrese otra fecha de nacimiento: ");
+                            birthDate = scan.nextLine();
+                            visitor.setBirthDate(birthDate);
+                            break;
+                        case 4:
+                            System.out.print("Ingrese otra fecha de registro: ");
+                            registrationDate = scan.nextLine();
+                            visitor.setRegistrationDate(registrationDate);
+                            break;
+                        default:
+                            System.out.println("Esa opción no se encuentra en el menú");
+                            break;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+
     //METODOS DE MANTENIMIENTOS
     ArrayList<Maintenance> maintenances = new ArrayList<>();
 
@@ -609,5 +757,128 @@ public class Menu {
             System.out.println("Mantenimiento cancelado, empleado encargado incorrecto");
         }
     }
+
+    //METODOS DE VISITAS
+    ArrayList<Visit> visits = new ArrayList<>();
+    private static ArrayList<Visitor> visitors2 = new ArrayList<>();
+
+    //Menu de visitantes
+    public void MenuVisit() {
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("Menu de visitas");
+            System.out.println("1. Añadir visitante a la visita");
+            System.out.println("2. Mostrar todos los datos de visitas");
+            System.out.println("3. Mostrar datos de visitas filtrados por fecha");
+            System.out.println("4. Salir del menú de visitas");
+            System.out.print("Enter your choice: ");
+            int choice = scan.nextInt();
+            scan.nextLine(); 
+
+            switch (choice) {
+                case 1:
+                    addVisitorToVisit();
+                    break;
+                case 2:
+                    showAllVisits();
+                    break;
+                case 3:
+                    showVisitsByDate();
+                    break;
+                case 4:
+                    exit = true;
+                    System.out.println("Volviendo a menú principal");
+                    break;
+                default:
+                    System.out.println("Esa opción no se encuentra en el menú");
+            }
+        }
+    }
+
+    private void addVisitorToVisit() {
+        System.out.println("\n- - - MENU PARA AÑADIR VISITANTE - - -");
+        System.out.print("Introduzca la CURP del visitante: ");
+        String CURP = scan.nextLine();
+        Visitor visitor = findVisitorByCURP(CURP);
+        if (visitor != null) {
+            System.out.print("Introduzca la fecha de la visita (año-mes-día): ");
+            String visitDate = scan.nextLine();
+            System.out.print("Introduzca el ID del guía: ");
+            int guideId = scan.nextInt();
+            scan.nextLine();
+            Employee guide = findGuideById(guideId);
+            if (guide != null) {
+                ArrayList<Visitor> visitorsList = new ArrayList<>();
+                visitorsList.add(visitor);
+                Visit visit = new Visit(guide.getName(), visitorsList, visitDate);
+                visits.add(visit);
+                System.out.println("Visitante añadido correctamente");
+    
+                visitor.incrementVisitCount();
+            } else {
+                System.out.println("El guía con ID " + guideId + " no fue encontrado o no es guía");
+            }
+        } else {
+            System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
+        }
+    }
+    
+
+    private Visitor findVisitorByCURP(String CURP) {
+        for (Visitor visitor : visitors2) {
+            if (visitor.getCURP().equals(CURP)) {
+                return visitor;
+            }
+        }
+        return null;
+    }
+
+
+private static Employee findGuideById(int guideId) {
+    ArrayList<Employee> employ = new ArrayList<>();
+    for (Employee em : employ) {
+        if (em.getId() == guideId) {
+            return findEmployeeById(guideId);
+        }
+    }
+    return null;
+}
+
+private static Employee findEmployeeById(int employeeId) {
+    ArrayList<Employee> employ = new ArrayList<>();
+    for (Employee employee : employ) {
+        if (employee.getId() == employeeId && employee.getRol() == 'g') {
+            return employee;
+        }
+    }
+    return null;
+}
+
+private void showAllVisits() {
+    System.out.println("\n- - - TODAS LAS VISITAS - - -");
+    for (Visit visit : visits) {
+        visit.showData();
+        System.out.println();
+    }
+}
+
+private void showVisitsByDate() {
+    Scanner scan= new Scanner(System.in);
+    System.out.print("Ingrese la fecha de visita (año-mes-día): ");
+    String targetDate = scan.nextLine();
+    System.out.println("\n- - - Visitas en la fecha: " + targetDate + " - - -");
+    boolean found = false;
+    for (Visit visit : visits) {
+        if (visit.getVisitDate().equals(targetDate)) {
+            visit.showData();
+            System.out.println();
+            found = true;
+        }
+    }
+    if (!found) {
+        System.out.println("No se encontraron visitas en esa fecha.");
+    }
+    scan.close();
+}
 
 }

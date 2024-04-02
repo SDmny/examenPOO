@@ -68,4 +68,13 @@ public class Visitor {
     public void incrementVisitCount() {
         visitCount++;
     }
+    //showData
+    public void showData() {
+        System.out.println("Nombre: " + name);
+        System.out.println("Apellidos: " + lastName);
+        System.out.println("Fecha de nacimiento: " + birthDate);
+        System.out.println("CURP: " + CURP);
+        System.out.println("Numero de visitas: " + visitCount);
+        System.out.println("Fecha de registro: " + registrationDate);
+    }
 }
