@@ -35,11 +35,11 @@ class Menu:
                     if self.select == 1:
                         self.MenuEmployees()
                     elif self.select == 2:
-                        print("")
+                        self.menu_animals()
                     elif self.select == 3:
                         print("")
                     elif self.select == 4:
-                        print("")
+                        self.menu_maintenances()
                     elif self.select == 5:
                         print("")
                     elif self.select == 6:
@@ -345,7 +345,7 @@ class Menu:
     maintenances = []
     
     # Menu de mantenimientos
-    def menu_mantenimientos(self):
+    def menu_maintenances(self):
         choice = 0
         while (choice != 3):
             print("Menu de mantenimientos: ")
