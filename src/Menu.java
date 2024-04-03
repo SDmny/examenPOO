@@ -762,7 +762,7 @@ public class Menu {
     ArrayList<Visit> visits = new ArrayList<>();
     private static ArrayList<Visitor> visitors2 = new ArrayList<>();
 
-    //Menu de visitantes
+    //Menu de visitas
     public void MenuVisit() {
         boolean exit = false;
         while (!exit) {
@@ -795,6 +795,7 @@ public class Menu {
         }
     }
 
+    //Añadir visitante a la visita
     private void addVisitorToVisit() {
         System.out.println("\n- - - MENU PARA AÑADIR VISITANTE - - -");
         System.out.print("Introduzca la CURP del visitante: ");
@@ -823,7 +824,7 @@ public class Menu {
         }
     }
     
-
+    //Encontrar al visitante existente
     private Visitor findVisitorByCURP(String CURP) {
         for (Visitor visitor : visitors2) {
             if (visitor.getCURP().equals(CURP)) {
@@ -833,26 +834,27 @@ public class Menu {
         return null;
     }
 
-
-private static Employee findGuideById(int guideId) {
-    ArrayList<Employee> employ = new ArrayList<>();
-    for (Employee em : employ) {
-        if (em.getId() == guideId) {
-            return findEmployeeById(guideId);
+    //Encontrar al guía por su ID
+    private static Employee findGuideById(int guideId) {
+        ArrayList<Employee> employ = new ArrayList<>();
+        for (Employee em : employ) {
+            if (em.getId() == guideId) {
+                return findEmployeeById(guideId);
+            }
         }
+        return null;
     }
-    return null;
-}
 
-private static Employee findEmployeeById(int employeeId) {
-    ArrayList<Employee> employ = new ArrayList<>();
-    for (Employee employee : employ) {
-        if (employee.getId() == employeeId && employee.getRol() == 'g') {
-            return employee;
+    //Encontrar al Empleado por ID
+    private static Employee findEmployeeById(int employeeId) {
+        ArrayList<Employee> employ = new ArrayList<>();
+        for (Employee employee : employ) {
+            if (employee.getId() == employeeId && employee.getRol() == 'g') {
+                return employee;
+            }
         }
+        return null;
     }
-    return null;
-}
 
 private void showAllVisits() {
     System.out.println("\n- - - TODAS LAS VISITAS - - -");
@@ -862,23 +864,24 @@ private void showAllVisits() {
     }
 }
 
-private void showVisitsByDate() {
-    Scanner scan= new Scanner(System.in);
-    System.out.print("Ingrese la fecha de visita (año-mes-día): ");
-    String targetDate = scan.nextLine();
-    System.out.println("\n- - - Visitas en la fecha: " + targetDate + " - - -");
-    boolean found = false;
-    for (Visit visit : visits) {
-        if (visit.getVisitDate().equals(targetDate)) {
-            visit.showData();
-            System.out.println();
-            found = true;
+    //Mostrar visitas de una fecha determinada
+    private void showVisitsByDate() {
+        Scanner scan= new Scanner(System.in);
+        System.out.print("Ingrese la fecha de visita (año-mes-día): ");
+        String targetDate = scan.nextLine();
+        System.out.println("\n- - - Visitas en la fecha: " + targetDate + " - - -");
+        boolean found = false;
+        for (Visit visit : visits) {
+            if (visit.getVisitDate().equals(targetDate)) {
+                visit.showData();
+                System.out.println();
+                found = true;
+            }
         }
-    }
-    if (!found) {
+        if (!found) {
         System.out.println("No se encontraron visitas en esa fecha.");
-    }
-    scan.close();
-}
+        }
+        scan.close();
+    }  
 
 }
