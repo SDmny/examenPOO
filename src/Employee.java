@@ -26,8 +26,6 @@ public class Employee {
             case 'g' -> "Guía";
             case 'm' -> "Mantenimiento";
             case 'a' -> "Administración";
-            case 'n' -> "No se eligió un rol";
-            default -> "";
         };
         System.out.println("El id del empleado es " + this.id + ", y  es " + this.name + " " + this.lastname + ", su labor es " + job + ", su RFC es " + this.rfc + ", su curp es " + this.curb + ", su salario es " + this.salary + ", su fecha de entrada es " + this.date + ", su fecha de nacimiento es " + this.birthday);
 
