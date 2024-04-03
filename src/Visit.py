@@ -5,9 +5,8 @@ class Visit:
         self.visitors = visitors
         self.visit_date = visit_date
         self.total_cost = self.calculate_total_cost()
-        self.num_children, self.num_adults = self.calculate_visitors_age()
+        self.calculate_visitors_age()
 
-    # Getters and setters
     def get_guide_name(self):
         return self.guide_name
 
@@ -35,14 +34,18 @@ class Visit:
         return cost
 
     def calculate_visitors_age(self):
-        num_children = sum(1 for visitor in self.visitors if self.is_valid_birth_date(visitor.get_birth_date()) and visitor.get_birth_date() < "2005")
-        num_adults = len(self.visitors) - num_children
-        return num_children, num_adults
+        self.num_children = 0
+        self.num_adults = 0
+        for visitor in self.visitors:
+            if self.is_valid_birth_date(visitor.get_birth_date()):
+                if visitor.get_birth_date() < "2005":
+                    self.num_children += 1
+                else:
+                    self.num_adults += 1
 
     def is_valid_birth_date(self, birth_date):
         if len(birth_date) != 7 or birth_date[4] != '-':
             return False
-
 
         birth_year = int(birth_date[:4])
         return 2024 >= birth_year >= 2024 - 150
@@ -54,5 +57,5 @@ class Visit:
         print("Cantidad de adultos:", self.num_adults)
         print("Visitantes:")
         for visitor in self.visitors:
-            print("- {} {}".format(visitor.get_name(), visitor.get_last_name()))
+            print("- " + visitor.get_name() + " " + visitor.get_last_name())
         print("Fecha de la visita:", self.visit_date)

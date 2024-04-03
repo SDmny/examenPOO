@@ -8,7 +8,6 @@ class Visitor:
         self.visit_count = 0
         self.registration_date = registration_date
 
-    # Getters and setters
     def get_name(self):
         return self.name
 
@@ -48,7 +47,6 @@ class Visitor:
     def increment_visit_count(self):
         self.visit_count += 1
 
-    #showData
     def show_data(self):
         print("Nombre:", self.name)
         print("Apellidos:", self.last_name)
