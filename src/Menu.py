@@ -232,10 +232,10 @@ class Menu:
             if choice == 1:
                 self.add_animal()
             elif choice == 2:
-                id_animal = int(input("ID del animal: ") )
+                id_animal = int(input("ID del animal: "))
                 self.delete_animal(id_animal)
             elif (choice == 3):
-                self.modify_animal
+                self.modify_animal()
             elif (choice == 4):
                 for animal in self.animals:
                     animal.showData()
@@ -262,8 +262,8 @@ class Menu:
     # Vacunas
     def animal_vaccines(self):
         vaccines = False
-        aux = input("¿El animal cuenta con vacunas?\n0 - No\n 1 - Sí")
-        if (aux == "1"):
+        aux = input("¿El animal cuenta con vacunas?\n0 - No\n1 - Sí\n")
+        if (aux == 1):
             vaccines = True
         return vaccines
     
@@ -281,20 +281,21 @@ class Menu:
         vaccines = self.animal_vaccines()
         animal = Animal(type, date_admission, birthdate, weight, diseases, feeding, feeding_frequency_hrs, vaccines)
         self.animals.append(animal)
+        Animal.ids_aux = Animal.ids_aux+1
         
     # Eliminar animal
     def delete_animal(self, id):
         busy = False
         id = id-1
-        id_aux = 0
+        id_aux = 0        
         for i in self.animals:
             id_aux = id_aux + 1
         if (id >= 0 and id < id_aux):
             for x in self.maintenances:
-                if x.get_id_animal == id:
+                if x.get_id_animal() == id+1:
                     busy = True
             if busy == False:
-                self.animals.remove(id)
+                self.animals.remove(self.animals[id])
             else:
                 print("Operación cancelada, el animal tiene un acontecimiento pendiente")
         else:
@@ -376,7 +377,7 @@ class Menu:
         if emp_in_list < 0:
             print("ID incorrecta")
             id_employee = -1
-        if self.employees[emp_in_list].getRol != 'm':
+        if self.employees[emp_in_list].getRol() != 'm':
             print("El empleado no cuenta con el rol de mantenimiento")
             id_employee = -1
         return id_employee

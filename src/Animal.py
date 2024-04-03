@@ -1,6 +1,6 @@
 class Animal:
     
-    ids_aux = 1
+    
     __id_animal = 0
     __type = ""
     __date_admission = ""
@@ -10,6 +10,7 @@ class Animal:
     __feeding = ""
     __feeding_frequency = ""
     __vaccines = False
+    ids_aux = 1
     
     def __init__(self, type, date_admission, birthdate, weight, diseases, feeding, feeding_frequency, vaccines):
         self.__type = type
@@ -20,8 +21,7 @@ class Animal:
         self.__feeding = feeding
         self.__feeding_frequency = feeding_frequency
         self.__vaccines = vaccines
-        self.__id_animal = ids_aux
-        ids_aux = ids_aux + 1
+        self.__id_animal = self.ids_aux
     
     def showData(self):
         print(f"ID: {self.__id_animal}; Tipo de animal: {self.__type}; Fecha de llegada: {self.__date_admission}; Fecha de nacimiento: {self.__birthdate}; Peso:  {self.__weight}; Enfermedades: ")
