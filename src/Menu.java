@@ -22,7 +22,7 @@ public class Menu {
             program = scan.nextLine().charAt(0);
             int select = 0;
             Password();
-            while (select != 7) {
+            while (select != 7 && program != '0') {
 
                 System.out.println("Elija la sección a utilizar: ");
                 System.out.println("1 Menu de empleados");
