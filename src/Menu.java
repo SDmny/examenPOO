@@ -533,20 +533,20 @@ public class Menu {
                     }
                     break;
                 case 5:
-                System.out.println("CURP del visitante a mostrar: ");
-                CURP = scan.nextLine();
-                boolean visitorFound = false;
-                for (Visitor visitor : visitors) {
-                    if (visitor.getCURP().equals(CURP)) {
-                        visitor.showData();
-                        visitorFound = true;
-                        break;
+                    System.out.println("CURP del visitante a mostrar: ");
+                    CURP = scan.nextLine();
+                    boolean visitorFound = false;
+                    for (Visitor visitor : visitors) {
+                        if (visitor.getCURP().equals(CURP)) {
+                            visitor.showData();
+                            visitorFound = true;
+                            break;
+                        }
                     }
-                }
-                if (!visitorFound) {
-                    System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
-                }
-                break;
+                    if (!visitorFound) {
+                        System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
+                    }
+                    break;
                 case 6:
                     System.out.println("Volviendo a menú principal");
                     break;
@@ -582,7 +582,7 @@ public class Menu {
                 visitors.remove(visitor);
                 visitorFound = true;
                 System.out.println("Visitante con la curp: " + CURP + " eliminado");
-                break; 
+                break;
             }
         }
         if (!visitorFound) {
@@ -773,7 +773,7 @@ public class Menu {
             System.out.println("4. Salir del menú de visitas");
             System.out.print("Enter your choice: ");
             int choice = scan.nextInt();
-            scan.nextLine(); 
+            scan.nextLine();
 
             switch (choice) {
                 case 1:
@@ -814,7 +814,7 @@ public class Menu {
                 Visit visit = new Visit(guide.getName(), visitorsList, visitDate);
                 visits.add(visit);
                 System.out.println("Visitante añadido correctamente");
-    
+
                 visitor.incrementVisitCount();
             } else {
                 System.out.println("El guía con ID " + guideId + " no fue encontrado o no es guía");
@@ -823,7 +823,7 @@ public class Menu {
             System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
         }
     }
-    
+
     //Encontrar al visitante existente
     private Visitor findVisitorByCURP(String CURP) {
         for (Visitor visitor : visitors2) {
@@ -856,13 +856,13 @@ public class Menu {
         return null;
     }
 
-private void showAllVisits() {
-    System.out.println("\n- - - TODAS LAS VISITAS - - -");
-    for (Visit visit : visits) {
-        visit.showData();
-        System.out.println();
+    private void showAllVisits() {
+        System.out.println("\n- - - TODAS LAS VISITAS - - -");
+        for (Visit visit : visits) {
+            visit.showData();
+            System.out.println();
+        }
     }
-}
 
     //Mostrar visitas de una fecha determinada
     private void showVisitsByDate() {
@@ -879,9 +879,9 @@ private void showAllVisits() {
             }
         }
         if (!found) {
-        System.out.println("No se encontraron visitas en esa fecha.");
+            System.out.println("No se encontraron visitas en esa fecha.");
         }
         scan.close();
-    }  
+    }
 
 }

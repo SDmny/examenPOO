@@ -21,12 +21,17 @@ public class Employee {
     }
 
     public void showData() {
-        String job = switch (this.rol) {
-            case 'v' -> "Veterinario";
-            case 'g' -> "Guía";
-            case 'm' -> "Mantenimiento";
-            case 'a' -> "Administración";
-        };
+        String job = "";
+        switch (this.rol){
+            case 'v': job = "Veterinario";
+                break;
+            case 'g': job = "Guía";
+                break;
+            case 'm': job = "Mantenimiento";
+                break;
+            case 'a': job = "Administración";
+                break;
+        }
         System.out.println("El id del empleado es " + this.id + ", y  es " + this.name + " " + this.lastname + ", su labor es " + job + ", su RFC es " + this.rfc + ", su curp es " + this.curb + ", su salario es " + this.salary + ", su fecha de entrada es " + this.date + ", su fecha de nacimiento es " + this.birthday);
 
     }
