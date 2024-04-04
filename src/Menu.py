@@ -295,8 +295,7 @@ class Menu:
         if busy == False:
             for i in self.animals:
                 if i.get_id_animal() == id:
-                    id_in_list = i
-            self.animals.remove(self.animals[id_in_list])
+                    self.animals.remove(self.animals[i])
         else:
             print("Operación cancelada, el animal tiene un acontecimiento pendiente")
         
