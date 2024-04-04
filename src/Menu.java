@@ -21,7 +21,9 @@ public class Menu {
             System.out.println("Ingrese un caracter para continuar, use 0 para salir del programa: ");
             program = scan.nextLine().charAt(0);
             int select = 0;
-            Password();
+            if (program != '0'){
+                Password();
+            }
             while (select != 7 && program != '0') {
 
                 System.out.println("Elija la sección a utilizar: ");
@@ -369,12 +371,15 @@ public class Menu {
     public ArrayList<String> diseasesList(){
         ArrayList<String> diseases = new ArrayList<>();
         String disease;
-        System.out.print("Enfermedades:\n0 - Cancelar\n");
+        System.out.print("0 - Terminar lista\nEnfermedad: ");
         disease = scan.next();
-        while (disease!="0") {
+        while (!disease.equals("0")) {
             diseases.add(disease);
             System.out.print("\n0 - Terminar lista\nEnfermedad: ");
             disease = scan.next();
+        }
+        if (diseases.size() < 1){
+            diseases.add("Ninguna");
         }
         return diseases;
     }
@@ -382,9 +387,9 @@ public class Menu {
     public boolean animalVaccines(){
         boolean vaccines = false;
         String aux;
-        System.out.println("¿El animal cuenta con vacunas?\n0 - No\n 1 - Sí");
+        System.out.println("¿El animal cuenta con vacunas?\n0 - No\n1 - Sí");
         aux = scan.next();
-        if (aux == "1"){
+        if (aux.equals("1")){
             vaccines = true;
         }
         return vaccines;
@@ -415,6 +420,7 @@ public class Menu {
         // crear y añadir
         Animal animal = new Animal(type, dateAdmission, birthdate, weight, diseases, feeding, feedingFrequencyHrs, haveVaccines);
         animals.add(animal);
+        Animal.idsAux++;
     }
     //Eliminar animal
     public void deleteAnimal(int id) {
@@ -422,11 +428,11 @@ public class Menu {
         id--;
         if (id>=0 && id<animals.size()){
             for (int i = 0; i < maintenances.size(); i++) {
-                if (maintenances.get(i).getIdAnimal() == id){
+                if (maintenances.get(i).getIdAnimal() == id+1){
                     busy = true;
                 }
             }
-            if (busy == true){
+            if (busy){
                 System.out.println("Operacion cancelada, el animal tiene un acontecimiento pendiente");
             }
             else {
@@ -444,7 +450,7 @@ public class Menu {
         if (idAnimal>=0 && idAnimal<animals.size()){
             animalModifyOptions();
             action = scan.next();
-            while (action != "0"){
+            while (!action.equals("0")){
                 switch (action){
                     case "1":
                         System.out.print("Nuevo tipo de animal: ");
@@ -717,7 +723,7 @@ public class Menu {
         String observations = "", aux;
         System.out.println("¿Observaciones?\n0 - No\n1 - Sí\n");
         aux = scan.next();
-        if (aux == "1"){
+        if (aux.equals("1")){
             System.out.print("Ingrese observaciones: ");
             observations = scan.next();
         }
@@ -733,14 +739,14 @@ public class Menu {
         idEmployee = employeeRolMaintenance();
         if (idEmployee != -1){
             processType = maintenanceType();
-            if (processType != ""){
+            if (!processType.equals("")){
                 System.out.print("ID del animal: ");
                 idAnimal = scan.nextInt();
                 System.out.print("Fecha del proceso: ");
                 processDate = scan.next();
                 observations = observationsMaintenance();
                 // crear y añadir
-                if (observations != ""){
+                if (!observations.equals("")){
                     Maintenance maintenance = new Maintenance(idEmployee, processType, idAnimal, processDate, observations);
                     maintenances.add(maintenance);
                 }

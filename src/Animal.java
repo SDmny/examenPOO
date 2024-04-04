@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Animal {
     // variables
-    int idsAux=1;
+    static int idsAux=1;
     // atributos
     private int idAnimal;
     private String type;
@@ -25,7 +25,6 @@ public class Animal {
         this.feedingFrequencyHrs = feedingFrequencyHrs;
         this.vaccines = vaccines;
         this.idAnimal = idsAux;
-        idsAux++;
     }
 
 
