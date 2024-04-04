@@ -286,20 +286,17 @@ class Menu:
     # Eliminar animal
     def delete_animal(self, id):
         busy = False
-        id = id-1
-        id_aux = 0        
-        for i in self.animals:
-            id_aux = id_aux + 1
-        if (id >= 0 and id < id_aux):
-            for x in self.maintenances:
-                if x.get_id_animal() == id+1:
-                    busy = True
-            if busy == False:
-                self.animals.remove(self.animals[id])
-            else:
-                print("Operación cancelada, el animal tiene un acontecimiento pendiente")
+        for x in self.maintenances:
+            if x.get_id_animal() == id:
+                busy = True
+        if busy == False:
+            for i in self.animals:
+                if i.get_id_animal() == id:
+                    id_in_list = i
+            self.animals.remove(self.animals[id_in_list])
         else:
-            print("Operación cancelada, ID incorrecta")       
+            print("Operación cancelada, el animal tiene un acontecimiento pendiente")
+        
     
     # Modificar animal
     def modify_animal(self):
