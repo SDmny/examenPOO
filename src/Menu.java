@@ -774,9 +774,7 @@ public class Menu {
             System.out.println("Menu de visitas");
             System.out.println("1. Añadir visitante a la visita");
             System.out.println("2. Mostrar todos los datos de visitas");
-            System.out.println("3. Mostrar datos de visitas filtrados por fecha");
-            System.out.println("4. Salir del menú de visitas");
-            System.out.print("Enter your choice: ");
+            System.out.println("3. Salir del menú de visitas");
             int choice = scan.nextInt();
             scan.nextLine();
 
@@ -788,9 +786,6 @@ public class Menu {
                     showAllVisits();
                     break;
                 case 3:
-                    showVisitsByDate();
-                    break;
-                case 4:
                     exit = true;
                     System.out.println("Volviendo a menú principal");
                     break;
@@ -802,92 +797,79 @@ public class Menu {
 
     //Añadir visitante a la visita
     private void addVisitorToVisit() {
+        String CUR;
         System.out.println("\n- - - MENU PARA AÑADIR VISITANTE - - -");
-        System.out.print("Introduzca la CURP del visitante: ");
-        String CURP = scan.nextLine();
-        Visitor visitor = findVisitorByCURP(CURP);
-        if (visitor != null && visitor.equals(null)) {
+        CUR = visitorCURP();
+        if (CUR != null) {
             System.out.print("Introduzca la fecha de la visita (año-mes-día): ");
             String visitDate = scan.nextLine();
-            System.out.print("Introduzca el ID del guía: ");
-            int guideId = scan.nextInt();
-            scan.nextLine();
-            Employee guide = findGuideById(guideId);
-            if (guide != null && guide.equals(null)) {
-                ArrayList<Visitor> visitorsList = new ArrayList<>();
-                visitorsList.add(visitor);
-                Visit visit = new Visit(guide.getName(), visitorsList, visitDate);
-                visits.add(visit);
-                System.out.println("Visitante añadido correctamente");
-
+            int id = employeeRolGuide();
+            Visitor visitor = getVisitorFromCURP(CUR); 
+            if (visitor != null) {
                 visitor.incrementVisitCount();
+                Visit visit = new Visit(id, new Visitor[]{visitor}, visitDate); 
+                visits.add(visit);
             } else {
-                System.out.println("El guía con ID " + guideId + " no fue encontrado o no es guía");
+                System.out.println("No se ha encontrado el usuario");
             }
-        } else {
-            System.out.println("El visitante con la CURP " + CURP + " no fue encontrado");
         }
     }
-
-    //Encontrar al visitante existente
-    private Visitor findVisitorByCURP(String CURP) {
-        ArrayList<Visitor> visitors = new ArrayList<>();
+    
+    // Método para obtener el visitante utilizando su CURP
+    private Visitor getVisitorFromCURP(String curp) {
         for (Visitor visitor : visitors) {
-            if (visitor.getCURP().equals(CURP)) {
+            if (visitor.getCURP().equals(curp)) {
                 return visitor;
             }
         }
-        return null;
+        return null; // Si no se encuentra el visitante con la CURP dada, retornar null
+    }
+    //Guia por su ID
+    public int employeeRolGuide(){
+        int idEmployee, empInArray=-1;
+        System.out.print("ID del empleado encargado de guiar: ");
+        idEmployee = scan.nextInt();
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getId() == idEmployee){
+                empInArray = i;
+            }
+        }
+        if (empInArray < 0){
+            System.out.println("ID incorrecta");
+            idEmployee = -1;
+        }
+        if (employees.get(empInArray).getRol() != 'g'){
+            System.out.println("El empleado no es encargado de guiar");
+            idEmployee = -1;
+        }
+        return idEmployee;
     }
 
-    //Encontrar al guía por su ID
-    private static Employee findGuideById(int guideId) {
-        ArrayList<Employee> employees = new ArrayList<>();
-        for (Employee em : employees) {
-            if (em.getId() == guideId) {
-                return findEmployeeById(guideId);
+    //visitante por su CURP
+    public String visitorCURP() {
+        String visitorCURP, CUR = "no";
+        System.out.print("Ingrese la CURP del visitante: ");
+        visitorCURP = scan.nextLine();
+        for (int i = 0; i < visitors.size(); i++) {
+            if (visitors.get(i).getCURP().equals(visitorCURP)) {
+                CUR = visitorCURP;
             }
+        }
+        if (CUR.equals("no")) {
+            System.out.println("No se ha encontrado el usuario");
+        } else {
+            return visitorCURP;
         }
         return null;
     }
 
-    //Encontrar al Empleado por ID
-    private static Employee findEmployeeById(int employeeId) {
-        ArrayList<Employee> employees = new ArrayList<>();
-        for (Employee employee : employees) {
-            if (employee.getId() == employeeId && employee.getRol() == 'g') {
-                return employee;
-            }
-        }
-        return null;
-    }
-
+    //Mostrar todas las visitas
     private void showAllVisits() {
         System.out.println("\n- - - TODAS LAS VISITAS - - -");
         for (Visit visit : visits) {
             visit.showData();
             System.out.println();
         }
-    }
-
-    //Mostrar visitas de una fecha determinada
-    private void showVisitsByDate() {
-        Scanner scan= new Scanner(System.in);
-        System.out.print("Ingrese la fecha de visita (año-mes-día): ");
-        String targetDate = scan.nextLine();
-        System.out.println("\n- - - Visitas en la fecha: " + targetDate + " - - -");
-        boolean found = false;
-        for (Visit visit : visits) {
-            if (visit.getVisitDate().equals(targetDate)) {
-                visit.showData();
-                System.out.println();
-                found = true;
-            }
-        }
-        if (!found) {
-            System.out.println("No se encontraron visitas en esa fecha.");
-        }
-        scan.close();
     }
 
 }

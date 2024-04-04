@@ -1,26 +1,25 @@
-import java.util.ArrayList;
 class Visit {
-    private String guideName;
-    private ArrayList<Visitor> visitors;
+    private int guideId;
+    private Visitor[] visitors;
     private double totalCost;
     private String visitDate;
     private int numChildren;
     private int numAdults;
 
-    public Visit(String guideName, ArrayList<Visitor> visitors, String visitDate) {
-        this.guideName = guideName;
+    public Visit(int guideId, Visitor[] visitors, String visitDate) {
+        this.guideId = guideId;
         this.visitors = visitors;
         this.visitDate = visitDate;
         this.totalCost = calculateTotalCost();
         calculateVisitorsAge();
     }
 
-    // getters y setters
-    public String getGuideName() {
-        return guideName;
+    // Getters
+    public int getGuideId() {
+        return guideId;
     }
 
-    public ArrayList<Visitor> getVisitors() {
+    public Visitor[] getVisitors() {
         return visitors;
     }
 
@@ -54,9 +53,9 @@ class Visit {
         numChildren = 0;
         numAdults = 0;
         for (Visitor visitor : visitors) {
-            int birthYear = Integer.parseInt(visitor.getBirthDate());
-            if (isValidBirthDate(visitor.getBirthDate()) && birthYear < 2006) {
-                if (visitor.getBirthDate().compareTo("2006") < 0) {
+            int birthYear = Integer.parseInt(visitor.getBirthDate().substring(0, 4));
+            if (birthYear < 2006) {
+                if (birthYear < 2006) {
                     numChildren++;
                 } else {
                     numAdults++;
@@ -65,31 +64,12 @@ class Visit {
         }
     }
 
-    private boolean isValidBirthDate(String birthDate) {
-        if (birthDate.length() != 7 || birthDate.charAt(4) != '-') {
-            return false;
-        }
-    
-        // Obtener el año actual
-        int currentYear = java.time.LocalDate.now().getYear();
-    
-        int birthYear;
-        String birthYearString = birthDate.substring(0, 4);
-        if (birthYearString.matches("\\d{4}")) { 
-            birthYear = Integer.parseInt(birthYearString);
-        } else {
-            return false;
-        }
-    
-        return birthYear <= currentYear && birthYear >= currentYear - 150;
-    }
-
     public void showData() {
-        System.out.println("Guía: " + guideName);
+        System.out.println("ID del Guía: " + guideId);
         System.out.println("Costo total de la visita: $" + totalCost);
         System.out.println("Cantidad de niños: " + numChildren);
         System.out.println("Cantidad de adultos: " + numAdults);
-        System.out.println("Visitantes:");
+        System.out.println("CURP de Visitantes:");
         for (Visitor visitor : visitors) {
             System.out.println("- " + visitor.getName() + " " + visitor.getLastName());
         }

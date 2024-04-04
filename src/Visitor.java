@@ -68,6 +68,7 @@ public class Visitor {
     public void incrementVisitCount() {
         visitCount++;
     }
+
     //showData
     public void showData() {
         System.out.println("Nombre: " + name);
