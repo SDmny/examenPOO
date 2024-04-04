@@ -356,7 +356,11 @@ public class Menu {
                 case 5:
                     System.out.println("ID del animal a mostrar: ");
                     idAnimal = scan.nextInt()-1;
-                    animals.get(idAnimal).showData();
+                    for (int i = 0; i < animals.size(); i++) {
+                        if (animals.get(i).getIdAnimal() == idAnimal){
+                            animals.get(i).showData();
+                        }
+                    }
                     break;
                 case 6:
                     System.out.println("Volviendo a menú principal");
@@ -375,7 +379,7 @@ public class Menu {
         disease = scan.next();
         while (!disease.equals("0")) {
             diseases.add(disease);
-            System.out.print("\n0 - Terminar lista\nEnfermedad: ");
+            System.out.print("0 - Terminar lista\nEnfermedad: ");
             disease = scan.next();
         }
         if (diseases.size() < 1){
@@ -701,7 +705,7 @@ public class Menu {
     //Tipo de mantenimiento
     public String maintenanceType(){
         String processType = "", type;
-        System.out.println("Tipo de proceso: \n0 - Cancelar\n1 - Mantenimiento\n2 - Limpieza\n3 - Alimentación\n4 - Otro\n");
+        System.out.println("Tipo de proceso: \n0 - Cancelar\n1 - Mantenimiento\n2 - Limpieza\n3 - Alimentación\n4 - Otro");
         type = scan.next();
         switch (type){
             case "1": processType = "Mantenimiento";
@@ -711,7 +715,7 @@ public class Menu {
             case "3": processType = "Alimentación";
                 break;
             case "4":
-                System.out.println("Ingrese tipo de mantenimiento: ");
+                System.out.print("Ingrese tipo de mantenimiento: ");
                 processType = scan.next();
                 break;
             default:
@@ -721,7 +725,7 @@ public class Menu {
     //Observaciones mantenimiento
     public String observationsMaintenance(){
         String observations = "", aux;
-        System.out.println("¿Observaciones?\n0 - No\n1 - Sí\n");
+        System.out.println("¿Observaciones?\n0 - No\n1 - Sí");
         aux = scan.next();
         if (aux.equals("1")){
             System.out.print("Ingrese observaciones: ");
