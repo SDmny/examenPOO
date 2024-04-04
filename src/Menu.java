@@ -355,7 +355,7 @@ public class Menu {
                     break;
                 case 5:
                     System.out.println("ID del animal a mostrar: ");
-                    idAnimal = scan.nextInt()-1;
+                    idAnimal = scan.nextInt();
                     for (int i = 0; i < animals.size(); i++) {
                         if (animals.get(i).getIdAnimal() == idAnimal){
                             animals.get(i).showData();
