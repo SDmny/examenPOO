@@ -428,42 +428,41 @@ class Menu:
         self.visitors = []
 
     # Menu de visitantes
-    def Menu_visitor(self):
+    def menu_visitor(self):
         choice = 0
         while choice != 6:
-            print("- - - Menu de visitantes - - -")
+            print("Menu de visitantes")
             print("1 Registrar visitante")
-            print("2 Eliminar visitante")
-            print("3 Modificar datos de un visitante")
+            print("2 Eliminar viitante")
+            print("3 Modificar datos de un vistante")
             print("4 Consultar a todos los visitantes")
             print("5 Consultar datos de un visitante")
             print("6 Salir del menú de visitantes")
             choice = int(input())
-            input()
             if choice == 1:
                 self.add_visitor()
             elif choice == 2:
-                print("CURP del visitante: ")
-                CURP = input()
-                self.delete_visitor(CURP)
+                print("CURP del visitante:")
+                curp = input()
+                self.delete_visitor(curp)
             elif choice == 3:
-                print("CURP del visitante: ")
-                CURP = input()
-                self.modify_visitor(CURP)
+                print("CURP del visitante:")
+                curp = input()
+                self.modify_visitor(curp)
             elif choice == 4:
                 for visitor in self.visitors:
                     visitor.show_data()
             elif choice == 5:
-                print("CURP del visitante a mostrar: ")
-                CURP = input()
+                print("CURP del visitante a mostrar:")
+                curp = input()
                 visitor_found = False
                 for visitor in self.visitors:
-                    if visitor.get_CURP() == CURP:
+                    if visitor.curp == curp:
                         visitor.show_data()
                         visitor_found = True
                         break
                 if not visitor_found:
-                    print("El visitante con la CURP", CURP, "no fue encontrado")
+                    print("El visitante con la CURP", curp, "no fue encontrado")
             elif choice == 6:
                 print("Volviendo a menú principal")
             else:
@@ -472,38 +471,38 @@ class Menu:
     #Añadir visitante
     def add_visitor(self):
         print("- - - Añadir visitante - - -")
-        print("Introduzca el nombre: ", end="")
+        print("Introduzca el nombre:")
         name = input()
-        print("Introduzca los Apellidos: ", end="")
+        print("Introduzca los Apellidos:")
         last_name = input()
-        print("Introduzca la fecha de nacimiento (año-mes): ", end="")
+        print("Introduzca la fecha de nacimiento (año-mes):")
         birth_date = input()
-        print("Introduzca la CURP: ", end="")
-        CURP = input()
-        print("Introduzca la fecha de registro (año-mes): ", end="")
+        print("Introduzca la CURP:")
+        curp = input()
+        print("Introduzca la fecha de registro (año-mes):")
         registration_date = input()
 
-        visitor = Visitor(name, last_name, birth_date, CURP, registration_date)
+        visitor = Visitor(name, last_name, birth_date, curp, registration_date)
         self.visitors.append(visitor)
         print("¡Visitante registrado exitosamente!")
 
     #Eliminar visitante
-    def delete_visitor(self, CURP):
+    def delete_visitor(self, curp):
         visitor_found = False
         for visitor in self.visitors:
-            if visitor.get_CURP() == CURP:
+            if visitor.curp == curp:
                 self.visitors.remove(visitor)
                 visitor_found = True
-                print("Visitante con la CURP", CURP, "eliminado")
+                print("Visitante con la curp:", curp, "eliminado")
                 break
         if not visitor_found:
-            print("El visitante con la CURP", CURP, "no fue encontrado")
+            print("El visitante con la curp:", curp, "no fue encontrado")
 
     #Modificar visitante
-    def modify_visitor(self, CURP):
+    def modify_visitor(self, curp):
         opcion = 99
         for visitor in self.visitors:
-            if visitor.get_CURP() == CURP:
+            if visitor.curp == curp:
                 while opcion != 0:
                     print("Ingrese la opción a modificar:")
                     print("1 Nombre")
@@ -512,25 +511,24 @@ class Menu:
                     print("4 Fecha de Registro")
                     print("0 Salir del menu de modificar")
                     opcion = int(input())
-                    input()
                     if opcion == 0:
                         print("Volviendo al menú de visitantes")
                     elif opcion == 1:
-                        print("Ingrese nuevo nombre: ", end="")
+                        print("Ingrese nuevo nombre:")
                         name = input()
-                        visitor.set_name(name)
+                        visitor.name = name
                     elif opcion == 2:
-                        print("Ingrese nuevo apellido: ", end="")
+                        print("Ingrese nuevo apellido:")
                         last_name = input()
-                        visitor.set_last_name(last_name)
+                        visitor.last_name = last_name
                     elif opcion == 3:
-                        print("Ingrese otra fecha de nacimiento: ", end="")
+                        print("Ingrese otra fecha de nacimiento (año-mes):")
                         birth_date = input()
-                        visitor.set_birth_date(birth_date)
+                        visitor.birth_date = birth_date
                     elif opcion == 4:
-                        print("Ingrese otra fecha de registro: ", end="")
+                        print("Ingrese otra fecha de registro (año-mes):")
                         registration_date = input()
-                        visitor.set_registration_date(registration_date)
+                        visitor.registration_date = registration_date
                     else:
                         print("Esa opción no se encuentra en el menú")
 
@@ -539,78 +537,76 @@ class Menu:
         self.visits = []
 
     #Menu de visitas
-    def Menu_visit(self):
+    def menu_visit(self):
         exit_menu = False
         while not exit_menu:
             print("Menu de visitas")
             print("1. Añadir visitante a la visita")
             print("2. Mostrar todos los datos de visitas")
-            print("3. Mostrar datos de visitas filtrados por fecha")
-            print("4. Salir del menú de visitas")
-            choice = int(input("Ingrese su elección: "))
-
+            print("3. Salir del menú de visitas")
+            choice = int(input())
             if choice == 1:
                 self.add_visitor_to_visit()
             elif choice == 2:
                 self.show_all_visits()
             elif choice == 3:
-                self.show_visits_by_date()
-            elif choice == 4:
                 exit_menu = True
                 print("Volviendo a menú principal")
             else:
                 print("Esa opción no se encuentra en el menú")
 
-    # Añadir visitante a la visita
+    #Añadir visitante a la visita
     def add_visitor_to_visit(self):
         print("\n- - - MENU PARA AÑADIR VISITANTE - - -")
-        CURP = input("Introduzca la CURP del visitante: ")
-        visitor = self.find_visitor_by_CURP(CURP)
-        if visitor is not None:
-            visit_date = input("Introduzca la fecha de la visita (año-mes-día): ")
-            guide_id = int(input("Introduzca el ID del guía: "))
-            guide = self.find_guide_by_id(guide_id)
-            if guide is not None:
-                visitors_list = [visitor]
-                visit = Visit(guide.get_name(), visitors_list, visit_date)
-                self.visits.append(visit)
-                print("Visitante añadido correctamente")
+        cur = self.visitor_curp()
+        if cur:
+            print("Introduzca la fecha de la visita (año-mes-día):")
+            visit_date = input()
+            id = self.employee_rol_guide()
+            visitor = self.get_visitor_from_curp(cur)
+            if visitor:
                 visitor.increment_visit_count()
+                visit = Visit(id, [visitor], visit_date)
+                self.visits.append(visit)
             else:
-                print(f"El guía con ID {guide_id} no fue encontrado o no es guía")
-        else:
-            print(f"El visitante con la CURP {CURP} no fue encontrado")
+                print("No se ha encontrado el usuario")
 
-    # Encontrar a un visitante existente
-    def find_visitor_by_CURP(self, CURP):
+    #Buscar visitante por CURP
+    def get_visitor_from_curp(self, curp):
         for visitor in self.visitors:
-            if visitor.get_CURP() == CURP:
+            if visitor.curp == curp:
                 return visitor
         return None
-
-    # Encontrar al guía por su ID
-    def find_guide_by_id(self, guide_id):
-        for employee in self.employees:
-            if employee.get_id() == guide_id and employee.get_role() == 'g':
-                return employee
+    
+    #Obtener empleado por ID
+    def employee_rol_guide(self):
+        emp_in_array = -1
+        print("ID del empleado encargado de guiar:")
+        id_employee = int(input())
+        for i, employee in enumerate(self.employees):
+            if employee.id == id_employee:
+                emp_in_array = i
+        if emp_in_array < 0:
+            print("ID incorrecta")
+            id_employee = -1
+        if self.employees[emp_in_array].rol != 'g':
+            print("El empleado no es encargado de guiar")
+            id_employee = -1
+        return id_employee
+    
+    #Obtener visitante por CURP
+    def visitor_curp(self):
+        print("Ingrese la CURP del visitante:")
+        visitor_curp = input()
+        for visitor in self.visitors:
+            if visitor.curp == visitor_curp:
+                return visitor_curp
+        print("No se ha encontrado el usuario")
         return None
-
-    # Mostrar todos los datos de visitas
+    
+    #Mostrar visitas
     def show_all_visits(self):
         print("\n- - - TODAS LAS VISITAS - - -")
         for visit in self.visits:
             visit.show_data()
             print()
-
-    # Mostrar visitas de una fecha determinada
-    def show_visits_by_date(self):
-        target_date = input("Ingrese la fecha de visita (año-mes-día): ")
-        print(f"\n- - - Visitas en la fecha: {target_date} - - -")
-        found = False
-        for visit in self.visits:
-            if visit.get_visit_date() == target_date:
-                visit.show_data()
-                print()
-                found = True
-        if not found:
-            print("No se encontraron visitas en esa fecha.")

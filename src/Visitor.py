@@ -1,10 +1,10 @@
 
 class Visitor:
-    def __init__(self, name, last_name, birth_date, CURP, registration_date):
+    def __init__(self, name, last_name, birth_date, curp, registration_date):
         self.name = name
         self.last_name = last_name
         self.birth_date = birth_date
-        self.CURP = CURP
+        self.curp = curp
         self.visit_count = 0
         self.registration_date = registration_date
 
@@ -26,11 +26,11 @@ class Visitor:
     def set_birth_date(self, birth_date):
         self.birth_date = birth_date
 
-    def get_CURP(self):
-        return self.CURP
+    def get_curp(self):
+        return self.curp
 
-    def set_CURP(self, CURP):
-        self.CURP = CURP
+    def set_curp(self, curp):
+        self.curp = curp
 
     def get_visit_count(self):
         return self.visit_count
@@ -51,6 +51,6 @@ class Visitor:
         print("Nombre:", self.name)
         print("Apellidos:", self.last_name)
         print("Fecha de nacimiento:", self.birth_date)
-        print("CURP:", self.CURP)
-        print("Numero de visitas:", self.visit_count)
+        print("CURP:", self.curp)
+        print("Número de visitas:", self.visit_count)
         print("Fecha de registro:", self.registration_date)
