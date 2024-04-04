@@ -429,18 +429,19 @@ public class Menu {
     //Eliminar animal
     public void deleteAnimal(int id) {
         boolean busy = false;
-        id--;
-        if (id>=0 && id<animals.size()){
-            for (int i = 0; i < maintenances.size(); i++) {
-                if (maintenances.get(i).getIdAnimal() == id+1){
-                    busy = true;
+        for (int i = 0; i < maintenances.size(); i++) {
+            if (maintenances.get(i).getIdAnimal() == id){
+                busy = true;
+            }
+        }
+        if (busy){
+            System.out.println("Operacion cancelada, el animal tiene un acontecimiento pendiente");
+        }
+        else {
+            for (int i = 0; i < animals.size(); i++) {
+                if (animals.get(i).getIdAnimal() == id){
+                    animals.remove(animals.get(i));
                 }
-            }
-            if (busy){
-                System.out.println("Operacion cancelada, el animal tiene un acontecimiento pendiente");
-            }
-            else {
-                animals.remove(animals.get(id));
             }
         }
     }
