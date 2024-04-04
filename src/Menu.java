@@ -621,7 +621,7 @@ public class Menu {
                             visitor.setLastName(lastname);
                             break;
                         case 3:
-                            System.out.print("Ingrese otra fecha de nacimiento: ");
+                            System.out.print("Ingrese otra fecha de nacimiento: (año-mes)");
                             birthDate = scan.nextLine();
                             visitor.setBirthDate(birthDate);
                             break;
@@ -760,7 +760,6 @@ public class Menu {
 
     //METODOS DE VISITAS
     ArrayList<Visit> visits = new ArrayList<>();
-    private static ArrayList<Visitor> visitors2 = new ArrayList<>();
 
     //Menu de visitas
     public void MenuVisit() {
@@ -801,14 +800,14 @@ public class Menu {
         System.out.print("Introduzca la CURP del visitante: ");
         String CURP = scan.nextLine();
         Visitor visitor = findVisitorByCURP(CURP);
-        if (visitor != null) {
+        if (visitor != null && visitor.equals(null)) {
             System.out.print("Introduzca la fecha de la visita (año-mes-día): ");
             String visitDate = scan.nextLine();
             System.out.print("Introduzca el ID del guía: ");
             int guideId = scan.nextInt();
             scan.nextLine();
             Employee guide = findGuideById(guideId);
-            if (guide != null) {
+            if (guide != null && guide.equals(null)) {
                 ArrayList<Visitor> visitorsList = new ArrayList<>();
                 visitorsList.add(visitor);
                 Visit visit = new Visit(guide.getName(), visitorsList, visitDate);
@@ -826,7 +825,8 @@ public class Menu {
 
     //Encontrar al visitante existente
     private Visitor findVisitorByCURP(String CURP) {
-        for (Visitor visitor : visitors2) {
+        ArrayList<Visitor> visitors = new ArrayList<>();
+        for (Visitor visitor : visitors) {
             if (visitor.getCURP().equals(CURP)) {
                 return visitor;
             }
@@ -836,8 +836,8 @@ public class Menu {
 
     //Encontrar al guía por su ID
     private static Employee findGuideById(int guideId) {
-        ArrayList<Employee> employ = new ArrayList<>();
-        for (Employee em : employ) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        for (Employee em : employees) {
             if (em.getId() == guideId) {
                 return findEmployeeById(guideId);
             }
@@ -847,8 +847,8 @@ public class Menu {
 
     //Encontrar al Empleado por ID
     private static Employee findEmployeeById(int employeeId) {
-        ArrayList<Employee> employ = new ArrayList<>();
-        for (Employee employee : employ) {
+        ArrayList<Employee> employees = new ArrayList<>();
+        for (Employee employee : employees) {
             if (employee.getId() == employeeId && employee.getRol() == 'g') {
                 return employee;
             }

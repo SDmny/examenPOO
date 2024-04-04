@@ -54,8 +54,9 @@ class Visit {
         numChildren = 0;
         numAdults = 0;
         for (Visitor visitor : visitors) {
-            if (isValidBirthDate(visitor.getBirthDate())) {
-                if (visitor.getBirthDate().compareTo("2005") < 0) {
+            int birthYear = Integer.parseInt(visitor.getBirthDate());
+            if (isValidBirthDate(visitor.getBirthDate()) && birthYear < 2006) {
+                if (visitor.getBirthDate().compareTo("2006") < 0) {
                     numChildren++;
                 } else {
                     numAdults++;
