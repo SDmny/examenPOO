@@ -3,6 +3,7 @@ package Bibiloteca;
 import Usuario.Usuario;
 import Usuario.Rol;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -10,19 +11,30 @@ public class Menu {
     static Scanner leer = new Scanner(System.in);
 
     public static void EjecutarMenu() {
-        Password();
-        int i = 0;
-        System.out.println("--__BIENVENIDO AL SISTEMA__--");
-        for (Usuario usuario : biblioteca.usuarios) {
-            if (usuario.getRol() == Rol.CLIENTE) {
-                menuClientes();
-            }
-            if (usuario.getRol() == Rol.TRABAJADOR) {
-                menuTrabajadores();
-            }
-            if (usuario.getRol() == Rol.GERENTE) {
-                menuGerente();
+        String opcion = "1";
 
+        while (!Objects.equals(opcion, "0")) {
+            if (!opcion.equals("0")) {
+                System.out.println("Ingrese 0 para salir del programa");
+                opcion = leer.nextLine();
+                Password();
+                int i = 0;
+                System.out.println("--__BIENVENIDO AL SISTEMA__--");
+                System.out.println("\tIniciar sesión: ");
+                for (Usuario usuario : biblioteca.usuarios) {
+                    if (usuario.getRol() == Rol.CLIENTE) {
+                        menuClientes();
+                    }
+                    if (usuario.getRol() == Rol.TRABAJADOR) {
+                        menuTrabajadores();
+                    }
+                    if (usuario.getRol() == Rol.GERENTE) {
+                        menuGerente();
+
+                    }
+                }
+            } else {
+                System.out.println("Usted ha salido del programa");
             }
         }
     }
@@ -74,7 +86,7 @@ public class Menu {
                 case 5:
                     break;
                 case 6:
-                    System.out.println("Usted esta saliendo del menu principal");
+                    System.out.println("Usted esta cerrando sesión");
                     break;
             }
         }
@@ -186,7 +198,7 @@ public class Menu {
                     }
                     break;
                 case 4:
-                    System.out.println("Usted esta saliendo del menu principal");
+                    System.out.println("Usted esta cerrando sesión");
                     break;
             }
         }
@@ -271,7 +283,7 @@ public class Menu {
                 case 3:
                     break;
                 case 4:
-                    System.out.println("Usted esta saliendo del menu principal");
+                    System.out.println("Usted esta cerrando sesión");
                     break;
             }
         }
