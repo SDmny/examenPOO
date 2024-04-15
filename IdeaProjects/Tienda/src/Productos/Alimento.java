@@ -27,5 +27,13 @@ public class Alimento extends Producto {
             caduco=true;
         }
     }
+    public String toString(){
+        String si=" no";
+        if(caduco){
+            si=" si";
+        }
+
+        return super.toString()+" caducidad: "+this.caducidad+ " Caduco: "+si;
+    }
 
 }

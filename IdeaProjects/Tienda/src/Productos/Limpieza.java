@@ -27,4 +27,13 @@ public class Limpieza extends Producto {
     public void setRecomend(boolean recomend) {
         this.recomend = recomend;
     }
-}
+
+
+public String toString(){
+        String si=" no";
+        if(recomend){
+            si=" si";
+        }
+
+    return super.toString()+" aroma: "+this.aroma+ " Recomendado"+si;
+}}

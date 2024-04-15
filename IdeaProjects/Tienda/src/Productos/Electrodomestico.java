@@ -37,4 +37,10 @@ public class Electrodomestico extends Producto {
     public void setWatts(double watts) {
         this.watts = watts;
     }
-}
+
+    public String toString(){
+
+
+        return super.toString()+" watts: "+this.watts+ " color: "+color+" descripción: "+descripcion;
+    }}
+

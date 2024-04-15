@@ -296,7 +296,7 @@ public class Compra {
     public void mostrarProducto(int id) {
         for (Producto producto : productos) {
             if (id == producto.getId()) {
-                System.out.println("Producto: " + producto.toString());
+                System.out.println("Producto: " + (producto).toString());
             }
         }
 
