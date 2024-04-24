@@ -9,7 +9,7 @@ package usuarios.utils;
 
 public class UsuarioEnSesion {
     private static UsuarioEnSesion instancia;
-    private Usuario usuarioActual;
+    private static Usuario usuarioActual;
 
     private UsuarioEnSesion() {}
 
@@ -33,7 +33,7 @@ public class UsuarioEnSesion {
         return usuarioActual != null;
     }
 
-    public void cerrarSesion() {
+    public static void cerrarSesion() {
         instancia = null;
         usuarioActual = null;
     }

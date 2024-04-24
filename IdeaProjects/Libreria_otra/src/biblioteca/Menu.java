@@ -2,8 +2,11 @@ package biblioteca;
 
 import usuarios.utils.Usuario;
 import usuarios.utils.UsuarioEnSesion;
+
 import java.util.*;
+
 import usuarios.utils.Rol;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -19,17 +22,18 @@ public class Menu {
             String username = scanner.nextLine();
             System.out.println("Password: ");
             String password = scanner.nextLine();
-            for(Map.Entry<Rol, ArrayList<Usuario>> entry : Biblioteca.usuarios.entrySet()){
-                for (Usuario usuario : entry.getValue()){
+            for (Map.Entry<Rol, ArrayList<Usuario>> entry : Biblioteca.usuarios.entrySet()) {
+                for (Usuario usuario : entry.getValue()) {
                     if (usuario.getNombreUsuario().equals(username)) {
                         if (usuario.getContrasena().equals(password)) {
                             valido = true;
-                            rol = String.format("%s",usuario.getRol());
+                            rol = String.format("%s", usuario.getRol());
                             break;
                         }
                     }
                 }
-            }System.out.println("Password or user invalid");
+            }
+            System.out.println("Password or user invalid");
 
 
         } while (!valido);
@@ -74,129 +78,138 @@ public class Menu {
                 case 6:
                     break;
                 case 7:
+                    UsuarioEnSesion.cerrarSesion();
                     ejecucion();
                     break;
             }
-        } while(opcion>0&&opcion< 7);
+        } while (opcion > 0 && opcion < 7);
     }
 
     private static void mostrarMenuGerente() {
 
-        int opcion ;
+        int opcion;
 
         do {
             int opcionT = 0;
             int opcionL = 0;
             int opcionC = 0;
-                System.out.println("__Menu de Gerente__");
-                System.out.println("1 Menu Libros");
-                System.out.println("2 Menu Clientes");
-                System.out.println("3 Menu de Usuario");
-                System.out.println("4 Salir");
-                System.out.println("Ingrese la opción a ejecutar: ");
-                opcion = scanner.nextInt();
-                switch (opcion) {
+            System.out.println("__Menu de Gerente__");
+            System.out.println("1 Menu Libros");
+            System.out.println("2 Menu Clientes");
+            System.out.println("3 Menu de Usuario");
+            System.out.println("4 Salir");
+            System.out.println("Ingrese la opción a ejecutar: ");
+            opcion = scanner.nextInt();
+            switch (opcion) {
 
-                    case 1:
-                        while (opcionL < 7) {
-                            System.out.println("Ingrese la opción a ejecutar");
-                            System.out.println("1 Registrar Libro(s)");
-                            System.out.println("2 Mostrar a todos los Libros");
-                            System.out.println("3 Mostrar a un Libro");
-                            System.out.println("4 Modificar Libro");
-                            System.out.println("5 Eliminar Libro");
-                            System.out.println("6 Mostrar libros rentados actualmente");
-                            System.out.println("7 Salir del menu");
-                            opcionL = scanner.nextInt();
-                            switch (opcionL) {
-                                case 1:
-                                    break;
-                                case 2:
-                                    break;
-                                case 3:
-                                    break;
-                                case 4:
-                                    break;
-                                case 5:
-                                    break;
-                                case 6:
-                                    break;
-                                case 7:
-                                    System.out.println("Usted esta saliendo del menu libros");
-                                    break;
+                case 1:
+                    while (opcionL < 7) {
+                        System.out.println("Ingrese la opción a ejecutar");
+                        System.out.println("1 Registrar Libro(s)");
+                        System.out.println("2 Mostrar a todos los Libros");
+                        System.out.println("3 Mostrar a un Libro");
+                        System.out.println("4 Modificar Libro");
+                        System.out.println("5 Eliminar Libro");
+                        System.out.println("6 Mostrar libros rentados actualmente");
+                        System.out.println("7 Salir del menu");
+                        opcionL = scanner.nextInt();
+                        switch (opcionL) {
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 6:
+                                break;
+                            case 7:
+                                System.out.println("Usted esta saliendo del menu libros");
+                                break;
 
-                            }
                         }
-                        break;
+                    }
+                    break;
 
-                    case 2:
-                        while (opcionC < 6) {
-                            System.out.println("__Menu Clientes");
-                            System.out.println("Ingrese la opción a ejecutar");
-                            System.out.println("1 Registrar Cliente(s)");
-                            System.out.println("2 Mostrar a todos los Clientes");
-                            System.out.println("3 Mostrar a un Cliente");
-                            System.out.println("4 Modificar cliente");
-                            System.out.println("5 Eliminar cliente");
-                            System.out.println("6 Salir del menu");
-                            opcionC = scanner.nextInt();
-                            switch (opcionC) {
-                                case 1:
-                                    biblioteca.registrarCliente();
-                                    break;
-                                case 2:
-                                    biblioteca.mostrarClientes();
-                                    break;
-                                case 3:
-                                    break;
-                                case 4:
-                                    break;
-                                case 5:
-                                    break;
-                                case 6:
-                                    System.out.println("Usted esta saliendo del menu clientes");
-                                    break;
+                case 2:
+                    while (opcionC < 6) {
+                        System.out.println("__Menu Clientes");
+                        System.out.println("Ingrese la opción a ejecutar");
+                        System.out.println("1 Registrar Cliente(s)");
+                        System.out.println("2 Mostrar a todos los Clientes");
+                        System.out.println("3 Mostrar a un Cliente");
+                        System.out.println("4 Modificar cliente");
+                        System.out.println("5 Eliminar cliente");
+                        System.out.println("6 Salir del menu");
+                        opcionC = scanner.nextInt();
+                        switch (opcionC) {
+                            case 1:
+                                biblioteca.registrarCliente();
+                                break;
+                            case 2:
+                                biblioteca.mostrarClientes();
+                                break;
+                            case 3:
+                                biblioteca.mostrarCliente();
+                                break;
+                            case 4:
+                                biblioteca.modificarCliente();
+                                break;
+                            case 5:
+                                biblioteca.eliminarCliente();
+                                break;
+                            case 6:
+                                System.out.println("Usted esta saliendo del menu clientes");
+                                break;
 
-                            }
                         }
-                        break;
-                    case 3:
-                        while (opcionT < 6) {
-                            System.out.println("Menu Trabajadores");
-                            System.out.println("Ingrese la opción a ejecutar");
-                            System.out.println("1 Registrar Trabajador(es)");
-                            System.out.println("2 Mostrar a todos los Trabajadores");
-                            System.out.println("3 Mostrar a un Trabajador");
-                            System.out.println("4 Modificar trabajador");
-                            System.out.println("5 Eliminar trabajador");
-                            System.out.println("6 Salir del menu");
-                            opcionT = scanner.nextInt();
-                            switch (opcionT) {
-                                case 1:
-                                    biblioteca.registrarTrabajador();
-                                    break;
-                                case 2:
-                                    biblioteca.mostrarTrabajadores();
-                                    break;
-                                case 3:
-                                    break;
-                                case 4:
-                                    break;
-                                case 5:
-                                    break;
-                                case 6:
-                                    System.out.println("Usted esta saliendo del menu de trabajadores");
-                                    break;
-                            }
+                    }
+                    break;
+                case 3:
+                    while (opcionT < 6) {
+                        System.out.println("Menu Trabajadores");
+                        System.out.println("Ingrese la opción a ejecutar");
+                        System.out.println("1 Registrar Trabajador(es)");
+                        System.out.println("2 Mostrar a todos los Trabajadores");
+                        System.out.println("3 Mostrar a un Trabajador");
+                        System.out.println("4 Modificar trabajador");
+                        System.out.println("5 Eliminar trabajador");
+                        System.out.println("6 Salir del menu");
+                        opcionT = scanner.nextInt();
+                        switch (opcionT) {
+                            case 1:
+                                biblioteca.registrarTrabajador();
+                                break;
+                            case 2:
+                                biblioteca.mostrarTrabajadores();
+                                break;
+                            case 3:
+                                biblioteca.mostrarTrabajador();
+                                break;
+                            case 4:
+                                biblioteca.modificarTrabajador();
+                                break;
+                            case 5:
+                                biblioteca.eliminarTrabajador();
+                                break;
+                            case 6:
+                                System.out.println("Usted esta saliendo del menu de trabajadores");
+                                break;
                         }
-                        break;
-                    case 4:
-                        System.out.println("Usted está cerrando sesión");
-                        Menu.ejecucion();
-                        break;
+                    }
+                    break;
+                case 4:
+                    System.out.println("Usted está cerrando sesión");
+
+                    UsuarioEnSesion.cerrarSesion();
+                    Menu.ejecucion();
+                    break;
 
             }
-        } while(opcion < 4);
+        } while (opcion < 4);
     }
 
     private static void mostrarMenuTrabajador() {
@@ -268,10 +281,13 @@ public class Menu {
                                     biblioteca.mostrarClientes();
                                     break;
                                 case 3:
+                                    biblioteca.mostrarCliente();
                                     break;
                                 case 4:
+                                    biblioteca.modificarCliente();
                                     break;
                                 case 5:
+                                    biblioteca.eliminarCliente();
                                     break;
                                 case 6:
                                     System.out.println("Usted esta saliendo del menu clientes");
@@ -284,13 +300,14 @@ public class Menu {
                         break;
                     case 4:
                         System.out.println("Usted esta cerrando sesión");
+                        UsuarioEnSesion.cerrarSesion();
                         ejecucion();
                         break;
                 }
             }
 
 
-        } while(opcion <4);
+        } while (opcion < 4);
     }
 }
 
