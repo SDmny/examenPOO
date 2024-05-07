@@ -5,17 +5,23 @@ import java.util.Scanner;
 public class MenuClientes {
     static Scanner scanner = new Scanner(System.in);
     public static void menuClientes(){
-        String rol;
+        String action;
         do {
-            System.out.println("\n1 - Cliente\n2 - Empleado\n3 - Inversionista\n0 - Regresar");
+            System.out.println("1 - Salir");
+            System.out.println("2 - Salir");
+            System.out.println("3 - Salir");
+            System.out.println("4 - Salir");
+            System.out.println("0 - Salir");
             System.out.print("Selección: ");
-            rol = scanner.next();
-            switch (rol){
-                case "1": // menu clientes
+            action = scanner.next();
+            switch (action){
+                case "1":
                     break;
-                case "2": // menu empleados
+                case "2":
                     break;
-                case "3": // menu inversionistas
+                case "3":
+                    break;
+                case "4":
                     break;
                 case "0":
                     System.out.println("Regresando");
@@ -23,6 +29,6 @@ public class MenuClientes {
                 default:
                     System.out.println("Opcion inexistente");
             }
-        } while (!rol.equals("0"));
+        } while (!action.equals("0"));
     }
 }

@@ -2,14 +2,14 @@ package menus;
 
 import java.util.Scanner;
 
-public class MenuInversionistas {
+public class MenuEmpleados {
     static Scanner scanner = new Scanner(System.in);
-    public static void menuInversionistas(){
+    public static void menuEmpleados(){
         String action;
         do {
-            System.out.println("1 - Salir");
-            System.out.println("2 - Salir");
-            System.out.println("3 - Salir");
+            System.out.println("1 - Gerente");
+            System.out.println("2 - Ejecutivo");
+            System.out.println("3 - Capturista");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");
             action = scanner.next();
