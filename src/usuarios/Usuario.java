@@ -43,8 +43,14 @@ public abstract class Usuario {
 
         dateBirth = "" + birth.getYear();
         rfc = rfc + dateBirth.substring(2, 4);
-        dateBirth = "" + birth.getMonth();
+        if(birth.getMonthValue()<10){
+            rfc=rfc+0;
+        }
+        dateBirth = "" + birth.getMonthValue();
         rfc = rfc + dateBirth;
+        if(birth.getDayOfMonth()<10){
+            rfc=rfc+0;
+        }
         dateBirth = "" + birth.getDayOfMonth();
         rfc = rfc + dateBirth;
         homoclave = Homoclave();
