@@ -57,9 +57,9 @@ public class Usuario {
         int clave, hom = 65;
         for (int i = 0; i < 2; i++) {
 
-            hom = ran.nextInt(1, 3);
+            hom = ran.nextInt(2)+1;
             if (hom == 1) {
-                hom = ran.nextInt(65, 91);
+                hom = ran.nextInt(26)+65;
                 homo = homo.concat(Character.toString((char) hom));
             } else {
                 clave = ran.nextInt(10);
@@ -164,5 +164,7 @@ public class Usuario {
         this.birth = birth;
     }
 
-
+    public Gente getRol() {
+        return rol;
+    }
 }

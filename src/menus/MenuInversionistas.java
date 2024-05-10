@@ -21,7 +21,7 @@ public class MenuInversionistas {
                 case "3":
                     break;
                 case "0":
-                    System.out.println("Regresando");
+                    Menu.continuar();
                     break;
                 default:
                     System.out.println("Opcion inexistente");

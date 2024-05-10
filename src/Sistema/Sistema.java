@@ -27,5 +27,15 @@ public class Sistema {
         return sucursalMadero;
 
     }
+    public static Usuario verificarInicioSesion(String nombreUsuario, String contrasena){
+        /*for (Map.Entry<Gente, ArrayList<Usuario>> entry : usuarios.entrySet()){
+            for (Usuario usuarioActual : entry.getValue()){
+                if (usuarioActual.getNombre().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
+                    return usuarioActual;
+                }
+            }
+        }*/
+        return null;
+    }
 
 }
