@@ -3,6 +3,7 @@ package sistema;
 import usuarios.utils.Gente;
 import usuarios.Usuario;
 import usuarios.utils.Sucursal;
+import utils.Fondos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class Sistema {
     public static final Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
+    public static  ArrayList<Fondos> fondos = new ArrayList<Fondos>();
 
     //METODO ENCONTRAR SUCURSAL
 

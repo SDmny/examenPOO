@@ -7,9 +7,9 @@ import usuarios.utils.Gente;
 import java.time.LocalDate;
 import java.util.Random;
 
-public class Usuario {
+public abstract class Usuario {
     Random ran = new Random();
-    String nombre, apellido1, apellido2, ciudad, estado, rfc, curp, direccion, homoclave, contrasena;
+    String nombre, apellido1, apellido2, ciudad, estado, rfc, curp, direccion, homoclave, usuario, contrasena;
     char sexo;
     boolean repetida = true;
     LocalDate birth, register;
@@ -19,7 +19,7 @@ public class Usuario {
     static int cantidadUsuarios;
 
     //Crear metodo para hacer nulo el segundo apellido sí no tiene (apellido2)
-    public Usuario(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, Gente rol, String contrasena) {
+    public Usuario(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, Gente rol, String usuario, String contrasena) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -29,6 +29,7 @@ public class Usuario {
         this.curp = curp;
         this.direccion = direccion;
         this.sucursal = sucursal;
+        this.usuario = usuario;
         this.contrasena = contrasena;
         this.id = cantidadUsuarios;
         cantidadUsuarios++;
@@ -70,6 +71,14 @@ public class Usuario {
 
         }
         return homo;
+    }
+
+
+    // Metodo para imprimir datos basicos
+    @Override
+    public String toString(){
+        String cadena = String.format("Id: %d; Nombre completo: %s %s %s; Rol: %s; Nombre de usuario: %s", id, nombre, apellido1, apellido2, rol, usuario);
+        return cadena;
     }
 
     //GETTERS Y SETTERS

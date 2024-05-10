@@ -14,9 +14,9 @@ public class DatosComun {
     public static Scanner scanner = new Scanner(System.in);
 
     //METODO PARA OBTENER DATOS INCOMPLETO
-    public static void ObtenerDatos() {
+    public static ArrayList obtenerDatos() {
         ArrayList<String> datosComun = new ArrayList<String>();
-        String nombre, apellido1, apellido2, ciudad, estado, curp="", direccion, homoclave, contrasena;
+        String nombre, apellido1, apellido2, ciudad, estado, curp="", direccion, homoclave, usuario, contrasena;
         char sexo=' ';
         Sucursal sucursal;
         Gente rol;
@@ -35,6 +35,7 @@ public class DatosComun {
         estado = scanner.next();
         System.out.print("Ingrese dirección: ");
         direccion = scanner.next();
+        usuario = obtenerNombreUsuario();
         System.out.print("Ingrese contraseña: ");
         contrasena = scanner.next();
 
@@ -64,7 +65,8 @@ public class DatosComun {
             incorrecto = true;
             System.out.println("SI SALE ESTE MENSAJE: ERROR EN CURP SOS!!!!");
         }
-        datosComun.addAll(Arrays.asList(nombre, apellido1, apellido2, String.valueOf(sexo), ciudad, estado, curp, direccion, contrasena));
+        datosComun.addAll(Arrays.asList(nombre, apellido1, apellido2, String.valueOf(sexo), ciudad, estado, curp, direccion, usuario, contrasena));
+        return datosComun;
     }
 
     //METODO PARA EVITAR REPETIR RFC
@@ -115,6 +117,24 @@ public class DatosComun {
         String cadena = "" + apellidoPaterno.charAt(0) + apellidoPaterno.charAt(1) + apellidoMaterno.charAt(0) + nombre.charAt(0) + fechaNacimientoS + sexo + estado.charAt(0) + estado.charAt(letra) + apellidoPaterno.charAt(2) + apellidoMaterno.charAt(2) + nombre.charAt(2) + digito1 + digito2;
         String curp = cadena.toUpperCase();
         return curp;
+    }
+
+    // metodo para nombre de usuario
+    private static String obtenerNombreUsuario(){
+        boolean nombreUsExis = true;
+        String nombUsu = "";
+        do {
+            System.out.print("Ingrese nombre de usuario: ");
+            nombUsu = scanner.next();
+            nombreUsExis = false;
+            if (Sistema.usuarios.containsKey(nombUsu) == true){
+                nombreUsExis = true;
+            }
+            if (nombreUsExis){
+                System.out.println("Nombre de usuario existente");
+            }
+        } while (nombreUsExis);
+        return nombUsu;
     }
 
 

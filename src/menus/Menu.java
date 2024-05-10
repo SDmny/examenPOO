@@ -1,6 +1,7 @@
 package menus;
 
 import sistema.Sistema;
+import usuarios.Inversionista;
 import usuarios.Usuario;
 import utils.UsuarioEnSesion;
 
@@ -54,11 +55,11 @@ public class Menu {
     // Seleccion de menu por rol
     public static void menu() {
         switch (UsuarioEnSesion.getInstancia().getUsuarioActual().getRol()) {
-            case GERENTE: MenuEmpleados.menuGerente();
+            case GERENTE: MenuGerente.menuGerente();
                 break;
-            case CAPTURISTA: MenuEmpleados.menuCapturista();
+            case CAPTURISTA: MenuCapturista.menuCapturista();
                 break;
-            case EJECUTIVO: MenuEmpleados.menuEjecutivo();
+            case EJECUTIVO: MenuEjecutivo.menuEjecutivo();
                 break;
             case INVERSIONISTA: MenuInversionistas.menuInversionista();
                 break;
