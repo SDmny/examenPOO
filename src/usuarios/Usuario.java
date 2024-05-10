@@ -56,6 +56,7 @@ public abstract class Usuario {
             }
         }
         rfc = rfc + homoclave;
+        rfc=rfc.toUpperCase();
 
     }
 
