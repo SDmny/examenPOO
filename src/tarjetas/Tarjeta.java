@@ -1,6 +1,6 @@
-package Tarjetas;
+package tarjetas;
 
-import Tarjetas.utils.Generar;
+import tarjetas.utils.Generar;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -32,18 +32,18 @@ public class Tarjeta {
 
     private String generarCvv() {
         Random r = new Random();
-        this.cvv = Integer.toString(r.nextInt(100,999));
+        this.cvv = Integer.toString(r.nextInt(900)+100);
         return cvv;
     }
 
     private String generarClabe() {
         Random r = new Random();
-        String campo1 = Integer.toString(r.nextInt(100,999));
-        String campo2 = Integer.toString(r.nextInt(100,999));
-        String campo3 = Integer.toString(r.nextInt(100,999));
-        String campo4 = Integer.toString(r.nextInt(100,999));
-        String campo5 = Integer.toString(r.nextInt(100,999));
-        String campo6 = Integer.toString(r.nextInt(100,999));
+        String campo1 = Integer.toString(r.nextInt(900)+100);
+        String campo2 = Integer.toString(r.nextInt(900));
+        String campo3 = Integer.toString(r.nextInt(900)+100);
+        String campo4 = Integer.toString(r.nextInt(900)+100);
+        String campo5 = Integer.toString(r.nextInt(900)+100);
+        String campo6 = Integer.toString(r.nextInt(900)+100);
         this.clabeInterbancaria = campo1 + " " + campo2 + " " + campo3 + " " + campo4 + " " + campo5 + " " + campo6;
         return clabeInterbancaria;
     }

@@ -1,17 +1,16 @@
-package Usuarios;
+package usuarios;
 
-import Sistema.DatosComun;
-import Usuarios.utils.Sucursal;
-import Usuarios.utils.Gente;
+import usuarios.utils.DatosComun;
+import usuarios.utils.Sucursal;
+import usuarios.utils.Gente;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class Usuario {
     Random ran = new Random();
-    String nombre, apellido1, apellido2, ciudad, estado, rfc, curb, direccion, homoclave, contrasena;
+    String nombre, apellido1, apellido2, ciudad, estado, rfc, curp, direccion, homoclave, contrasena;
+    char sexo;
     boolean repetida = true;
     LocalDate birth, register;
     Sucursal sucursal;
@@ -20,13 +19,14 @@ public class Usuario {
     static int cantidadUsuarios;
 
     //Crear metodo para hacer nulo el segundo apellido sí no tiene (apellido2)
-    public Usuario(String nombre, String apellido1, String apellido2, String ciudad, String estado, String curb, String direccion, Sucursal sucursal, Gente rol, String contrasena) {
+    public Usuario(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, Gente rol, String contrasena) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
+        this.sexo = sexo;
         this.ciudad = ciudad;
         this.estado = estado;
-        this.curb = curb;
+        this.curp = curp;
         this.direccion = direccion;
         this.sucursal = sucursal;
         this.contrasena = contrasena;
@@ -134,11 +134,11 @@ public class Usuario {
     }
 
     public String getCurb() {
-        return curb;
+        return curp;
     }
 
     public void setCurb(String curb) {
-        this.curb = curb;
+        this.curp = curp;
     }
 
     public String getDireccion() {

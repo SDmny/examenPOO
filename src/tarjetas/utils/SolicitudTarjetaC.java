@@ -1,6 +1,5 @@
-package Tarjetas.utils;
+package tarjetas.utils;
 
-import Tarjetas.TarjetaCredito;
 import java.time.LocalDate;
 
 public class SolicitudTarjetaC {

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba41f552-ce0d-4b00-b217-cdcbf4c68bdd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sistema/DatosComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sistema/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/Tarjeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/Tarjeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/TarjetaCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/TarjetaCredito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/TarjetaDebito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/TarjetaDebito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/utils/Generar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/utils/Generar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/utils/SolicitudTarjetaC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/utils/SolicitudTarjetaC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tarjetas/utils/TipoTarjetaCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/utils/TipoTarjetaCredito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/Inversionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Inversionista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/utils/Gente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/Gente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuarios/utils/Sucursal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/Sucursal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/UsuarioEnSesion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/UsuarioEnSesion.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2eNdaorgPf2FvnLV6dnwUIGuEBM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "examen3",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/siany/OneDrive/Documentos/Programación/Visual Studio Code/Semestre 2/gitProyects/Zoo/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Zoo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba41f552-ce0d-4b00-b217-cdcbf4c68bdd" name="Changes" comment="" />
+      <created>1711749038411</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711749038411</updated>
+      <workItem from="1711749039684" duration="1622000" />
+      <workItem from="1711982396916" duration="16566000" />
+      <workItem from="1712096262471" duration="622000" />
+      <workItem from="1712191004506" duration="4060000" />
+      <workItem from="1712244816487" duration="1130000" />
+      <workItem from="1712246896910" duration="484000" />
+      <workItem from="1712254460997" duration="6467000" />
+      <workItem from="1712264302874" duration="951000" />
+      <workItem from="1712369909553" duration="3581000" />
+      <workItem from="1712416122969" duration="119000" />
+      <workItem from="1712416413444" duration="476000" />
+      <workItem from="1712417025638" duration="130000" />
+      <workItem from="1712418047827" duration="702000" />
+      <workItem from="1712701495041" duration="15000" />
+      <workItem from="1713974422520" duration="1079000" />
+      <workItem from="1715121652417" duration="3920000" />
+      <workItem from="1715180785491" duration="12000" />
+      <workItem from="1715185419273" duration="674000" />
+      <workItem from="1715269727760" duration="717000" />
+      <workItem from="1715293990351" duration="4437000" />
+      <workItem from="1715353884753" duration="4626000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

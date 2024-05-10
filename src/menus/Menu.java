@@ -1,7 +1,7 @@
 package menus;
 
-import Sistema.Sistema;
-import Usuarios.Usuario;
+import sistema.Sistema;
+import usuarios.Usuario;
 import utils.UsuarioEnSesion;
 
 import java.util.Scanner;

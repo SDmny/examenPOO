@@ -1,4 +1,4 @@
-package Usuarios.utils;
+package usuarios.utils;
 
 public enum Sucursal {
     MADERO,

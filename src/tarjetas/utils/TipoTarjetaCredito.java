@@ -1,4 +1,4 @@
-package Tarjetas.utils;
+package tarjetas.utils;
 
 public enum TipoTarjetaCredito {
     SIMPLICITY,

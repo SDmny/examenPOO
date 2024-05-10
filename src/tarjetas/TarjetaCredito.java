@@ -1,6 +1,6 @@
-package Tarjetas;
+package tarjetas;
 
-import Tarjetas.utils.TipoTarjetaCredito;
+import tarjetas.utils.TipoTarjetaCredito;
 
 public class TarjetaCredito extends Tarjeta {
     private TipoTarjetaCredito tipoCredito;

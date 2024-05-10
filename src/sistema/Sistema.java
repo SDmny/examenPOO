@@ -1,8 +1,8 @@
-package Sistema;
+package sistema;
 
-import Usuarios.utils.Gente;
-import Usuarios.Usuario;
-import Usuarios.utils.Sucursal;
+import usuarios.utils.Gente;
+import usuarios.Usuario;
+import usuarios.utils.Sucursal;
 
 import java.util.ArrayList;
 import java.util.HashMap;

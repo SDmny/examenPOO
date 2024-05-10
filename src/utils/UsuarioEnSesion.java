@@ -1,8 +1,6 @@
 package utils;
 
-import Usuarios.Usuario;
-
-import static Sistema.Sistema.usuarios;
+import usuarios.Usuario;
 
 public class UsuarioEnSesion {
     private static UsuarioEnSesion instancia;
