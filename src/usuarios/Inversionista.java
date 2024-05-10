@@ -5,11 +5,12 @@ import usuarios.utils.Gente;
 import usuarios.utils.Sucursal;
 import utils.Fondos;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Inversionista extends Usuario{
-    public Inversionista(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curb, String direccion, Sucursal sucursal, String usuario, String contrasena) {
-        super(nombre, apellido1, apellido2, sexo, ciudad, estado, curb, direccion, sucursal, Gente.INVERSIONISTA, usuario, contrasena);
+    public Inversionista(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curb, String direccion, Sucursal sucursal, String usuario, String contrasena, LocalDate birth) {
+        super(nombre, apellido1, apellido2, sexo, ciudad, estado, curb, direccion, sucursal, Gente.INVERSIONISTA, usuario, contrasena,birth);
     }
 
     @Override

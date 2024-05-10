@@ -5,6 +5,7 @@ import usuarios.utils.Sucursal;
 import usuarios.utils.Gente;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Random;
 
 public abstract class Usuario {
@@ -19,7 +20,7 @@ public abstract class Usuario {
     static int cantidadUsuarios;
 
     //Crear metodo para hacer nulo el segundo apellido sí no tiene (apellido2)
-    public Usuario(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, Gente rol, String usuario, String contrasena) {
+    public Usuario(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, Gente rol, String usuario, String contrasena, LocalDate birth) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -32,6 +33,7 @@ public abstract class Usuario {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.id = cantidadUsuarios;
+        this.birth = birth;
         cantidadUsuarios++;
         this.register = LocalDate.now();
         rfc = apellido1.substring(0, 2);
@@ -43,13 +45,13 @@ public abstract class Usuario {
 
         dateBirth = "" + birth.getYear();
         rfc = rfc + dateBirth.substring(2, 4);
-        if(birth.getMonthValue()<10){
-            rfc=rfc+0;
+        if (birth.getMonthValue() < 10) {
+            rfc = rfc + 0;
         }
         dateBirth = "" + birth.getMonthValue();
         rfc = rfc + dateBirth;
-        if(birth.getDayOfMonth()<10){
-            rfc=rfc+0;
+        if (birth.getDayOfMonth() < 10) {
+            rfc = rfc + 0;
         }
         dateBirth = "" + birth.getDayOfMonth();
         rfc = rfc + dateBirth;
@@ -62,7 +64,7 @@ public abstract class Usuario {
             }
         }
         rfc = rfc + homoclave;
-        rfc=rfc.toUpperCase();
+        rfc = rfc.toUpperCase();
 
     }
 
@@ -72,9 +74,9 @@ public abstract class Usuario {
         int clave, hom = 65;
         for (int i = 0; i < 2; i++) {
 
-            hom = ran.nextInt(2)+1;
+            hom = ran.nextInt(2) + 1;
             if (hom == 1) {
-                hom = ran.nextInt(26)+65;
+                hom = ran.nextInt(26) + 65;
                 homo = homo.concat(Character.toString((char) hom));
             } else {
                 clave = ran.nextInt(10);
@@ -86,10 +88,68 @@ public abstract class Usuario {
         return homo;
     }
 
+    public void ModificarDato() {
+        String opc = null;
+        do {
+            String dato = DatosComun.ModificarDatoUsuario();
+            int op;
+            if (!dato.equals("0")) {
+                op = Integer.parseInt(dato.substring(dato.length() - 1));
+                dato = dato.substring(0, dato.length() - 1);
+            } else {
+                op = 0;
+            }
+            switch (op) {
+                case 1:
+                    nombre = dato;
+                    break;
+                case 2:
+                    apellido1 = dato;
+                    break;
+                case 3:
+                    apellido2 = dato;
+                    break;
+                case 4:
+                    sexo = dato.charAt(0);
+                    break;
+                case 5:
+                    ciudad = dato;
+                    break;
+                case 6:
+                    estado = dato;
+                    break;
+                case 7:
+                    direccion = dato;
+                    break;
+                case 8:
+                    usuario = dato;
+                    break;
+                case 9:
+                    contrasena = dato;
+                    break;
+                case 10:
+                    birth = LocalDate.parse(dato);
+                    break;
+                case 0:
+                    break;
+            }
+            System.out.println("Ingrese 0 para dejar de modificar");
+            try {
+                opc = DatosComun.scanner.nextLine();
+            } catch (Exception ew) {
+                opc = "4";
+
+            }
+        }
+        while (!Objects.equals(opc, "0"));
+        curp = DatosComun.generarCURP(nombre, apellido1, apellido2, birth, sexo, estado);
+//Poner el metodo para cambiar RFC*******
+    }
+
 
     // Metodo para imprimir datos basicos
     @Override
-    public String toString(){
+    public String toString() {
         String cadena = String.format("Id: %d; Nombre completo: %s %s %s; Rol: %s; Nombre de usuario: %s", id, nombre, apellido1, apellido2, rol, usuario);
         return cadena;
     }
@@ -177,6 +237,26 @@ public abstract class Usuario {
 
     public void setSucursal(Sucursal sucursal) {
         this.sucursal = sucursal;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
     }
 
     public LocalDate getBirth() {

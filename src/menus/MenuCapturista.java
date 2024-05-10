@@ -36,24 +36,5 @@ public class MenuCapturista {
             }
         } while (!action.equals("0"));
     }
-    public static void registrarEjecutivos(){
-        System.out.println("- - - Registrar Ejecutivo de Cuenta - - -");
-        ArrayList<String> datosComun = DatosComun.obtenerDatos();
-        String nombre = datosComun.get(0);
-        String apellido1 = datosComun.get(1);
-        String apellido2 = datosComun.get(2);
-        char sexo = datosComun.get(3).charAt(0);
-        String ciudad = datosComun.get(4);
-        String estado = datosComun.get(5);
-        String curp = datosComun.get(6);
-        String direccion = datosComun.get(7);
-        String usuario = datosComun.get(8);
-        String contrasena = datosComun.get(9);
-        //Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena);
-        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)){
-            Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
-        }
-        //Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
-        System.out.println("Ejecutivo registrado");
-    }
+
 }

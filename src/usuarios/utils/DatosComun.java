@@ -16,12 +16,12 @@ public class DatosComun {
     //METODO PARA OBTENER DATOS INCOMPLETO
     public static ArrayList obtenerDatos() {
         ArrayList<String> datosComun = new ArrayList<String>();
-        String nombre, apellido1, apellido2, ciudad, estado, curp="", direccion, homoclave, usuario, contrasena;
-        char sexo=' ';
+        String nombre, apellido1, apellido2, ciudad, estado, curp = "", direccion, homoclave, usuario, contrasena;
+        char sexo = ' ';
         Sucursal sucursal;
         Gente rol;
         boolean incorrecto = true;
-        LocalDate birth=LocalDate.now();
+        LocalDate birth = LocalDate.now();
 
         System.out.print("Ingrese nombre: ");
         nombre = scanner.next();
@@ -65,8 +65,97 @@ public class DatosComun {
             incorrecto = true;
             System.out.println("SI SALE ESTE MENSAJE: ERROR EN CURP SOS!!!!");
         }
-        datosComun.addAll(Arrays.asList(nombre, apellido1, apellido2, String.valueOf(sexo), ciudad, estado, curp, direccion, usuario, contrasena));
+        datosComun.addAll(Arrays.asList(nombre, apellido1, apellido2, String.valueOf(sexo), ciudad, estado, curp, direccion, usuario, contrasena, String.valueOf(birth)));
         return datosComun;
+    }
+
+    public static String ModificarDatoUsuario() {
+        int op = 0;
+        boolean incorrecto;
+        String dato = null;
+        incorrecto = true;
+        System.out.println("Ingreser la opción a modificar: ");
+        System.out.println("1. Nombre");
+        System.out.println("2. Apellido Paterno");
+        System.out.println("3. Apellido Materno");
+        System.out.println("4. Sexo");
+        System.out.println("5. ciudad");
+        System.out.println("6. estado");
+        System.out.println("7. direccion");
+        System.out.println("8. Usuario");
+        System.out.println("9. Contraseña");
+        System.out.println("10. Fecha de Nacimiento");
+        System.out.println("11 No modificar");
+        while (incorrecto) {
+            try {
+                incorrecto = false;
+                op = scanner.nextInt();
+                scanner.nextLine();
+                if (op < 1 || op > 11) {
+                    throw new Exception();
+                }
+            } catch (Exception ew) {
+                incorrecto = true;
+                System.out.println("La opción no es válida, intente de nuevo");
+            }
+        }
+        incorrecto = true;
+        while (incorrecto) {
+            switch (op) {
+                case 4:
+                    try {
+                        incorrecto = false;
+                        System.out.println("Ingrese el nuevo valor(F/M): ");
+                        dato = scanner.nextLine();
+                        dato = dato.toUpperCase();
+                        if (dato.charAt(0) == 'F' || dato.charAt(0) == 'M') {
+                            dato = dato + op;
+                        } else {
+                            System.out.println("Esa no es una opción");
+                            throw new Exception();
+                        }
+                    } catch (Exception ew) {
+                        incorrecto = true;
+                        System.out.println("El valor no pudo ser ingresado");
+                        scanner.next();
+                    }
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    try {
+                        incorrecto = false;
+                        System.out.println("Ingrese el nuevo valor: ");
+                        dato = scanner.nextLine();
+                        if (dato.length() < 2) {
+                            System.out.println("Debe tener más de dos letras");
+                            throw new Exception();
+                        }
+                        dato = dato + op;
+                    } catch (Exception ew) {
+                        incorrecto = true;
+                        System.out.println("El valor no pudo ser ingresado, pruebe de nuevo");
+                        scanner.next();
+                    }
+                    break;
+                case 10:
+                    incorrecto = false;
+                    LocalDate birth = asignarFecha();
+                    dato = String.valueOf(birth);
+                    dato = dato + op;
+                    break;
+                case 11:
+                    System.out.println("No se modificó ningún dato");
+                    dato = "0";
+                    break;
+            }
+        }
+        return dato;
     }
 
     //METODO PARA EVITAR REPETIR RFC
@@ -89,13 +178,13 @@ public class DatosComun {
 
     // VERIFICAR SI ESTE METODO ES MEJOR O PEOR QUE EL DEL USUARIO GENERAR HOMOCLAVE-RFC Y DEJAR AL MEJOR
     public static String generarRFC(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento) {
-        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("YYMMdd");
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyMMdd");
         String fechaNacimientoS = formatoFecha.format(fechaNacimiento);
         Random r = new Random();
-        int numero1 = r.nextInt(26)+65;
+        int numero1 = r.nextInt(26) + 65;
         char caracter1 = (char) numero1;
         String letra1 = Character.toString(caracter1);
-        int numero2 = r.nextInt(26)+65;
+        int numero2 = r.nextInt(26) + 65;
         char caracter2 = (char) numero2;
         String letra2 = Character.toString(caracter2);
         int caracter3 = r.nextInt(10);
@@ -106,7 +195,7 @@ public class DatosComun {
     }
 
     public static String generarCURP(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, char sexo, String estado) {
-        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("YYMMdd");
+        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyMMdd");
         Random r = new Random();
         String fechaNacimientoS = formatoFecha.format(fechaNacimiento);
         int letra = estado.length() - 1;
@@ -120,17 +209,17 @@ public class DatosComun {
     }
 
     // metodo para nombre de usuario
-    private static String obtenerNombreUsuario(){
+    private static String obtenerNombreUsuario() {
         boolean nombreUsExis = true;
         String nombUsu = "";
         do {
             System.out.print("Ingrese nombre de usuario: ");
             nombUsu = scanner.next();
             nombreUsExis = false;
-            if (Sistema.usuarios.containsKey(nombUsu) == true){
+            if (Sistema.usuarios.containsKey(nombUsu) == true) {
                 nombreUsExis = true;
             }
-            if (nombreUsExis){
+            if (nombreUsExis) {
                 System.out.println("Nombre de usuario existente");
             }
         } while (nombreUsExis);
