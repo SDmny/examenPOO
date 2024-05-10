@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class Usuario {
     Random ran = new Random();
-    String nombre, apellido1, apellido2, ciudad, estado, rfc, curp, direccion, homoclave, contrasena;
+    String nombre, apellido1, apellido2, ciudad, estado, rfc, curp, direccion, homoclave, contrasena, dateBirth;
     char sexo;
     boolean repetida = true;
     LocalDate birth, register;
@@ -33,13 +33,19 @@ public class Usuario {
         this.id = cantidadUsuarios;
         cantidadUsuarios++;
         this.register = LocalDate.now();
-        birth = DatosComun.asignarFecha();
         rfc = apellido1.substring(0, 2);
         if (!apellido2.isEmpty()) {
             rfc = rfc + apellido2.charAt(0) + nombre.charAt(0);
         } else {
             rfc = rfc + nombre.substring(0, 2);
         }
+
+        dateBirth = "" + birth.getYear();
+        rfc = rfc + dateBirth.substring(2, 4);
+        dateBirth = "" + birth.getMonth();
+        rfc = rfc + dateBirth;
+        dateBirth = "" + birth.getDayOfMonth();
+        rfc = rfc + dateBirth;
         homoclave = Homoclave();
 
         while (repetida) {
