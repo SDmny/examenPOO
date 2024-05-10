@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Usuario {
     Random ran = new Random();
-    String nombre, apellido1, apellido2, ciudad, estado, rfc, curb, direccion, homoclave;
+    String nombre, apellido1, apellido2, ciudad, estado, rfc, curb, direccion, homoclave, contrasena;
     boolean repetida = true;
     LocalDate birth, register;
     Sucursal sucursal;
@@ -20,7 +20,7 @@ public class Usuario {
     static int cantidadUsuarios;
 
     //Crear metodo para hacer nulo el segundo apellido sí no tiene (apellido2)
-    public Usuario(String nombre, String apellido1, String apellido2, String ciudad, String estado, String curb, String direccion, Sucursal sucursal, Gente rol) {
+    public Usuario(String nombre, String apellido1, String apellido2, String ciudad, String estado, String curb, String direccion, Sucursal sucursal, Gente rol, String contrasena) {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -29,6 +29,7 @@ public class Usuario {
         this.curb = curb;
         this.direccion = direccion;
         this.sucursal = sucursal;
+        this.contrasena = contrasena;
         this.id = cantidadUsuarios;
         cantidadUsuarios++;
         this.register = LocalDate.now();
@@ -166,5 +167,9 @@ public class Usuario {
 
     public Gente getRol() {
         return rol;
+    }
+
+    public String getContrasena() {
+        return contrasena;
     }
 }

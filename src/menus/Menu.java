@@ -54,15 +54,15 @@ public class Menu {
     // Seleccion de menu por rol
     public static void menu() {
         switch (UsuarioEnSesion.getInstancia().getUsuarioActual().getRol()) {
-            case GERENTE: MenuEmpleados.menuEmpleados();
+            case GERENTE: MenuEmpleados.menuGerente();
                 break;
-            case CAPTURISTA: MenuEmpleados.menuEmpleados();
+            case CAPTURISTA: MenuEmpleados.menuCapturista();
                 break;
-            case EJECUTIVO: MenuEmpleados.menuEmpleados();
+            case EJECUTIVO: MenuEmpleados.menuEjecutivo();
                 break;
-            case INVERSIONISTA: MenuInversionistas.menuInversionistas();
+            case INVERSIONISTA: MenuInversionistas.menuInversionista();
                 break;
-            case CLIENTE: MenuClientes.menuClientes();
+            case CLIENTE: MenuClientes.menuCliente();
                 break;
             default:
         }
