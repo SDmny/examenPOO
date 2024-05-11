@@ -8,26 +8,28 @@ import usuarios.utils.Sucursal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class
-
-Gerente extends Empleado {
-    private Gerente geMad;
-    private Gerente geAcue;
+public class Gerente extends Empleado {
+    public static Gerente geMad;
+    public static Gerente geAcue;
 
     private Gerente(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth) {
         super(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, Gente.GERENTE, salario, usuario, contrasena, birth);
-        geMad = new Gerente("Kaeya", "Alberich", "García", 'M', "Mondstad", "Teyvat", "", "Taberna Cola de Gato, no. 456", Sucursal.MADERO, 50000, "Captain", "a", LocalDate.of(1998, 11, 12));
-        geAcue = new Gerente("Misaka", "Mikoto", "Gonzalez", 'F', "Tokio", "Kanto", "", "Gakuen Toshi no.67", Sucursal.ACUEDUCTO, 50000, "Hime", "b", LocalDate.of(2002, 11, 12));
 //Contraseña Gerente Madero= a
 // Contraseña Gerente Acueducto= b
 
     }
 
-    public Gerente getGeMad() {
+    public static Gerente getGeMad() {
+        if (geMad == null) {
+            geMad = new Gerente("Kaeya", "Alberich", "García", 'M', "Mondstad", "Teyvat", "", "Taberna Cola de Gato, no. 456", Sucursal.MADERO, 50000, "Captain", "a", LocalDate.of(1998, 11, 12));
+        }
         return geMad;
     }
 
-    public Gerente getGeAcue() {
+    public static Gerente getGeAcue() {
+        if (geAcue == null) {
+            geAcue = new Gerente("Misaka", "Mikoto", "Gonzalez", 'F', "Tokio", "Kanto", "", "Gakuen Toshi no.67", Sucursal.ACUEDUCTO, 50000, "Hime", "b", LocalDate.of(2002, 11, 12));
+        }
         return geAcue;
     }
 
@@ -50,7 +52,7 @@ Gerente extends Empleado {
 
     }
 
-    public void cambiarGeAcue() {
+    public  void cambiarGeAcue() {
         System.out.println("- - - Cambiar Gerente - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         geAcue.setNombre(datosComun.get(0));
@@ -88,13 +90,14 @@ Gerente extends Empleado {
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         LocalDate birth=LocalDate.parse(datosComun.get(10));
-        //Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion,this.getSucursal(), usuario, contrasena,birth);
+        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion,this.getSucursal(), usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
             Sistema.usuarios.put(Gente.INVERSIONISTA, new ArrayList<>());
         }
-        //Sistema.usuarios.get(Gente.INVERSIONISTA).add(inversionista);
+        Sistema.usuarios.get(Gente.INVERSIONISTA).add(inversionista);
         System.out.println("Inversionista registrado");
     }
+
 
 
 }
