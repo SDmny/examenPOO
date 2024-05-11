@@ -28,11 +28,11 @@ public class TarjetaCredito extends Tarjeta {
         return String.format("%s\nCrédito Máximo: %.2f\nTipo de Tarjeta: %s", super.toString(), creditoMaximo, tipoDeTarjeta);
     }
 
-    private void pagarTarjeta(double deposito) {
+    public void pagarTarjeta(double deposito) {
         this.creditoActual += deposito;
     }
 
-    private void comprar(double monto) {
+    public void comprar(double monto) {
         this.creditoActual -= monto;
     }
 
