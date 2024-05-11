@@ -80,7 +80,7 @@ public abstract class Usuario {
                 homo = homo.concat(Character.toString((char) hom));
             } else {
                 clave = ran.nextInt(10);
-                homo = homo.concat(Integer.toString(clave));
+                homo = homo.concat(String.valueOf(clave));
             }
 
 
