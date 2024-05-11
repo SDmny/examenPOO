@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Gerente extends Empleado {
-    public static Gerente geMad;
-    public static Gerente geAcue;
+    private static Gerente geMad;
+    private static Gerente geAcue;
 
     private Gerente(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth) {
         super(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, Gente.GERENTE, salario, usuario, contrasena, birth);
