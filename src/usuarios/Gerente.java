@@ -43,7 +43,7 @@ public class Gerente extends Empleado {
         geMad.setUsuario(datosComun.get(8));
         geMad.setContrasena(datosComun.get(9));
         geMad.setBirth(birth);
-        geMad.asignarSalario();
+
     }
 
     public void cambiarGeAcue() {
@@ -59,7 +59,7 @@ public class Gerente extends Empleado {
         geAcue.setDireccion(datosComun.get(7));
         geAcue.setUsuario(datosComun.get(8));
         geAcue.setContrasena(datosComun.get(9));
-        geMad.asignarSalario();
+        geAcue.setSalario(asignarSalario());
     }
 
     public void setGeAcue(Gerente geAcue) {
