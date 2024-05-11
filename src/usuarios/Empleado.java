@@ -24,8 +24,8 @@ public class Empleado extends Usuario {
             try {
                 incorrecto = false;
                 sueldo = DatosComun.scanner.nextDouble();
-
-                if (sueldo < 0) {
+DatosComun.scanner.nextLine();
+                if (sueldo <= 0) {
                     throw new Exception();
                 }
             } catch (Exception ew) {
@@ -54,6 +54,7 @@ public class Empleado extends Usuario {
             try {
                 incorrecto = false;
                 op = DatosComun.scanner.nextInt();
+                DatosComun.scanner.nextLine();
                 if (op < 1 || op > 3) {
                     throw new Exception();
                 }

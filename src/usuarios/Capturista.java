@@ -12,7 +12,9 @@ public class Capturista extends Empleado {
     public Capturista (String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth){
         super( nombre,  apellido1,  apellido2,  sexo,  ciudad,  estado,  curp,  direccion,  sucursal,  Gente.CAPTURISTA, salario, usuario,  contrasena,birth);
     }
-    public static void registrarEjecutivos(){
+
+    //Le quite el statico para que pueda pasarle su Sucursal, no sé sí es lo más correcto de momento
+    public void registrarEjecutivos(){
         System.out.println("- - - Registrar Ejecutivo de Cuenta - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
@@ -25,13 +27,13 @@ public class Capturista extends Empleado {
         String direccion = datosComun.get(7);
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
-        String birth=datosComun.get(10);
+        LocalDate birth=LocalDate.parse(datosComun.get(10));
         double salario= asignarSalario();
-        //Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp,direccion, salario,usuario, contrasena,birth);
+        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp,direccion,this.getSucursal(), salario,usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)){
             Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         }
-        //Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
+        Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
         System.out.println("Ejecutivo registrado");
     }
 

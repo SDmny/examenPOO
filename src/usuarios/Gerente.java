@@ -8,7 +8,9 @@ import usuarios.utils.Sucursal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Gerente extends Empleado {
+public class
+
+Gerente extends Empleado {
     private Gerente geMad;
     private Gerente geAcue;
 
@@ -16,7 +18,8 @@ public class Gerente extends Empleado {
         super(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, Gente.GERENTE, salario, usuario, contrasena, birth);
         geMad = new Gerente("Kaeya", "Alberich", "García", 'M', "Mondstad", "Teyvat", "", "Taberna Cola de Gato, no. 456", Sucursal.MADERO, 50000, "Captain", "a", LocalDate.of(1998, 11, 12));
         geAcue = new Gerente("Misaka", "Mikoto", "Gonzalez", 'F', "Tokio", "Kanto", "", "Gakuen Toshi no.67", Sucursal.ACUEDUCTO, 50000, "Hime", "b", LocalDate.of(2002, 11, 12));
-
+//Contraseña Gerente Madero= a
+// Contraseña Gerente Acueducto= b
 
     }
 
@@ -31,7 +34,6 @@ public class Gerente extends Empleado {
     public void cambiarGeMad() {
         System.out.println("- - - Cambiar Gerente - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
-        LocalDate birth = LocalDate.parse(datosComun.get(10));
         geMad.setNombre(datosComun.get(0));
         geMad.setApellido1(datosComun.get(1));
         geMad.setApellido2(datosComun.get(2));
@@ -42,7 +44,9 @@ public class Gerente extends Empleado {
         geMad.setDireccion(datosComun.get(7));
         geMad.setUsuario(datosComun.get(8));
         geMad.setContrasena(datosComun.get(9));
+        LocalDate birth = LocalDate.parse(datosComun.get(10));
         geMad.setBirth(birth);
+        geMad.setSalario(asignarSalario());
 
     }
 
@@ -59,6 +63,8 @@ public class Gerente extends Empleado {
         geAcue.setDireccion(datosComun.get(7));
         geAcue.setUsuario(datosComun.get(8));
         geAcue.setContrasena(datosComun.get(9));
+        LocalDate birth=LocalDate.parse(datosComun.get(10));
+        geAcue.setBirth(birth);
         geAcue.setSalario(asignarSalario());
     }
 
@@ -67,8 +73,8 @@ public class Gerente extends Empleado {
 
 
     }
-
-    public static void registrarInversionista() {
+    //Le quite el statico para que pueda pasarle su Sucursal, no sé sí es lo más correcto de momento
+    public void registrarInversionista() {
         System.out.println("- - - Registrar Inversionista - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
@@ -81,8 +87,8 @@ public class Gerente extends Empleado {
         String direccion = datosComun.get(7);
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
-        String birth = datosComun.get(10);
-        //Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena,birth);
+        LocalDate birth=LocalDate.parse(datosComun.get(10));
+        //Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion,this.getSucursal(), usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
             Sistema.usuarios.put(Gente.INVERSIONISTA, new ArrayList<>());
         }

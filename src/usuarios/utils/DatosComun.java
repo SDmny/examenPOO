@@ -22,7 +22,6 @@ public class DatosComun {
         Gente rol;
         boolean incorrecto = true;
         LocalDate birth = LocalDate.now();
-
         System.out.print("Ingrese nombre: ");
         nombre = scanner.next();
         System.out.print("Ingrese primer apellido: ");
@@ -47,6 +46,7 @@ public class DatosComun {
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("Hubo un error al ingresar los datos");
+                scanner.next();
             }
         }
         incorrecto = true;
@@ -59,7 +59,9 @@ public class DatosComun {
                 System.out.println("Hubo un error al ingresar los datos");
             }
         }
+        incorrecto = true;
         try {
+            incorrecto=false;
             curp = generarCURP(nombre, apellido1, apellido2, birth, sexo, estado);
         } catch (Exception ew) {
             incorrecto = true;
@@ -71,17 +73,16 @@ public class DatosComun {
 
     public static String ModificarDatoUsuario() {
         int op = 0;
-        boolean incorrecto;
+        boolean incorrecto=true;
         String dato = null;
-        incorrecto = true;
         System.out.println("Ingreser la opción a modificar: ");
         System.out.println("1. Nombre");
         System.out.println("2. Apellido Paterno");
         System.out.println("3. Apellido Materno");
         System.out.println("4. Sexo");
-        System.out.println("5. ciudad");
-        System.out.println("6. estado");
-        System.out.println("7. direccion");
+        System.out.println("5. Ciudad");
+        System.out.println("6. Estado");
+        System.out.println("7. Direccion");
         System.out.println("8. Usuario");
         System.out.println("9. Contraseña");
         System.out.println("10. Fecha de Nacimiento");
@@ -97,6 +98,7 @@ public class DatosComun {
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("La opción no es válida, intente de nuevo");
+                scanner.next();
             }
         }
         incorrecto = true;
@@ -252,6 +254,7 @@ public class DatosComun {
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("Datos incorrectos, pruebe de nuevo");
+                scanner.next();
             }
 
         }
