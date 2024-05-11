@@ -30,7 +30,6 @@ public class MenuClientes {
                 case "4":
                     break;
                 case "0":
-                    Menu.continuar();
                     break;
                 default:
                     System.out.println("Opcion inexistente");

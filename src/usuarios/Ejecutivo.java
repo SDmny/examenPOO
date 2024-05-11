@@ -12,7 +12,7 @@ public class Ejecutivo extends Empleado {
     public Ejecutivo(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth){
         super( nombre,  apellido1,  apellido2,  sexo,  ciudad,  estado,  curp,  direccion,  sucursal,  Gente.EJECUTIVO,  salario,usuario,  contrasena,birth);
     }
-    public static void registrarInversionista(){
+    public static void registrarCliente(){
         System.out.println("- - - Registrar Cliente - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);

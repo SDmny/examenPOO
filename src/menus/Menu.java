@@ -54,18 +54,26 @@ public class Menu {
 
     // Seleccion de menu por rol
     public static void menu() {
+        String rol = UsuarioEnSesion.getInstancia().getUsuarioActual().getRol().toString();
+        System.out.println(String.format("- - - Menu %s - - -", rol.toLowerCase()));
         switch (UsuarioEnSesion.getInstancia().getUsuarioActual().getRol()) {
-            case GERENTE: MenuGerente.menuGerente();
+            case GERENTE:
+                MenuGerente.menuGerente();
                 break;
-            case CAPTURISTA: MenuCapturista.menuCapturista();
+            case CAPTURISTA:
+                MenuCapturista.menuCapturista();
                 break;
-            case EJECUTIVO: MenuEjecutivo.menuEjecutivo();
+            case EJECUTIVO:
+                MenuEjecutivo.menuEjecutivo();
                 break;
-            case INVERSIONISTA: MenuInversionistas.menuInversionista();
+            case INVERSIONISTA:
+                MenuInversionistas.menuInversionista();
                 break;
-            case CLIENTE: MenuClientes.menuCliente();
+            case CLIENTE:
+                MenuClientes.menuCliente();
                 break;
             default:
         }
+        continuar();
     }
 }

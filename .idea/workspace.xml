@@ -5,20 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ba41f552-ce0d-4b00-b217-cdcbf4c68bdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/menus/MenuCapturista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menus/MenuGerente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Fondos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuEmpleados.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sistema/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/Sistema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuCapturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuCapturista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuClientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuGerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuGerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Capturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Capturista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Ejecutivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Ejecutivo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/usuarios/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Inversionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Inversionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Gerente.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,26 +45,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "examen3",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/siany/OneDrive/Documentos/Programación/Visual Studio Code/Semestre 2/gitProyects/Zoo/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;examen3&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/siany/OneDrive/Documentos/Programación/Visual Studio Code/Semestre 2/gitProyects/Zoo/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -111,7 +107,8 @@
       <workItem from="1715185419273" duration="674000" />
       <workItem from="1715269727760" duration="717000" />
       <workItem from="1715293990351" duration="4437000" />
-      <workItem from="1715353884753" duration="10784000" />
+      <workItem from="1715353884753" duration="11315000" />
+      <workItem from="1715466330709" duration="3723000" />
     </task>
     <servers />
   </component>

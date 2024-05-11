@@ -4,6 +4,7 @@ import sistema.Sistema;
 import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 import usuarios.utils.Sucursal;
+import utils.UsuarioEnSesion;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,8 +14,12 @@ public class Capturista extends Empleado {
         super( nombre,  apellido1,  apellido2,  sexo,  ciudad,  estado,  curp,  direccion,  sucursal,  Gente.CAPTURISTA, salario, usuario,  contrasena,birth);
     }
 
-    //Le quite el statico para que pueda pasarle su Sucursal, no sé sí es lo más correcto de momento
-    public void registrarEjecutivos(){
+
+    //METODOS EJECUTIVOS
+
+    // !!!! sobre el static: actualización escrita en gerente !!!!
+
+    public static void registrarEjecutivos(){
         System.out.println("- - - Registrar Ejecutivo de Cuenta - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
@@ -29,12 +34,79 @@ public class Capturista extends Empleado {
         String contrasena = datosComun.get(9);
         LocalDate birth=LocalDate.parse(datosComun.get(10));
         double salario= asignarSalario();
-        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp,direccion,this.getSucursal(), salario,usuario, contrasena,birth);
+        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp,direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), salario,usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)){
             Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         }
         Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
         System.out.println("Ejecutivo registrado");
+    }
+    public static void eliminarEjecutivo(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    Sistema.usuarios.get(Gente.EJECUTIVO).remove(usuario);
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+
+    }
+
+    public static void mostrarEjecutivo(String user) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getUsuario().equals(user)) {
+                    existe = true;
+                    System.out.println(usuario.toString());
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+    }
+
+    public static void modificarEjecutivo(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    ((Empleado) usuario).modificarEmpleado();
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+
+    }
+    public static void mostrarEjecutivos() {
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                System.out.println(usuario);
+            }
+        }
     }
 
 
