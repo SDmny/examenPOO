@@ -25,7 +25,8 @@ public class Ejecutivo extends Empleado {
         String direccion = datosComun.get(7);
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
-        //Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena);
+        LocalDate birth=LocalDate.parse(datosComun.get(10));
+        //Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)){
             Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
         }

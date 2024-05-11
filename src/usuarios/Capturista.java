@@ -26,7 +26,8 @@ public class Capturista extends Empleado {
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         String birth=datosComun.get(10);
-        //Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena,birth);
+        double salario= asignarSalario();
+        //Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp,direccion, salario,usuario, contrasena,birth);
         if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)){
             Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         }
