@@ -17,6 +17,7 @@ public class Sistema {
 
     // ACTUALIZACION: lo deje en comentarios, quiero probar si así puedo usarlo directamente en metodos para que se busque solo
     // y evitar tener que poner ifs, el original está abajo
+    //oki :>
     public static Sucursal ObtenerSucursal(int id) {
         Sucursal sucursal = null;
         for (Map.Entry<Gente, ArrayList<Usuario>> entry : Sistema.usuarios.entrySet()) {
