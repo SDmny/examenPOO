@@ -261,5 +261,90 @@ public class DatosComun {
         fecha = LocalDate.of(ano, mes, dia);
         return fecha;
     }
+
+    public static int pedirNumeroInt(){ 
+        Scanner sc = new Scanner(System.in);
+        int numero=-1;
+        boolean comprobacion = false;
+        do {
+            comprobacion = false;
+
+            try {
+                System.out.print("Ingresa un dato: ");
+                String input = sc.nextLine();
+
+                if (input.isEmpty()) {
+                    throw new IllegalArgumentException("No has ingresado ningún número.");
+                }
+
+                numero = Integer.parseInt(input);
+
+                if(numero<0){
+                    throw new NumberFormatException("No puedes ingresar un valor negativo");
+                }
+                else{
+                    return numero;
+                }
+
+            } catch(IllegalArgumentException error){
+                System.out.println("Error: "+error.getMessage());
+                comprobacion=true;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número entero.");
+                comprobacion=true;
+            }
+            catch (Exception error) {
+                System.out.println("Error. Intente de nuevo. ");
+                comprobacion=true;
+            }
+
+        } while (comprobacion);
+        sc.nextLine();
+        return numero;
+    }
+
+    public static double pedirValorDouble(){
+        Scanner sc = new Scanner(System.in);
+        double valorDouble=-1;
+        boolean comprobacion = false;
+        do {
+            comprobacion = false;
+            try {
+                System.out.print("Ingresa dato: ");
+                String input = sc.nextLine();
+                if (input.isEmpty()) {
+                    throw new IllegalArgumentException("No ha ingresado ningún número.");
+                }
+
+                valorDouble = Double.parseDouble(input);
+
+                if(valorDouble<0){
+                    throw new NumberFormatException("No puedes ingresar un valor negativo");
+                }
+                else{
+                    return valorDouble;
+                }
+
+            } catch(IllegalArgumentException error){
+                System.out.println("Error: "+error.getMessage());
+                comprobacion=true;
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Error: Debes ingresar un número válido.");
+                comprobacion=true;
+            }
+            catch (Exception error) {
+                System.out.println("Error. Intente de nuevo. ");
+                comprobacion=true;
+            }
+
+        } while (comprobacion);
+        sc.nextLine();
+        return valorDouble;
+    }
+    public static void pedirOpcionValida(ArrayList<Usuario> listaUsuarios){
+
+    }
 }
 
