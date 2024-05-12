@@ -317,4 +317,6 @@ public class Cliente extends Usuario {
         System.out.println("Tarjetas de credito: ");
         tarjetasCredito.forEach(tarjetaCredito -> System.out.println(tarjetaCredito.toString()));
     }
+
 }
+
