@@ -5,6 +5,7 @@ import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 import usuarios.utils.Sucursal;
 import utils.Fondos;
+import utils.UsuarioEnSesion;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -39,8 +40,7 @@ public class Inversionista extends Usuario{
         Sistema.fondos.add(fondo);
     }
     //METODOS INVERSIONISTA
-//Requiere la sucursal de quien lo ejecuta, así que se usa en otras clases
-    public static void registrarInversionista(Sucursal sucursal) {
+    public static void registrarInversionista() {
         System.out.println("- - - Registrar Inversionista - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
@@ -54,7 +54,7 @@ public class Inversionista extends Usuario{
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
-        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, usuario, contrasena, birth);
+        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
             Sistema.usuarios.put(Gente.INVERSIONISTA, new ArrayList<>());
         }

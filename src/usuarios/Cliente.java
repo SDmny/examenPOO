@@ -318,5 +318,96 @@ public class Cliente extends Usuario {
         tarjetasCredito.forEach(tarjetaCredito -> System.out.println(tarjetaCredito.toString()));
     }
 
+
+    //METODOS CLIENTES
+    public static void registrarCliente() {
+        System.out.println("- - - Registrar Cliente - - -");
+        ArrayList<String> datosComun = DatosComun.obtenerDatos();
+        String nombre = datosComun.get(0);
+        String apellido1 = datosComun.get(1);
+        String apellido2 = datosComun.get(2);
+        char sexo = datosComun.get(3).charAt(0);
+        String ciudad = datosComun.get(4);
+        String estado = datosComun.get(5);
+        String curp = datosComun.get(6);
+        String direccion = datosComun.get(7);
+        String usuario = datosComun.get(8);
+        String contrasena = datosComun.get(9);
+        LocalDate birth = LocalDate.parse(datosComun.get(10));
+        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
+        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
+            Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
+        }
+        Sistema.usuarios.get(Gente.CLIENTE).add(inversionista);
+        System.out.println("Cliente registrado");
+    }
+
+    public static void eliminarClientes(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
+            System.out.println("No hay clientes registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Cliente no existe");
+            }
+        }
+
+    }
+
+    public static void mostrarCliente(String user) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
+            System.out.println("No hay clientes registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
+                if (usuario.getUsuario().equals(user)) {
+                    existe = true;
+                    System.out.println(usuario.toString());
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Cliente no existe");
+            }
+        }
+    }
+
+    public static void modificarCliente(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
+            System.out.println("No hay clientes registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    usuario.ModificarDato();
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Cliente no existe");
+            }
+        }
+    }
+
+    public static void mostrarClientes() {
+        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
+            System.out.println("No hay clientes registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
+                System.out.println(usuario);
+            }
+        }
+    }
 }
 

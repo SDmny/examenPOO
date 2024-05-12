@@ -3,6 +3,7 @@ package menus;
 import sistema.Sistema;
 import usuarios.Capturista;
 import usuarios.Gerente;
+import usuarios.Inversionista;
 import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 import utils.UsuarioEnSesion;
@@ -63,20 +64,20 @@ public class MenuGerente {
             switch (action){
                 case "1":
                     if(segundaContrasena()){
-                        //Gerente.registrarInversionista();
+                        Inversionista.registrarInversionista();
                     }
                     break;
                 case "2":
                     if(segundaContrasena()){
                         id = obtenerId();
-                        //Gerente.modificarInversionista(id);
+                        Inversionista.modificarInversionista(id);
                     }
 
                     break;
                 case "3":
                     if(segundaContrasena()){
                         id = obtenerId();
-                        //Gerente.eliminarInversionista(id);
+                        Inversionista.eliminarInversionista(id);
                     }
                     break;
                 case "4":
@@ -132,12 +133,12 @@ public class MenuGerente {
             action = scanner.next();
             switch (action){
                 case "1":
-                    //Gerente.mostrarInversionistas();
+                    Inversionista.mostrarInversionistas();
                     break;
                 case "2":
                     System.out.println("Usuario del inversionista: ");
                     user = scanner.next();
-                    //Gerente.mostrarInversionista(user);
+                    Inversionista.mostrarInversionista(user);
                     break;
                 case "0":
                     System.out.println("Regresando");

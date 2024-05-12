@@ -4,6 +4,7 @@ import sistema.Sistema;
 import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 import usuarios.utils.Sucursal;
+import utils.UsuarioEnSesion;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -13,17 +14,10 @@ public class Ejecutivo extends Empleado {
         super( nombre,  apellido1,  apellido2,  sexo,  ciudad,  estado,  curp,  direccion,  sucursal,  Gente.EJECUTIVO,  salario,usuario,  contrasena,birth);
     }
 
-    //Esta feo tener todo en gerente
-    //Pase los metodos CRUD a sus clases, solo se repiten los de registrar para pedir la sucursal
-
-    public  void registrarInversionista(){
-      // Inversionista.registrarInversionista(this.getSucursal());
-    }
-
 
 
     //METODOS EJECUTIVOS
-    protected static void registrarEjecutivos(Sucursal sucursal) {
+    public static void registrarEjecutivo() {
         System.out.println("- - - Registrar Ejecutivo de Cuenta - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
@@ -38,13 +32,14 @@ public class Ejecutivo extends Empleado {
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
         double salario = asignarSalario();
-        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, salario, usuario, contrasena, birth);
+        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), salario, usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
             Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         }
         Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
         System.out.println("Ejecutivo registrado");
     }
+
     public static void eliminarEjecutivo(int id) {
         boolean existe = false;
         if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {

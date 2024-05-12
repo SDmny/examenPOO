@@ -71,19 +71,6 @@ public class Gerente extends Empleado {
         geAcue.setSalario(asignarSalario());
     }
 
-    public  void registrarInversionista(){
-       // Inversionista.registrarInversionista(this.getSucursal());
-    }
 
-    public void registrarEjecutivo() {
-        Ejecutivo.registrarEjecutivos(this.getSucursal());
-    }
-
-    public void registrarCapturista(){
-        //Capturista.registrarCapturista(this.getSucursal());
-    }
-    public void registrarCliente(){
-        //Cliente.crearCliente();
-    }
 
 }

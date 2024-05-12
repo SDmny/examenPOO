@@ -2,6 +2,7 @@ package menus;
 
 import sistema.Sistema;
 import usuarios.Capturista;
+import usuarios.Ejecutivo;
 import usuarios.Gerente;
 import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
@@ -24,15 +25,15 @@ public class MenuCapturista {
             action = scanner.next();
             switch (action){
                 case "1":
-                    //Capturista.registrarEjecutivos();
+                    Ejecutivo.registrarEjecutivo();
                     break;
                 case "2":
                     id = obtenerId();
-                    //Capturista.modificarEjecutivo(id);
+                    Ejecutivo.modificarEjecutivo(id);
                     break;
                 case "3":
                     id = obtenerId();
-                    //Capturista.eliminarEjecutivo(id);
+                    Ejecutivo.eliminarEjecutivo(id);
                     break;
                 case "4":
                     menuMostrarEjecutivos();
@@ -69,12 +70,12 @@ public class MenuCapturista {
             action = scanner.next();
             switch (action){
                 case "1":
-                    //Capturista.mostrarEjecutivos();
+                    Ejecutivo.mostrarEjecutivos();
                     break;
                 case "2":
                     System.out.println("Usuario del ejecutivo: ");
                     user = scanner.next();
-                    //Capturista.mostrarEjecutivo(user);
+                    Ejecutivo.mostrarEjecutivo(user);
                     break;
                 case "0":
                     System.out.println("Regresando");
