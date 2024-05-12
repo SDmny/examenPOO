@@ -30,6 +30,7 @@ public abstract class Usuario {
         this.curp = curp;
         this.direccion = direccion;
         this.sucursal = sucursal;
+        this.rol = rol;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.id = cantidadUsuarios;

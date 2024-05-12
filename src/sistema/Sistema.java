@@ -1,16 +1,18 @@
 package sistema;
 
+import usuarios.Gerente;
 import usuarios.utils.Gente;
 import usuarios.Usuario;
 import usuarios.utils.Sucursal;
 import utils.Fondos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Sistema {
-    public static final Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
+    public static Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
     public static  ArrayList<Fondos> fondos = new ArrayList<Fondos>();
 
     //METODO ENCONTRAR SUCURSAL
@@ -50,12 +52,22 @@ public class Sistema {
     public static Usuario verificarInicioSesion(String nombreUsuario, String contrasena){
         for (Map.Entry<Gente, ArrayList<Usuario>> entry : usuarios.entrySet()){
             for (Usuario usuarioActual : entry.getValue()){
-                if (usuarioActual.getNombre().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
+                if (usuarioActual.getUsuario().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
                     return usuarioActual;
                 }
             }
         }
         return null;
+    }
+
+    public static void inicializar(){
+        usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
+        usuarios.put(Gente.CLIENTE, new ArrayList<>());
+        usuarios.put(Gente.GERENTE, new ArrayList<>());
+        usuarios.put(Gente.INVERSIONISTA, new ArrayList<>());
+        usuarios.put(Gente.CAPTURISTA, new ArrayList<>());
+        Gerente gMad = new Gerente("Kaeya", "Alberich", "García", 'M', "Mondstad", "Teyvat", "", "Taberna Cola de Gato, no. 456", Sucursal.MADERO, 50000, "Captain", "a", LocalDate.of(1998, 11, 12));
+        usuarios.get(Gente.GERENTE).add(gMad);
     }
 
 }

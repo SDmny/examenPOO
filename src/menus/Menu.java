@@ -1,10 +1,13 @@
 package menus;
 
 import sistema.Sistema;
+import usuarios.Gerente;
 import usuarios.Inversionista;
 import usuarios.Usuario;
+import usuarios.utils.Gente;
 import utils.UsuarioEnSesion;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -45,7 +48,7 @@ public class Menu {
         if (next == "1"){
             UsuarioEnSesion.getInstancia().cerrarSesion();
             iniciarSesion();
-        } else if (next != "2") {
+        } else if (!Objects.equals(next, "2")) {
             continuar();
         } else {
             System.out.println("Saliendo del programa...");
@@ -54,9 +57,11 @@ public class Menu {
 
     // Seleccion de menu por rol
     public static void menu() {
-        String rol = UsuarioEnSesion.getInstancia().getUsuarioActual().getRol().toString();
-        System.out.println(String.format("- - - Menu %s - - -", rol.toLowerCase()));
-        switch (UsuarioEnSesion.getInstancia().getUsuarioActual().getRol()) {
+        Usuario usuario = UsuarioEnSesion.getInstancia().getUsuarioActual();
+        String rolLetras = String.valueOf(usuario.getRol());
+        System.out.println(String.format("- - - Menu %s - - -", rolLetras.toLowerCase()));
+        Gente rol = usuario.getRol();
+        switch (rol) {
             case GERENTE:
                 MenuGerente.menuGerente();
                 break;
