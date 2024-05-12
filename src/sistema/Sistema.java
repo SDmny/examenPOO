@@ -1,5 +1,6 @@
 package sistema;
 
+import tarjetas.utils.SolicitudTarjetaC;
 import usuarios.Gerente;
 import usuarios.utils.Gente;
 import usuarios.Usuario;
@@ -14,6 +15,7 @@ import java.util.Map;
 public class Sistema {
     public static Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
     public static  ArrayList<Fondos> fondos = new ArrayList<Fondos>();
+    public static  ArrayList<SolicitudTarjetaC> solicitudes = new ArrayList<SolicitudTarjetaC>();
 
     //METODO ENCONTRAR SUCURSAL
 

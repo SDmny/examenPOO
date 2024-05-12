@@ -120,7 +120,7 @@ public class Cliente extends Usuario {
         System.out.println("Solicitud en curso:");
         boolean solicitudEncontrada = false;
         List<SolicitudTarjetaC> solicitudAEliminar = new ArrayList<>();
-        for(SolicitudTarjetaC solicitud : Banco.solicitudes) {
+        for(SolicitudTarjetaC solicitud : Sistema.solicitudes) {
             if (solicitud.getCliente() == cliente){
                 solicitudEncontrada = true;
                 System.out.println("Tarjeta solicitada: "+ solicitud.getTipoTarjeta());
@@ -132,7 +132,7 @@ public class Cliente extends Usuario {
                 }
             }
         }
-        Banco.solicitudes.removeAll(solicitudAEliminar);//Una vez consultada y atendida la solicitud, se elimina del Banco.
+        Sistema.solicitudes.removeAll(solicitudAEliminar);//Una vez consultada y atendida la solicitud, se elimina del Banco.
         if(!solicitudEncontrada) System.out.println("No tienes solicitudes pendientes.");
     }
 
@@ -240,7 +240,7 @@ public class Cliente extends Usuario {
                     opcion=DatosComun.pedirNumeroInt();
                     if(opcion==1) {
                         solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                        solicitudes.add(solicitud);
+                        Sistema.solicitudes.add(solicitud);
                         cliente.setNumeroSolicitudesEnProceso(1);
                         System.out.println("Solicitud de tarjeta Simplicity realizada");
                         band=false;
@@ -255,14 +255,14 @@ public class Cliente extends Usuario {
                     switch (opcion) {
                         case 1:
                             solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                            solicitudes.add(solicitud);
+                            Sistema.solicitudes.add(solicitud);
                             cliente.setNumeroSolicitudesEnProceso(1);
                             System.out.println("Solicitud de tarjeta Simplicity realizada");
                             band=false;
                             break;
                         case 2:
                             solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                                solicitudes.add(solicitud);
+                            Sistema.solicitudes.add(solicitud);
                             cliente.setNumeroSolicitudesEnProceso(1);
                             System.out.println("Solicitud de tarjeta Platino realizada");
                             band=false;
@@ -281,21 +281,21 @@ public class Cliente extends Usuario {
                     switch (opcion) {
                         case 1:
                             solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                                    solicitudes.add(solicitud);
+                            Sistema.solicitudes.add(solicitud);
                             cliente.setNumeroSolicitudesEnProceso(1);
                             System.out.println("Solicitud de tarjeta Simplicity realizada");
                             band=false;
                             break;
                         case 2:
                             solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                                    solicitudes.add(solicitud);
+                            Sistema.solicitudes.add(solicitud);
                             cliente.setNumeroSolicitudesEnProceso(1);
                             System.out.println("Solicitud de tarjeta Platino realizada");
                             band=false;
                             break;
                         case 3:
                             solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.ORO);
-                                    solicitudes.add(solicitud);
+                            Sistema.solicitudes.add(solicitud);
                             cliente.setNumeroSolicitudesEnProceso(1);
                             System.out.println("Solicitud de tarjeta Oro realizada");
                             band=false;

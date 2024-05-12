@@ -7,18 +7,24 @@ import usuarios.Cliente;
 import java.time.LocalDate;
 
 public class SolicitudTarjetaC {
-    Cliente cliente;
+    private Cliente cliente;
     private LocalDate fechaSolicitud;
     private TipoTarjetaCredito  tipoTarjeta;
     private String status;
-    int idCliente;
+    private int idCliente;
+    private int id;
+    private static int IDS=1;
     public SolicitudTarjetaC(Cliente cliente, TipoTarjetaCredito tipo){
-        this.cliente=cliente;
-        status= "En espera";
-        tipoTarjeta=tipo;
-        idCliente=cliente.getId();
+        this.cliente = cliente;
+        this.status= "En espera";
+        this.tipoTarjeta = tipo;
+        this.idCliente = cliente.getId();
+        this.id = IDS;
+        IDS++;
+
     }
     
+    /*
     public void aprobarTarjeta(){
         status="Solicitud Aprobada";
         TarjetaCredito tarjetaCredito=new TarjetaCredito(5579,tipoTarjeta);
@@ -28,9 +34,11 @@ public class SolicitudTarjetaC {
     public void rechazarTarjeta(){
         status="Solicitud Rechazada";
     }
+    */
 
+    @Override
     public String toString(){
-        return String.format("Cliente solicitante: %s ,Fecha de solicitud: %s , Tipo de tarjeta: %s",cliente,fechaSolicitud,tipoTarjeta);
+        return String.format("Cliente solicitante: %s; Fecha de solicitud: %s; Tipo de tarjeta: %s", cliente, fechaSolicitud, tipoTarjeta);
     }
     
     public String getStatus() {
