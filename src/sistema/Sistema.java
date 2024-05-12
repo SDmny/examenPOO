@@ -69,6 +69,8 @@ public class Sistema {
         usuarios.put(Gente.CAPTURISTA, new ArrayList<>());
         Gerente gMad = new Gerente("Kaeya", "Alberich", "García", 'M', "Mondstad", "Teyvat", "", "Taberna Cola de Gato, no. 456", Sucursal.MADERO, 50000, "Captain", "a", LocalDate.of(1998, 11, 12));
         usuarios.get(Gente.GERENTE).add(gMad);
+        Gerente gAcue = new Gerente("Misaka", "Mikoto", "Gonzalez", 'F', "Tokio", "Kanto", "", "Gakuen Toshi no.67", Sucursal.ACUEDUCTO, 50000, "Hime", "b", LocalDate.of(2002, 11, 12));
+        usuarios.get(Gente.GERENTE).add(gAcue);
     }
 
 }

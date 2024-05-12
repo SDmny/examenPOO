@@ -25,12 +25,13 @@ public class SolicitudTarjetaC {
     }
 
     public void aprobarTarjeta(){
-        status="Solicitud Aprobada";
+        status = "Solicitud Aprobada";
         Generar.generarTarjeta(5579);
     }
     public void rechazarTarjeta(){
-        status="Solicitud Rechazada";
+        status = "Solicitud Rechazada";
     }
+    @Override
     public String toString(){
         return String.format("Cliente solicitante: %s; Fecha de solicitud: %s; Tipo de tarjeta: %s", cliente, fechaSolicitud, tipoTarjeta);
     }

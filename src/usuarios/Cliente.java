@@ -160,7 +160,7 @@ public class Cliente extends Usuario {
                     }else {
                         seleccion-=1;
                         TarjetaCredito tarjeta = cliente.getTarjetasCredito().get(seleccion);
-                        tarjeta.comprar(0);
+                        //tarjeta.comprar(0);
                         select = false;
                     }
                 } while (select);

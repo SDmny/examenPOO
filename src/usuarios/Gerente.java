@@ -80,7 +80,7 @@ public class Gerente extends Empleado {
     }
 
     public void registrarCapturista(){
-        Capturista.registrarCapturista(this.getSucursal());
+        //Capturista.registrarCapturista(this.getSucursal());
     }
     public void registrarCliente(){
         //Cliente.crearCliente();

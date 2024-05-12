@@ -1,10 +1,11 @@
 package menus;
-
 import sistema.Sistema;
+import usuarios.Gerente;
 import usuarios.Inversionista;
 import usuarios.Usuario;
+import usuarios.utils.Gente;
 import utils.UsuarioEnSesion;
-
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Menu {
@@ -45,7 +46,7 @@ public class Menu {
         if (next == "1"){
             UsuarioEnSesion.getInstancia().cerrarSesion();
             iniciarSesion();
-        } else if (next != "2") {
+        } else if (!Objects.equals(next, "2")) {
             continuar();
         } else {
             System.out.println("Saliendo del programa...");
@@ -54,18 +55,28 @@ public class Menu {
 
     // Seleccion de menu por rol
     public static void menu() {
-        switch (UsuarioEnSesion.getInstancia().getUsuarioActual().getRol()) {
-            case GERENTE: MenuGerente.menuGerente();
+        Usuario usuario = UsuarioEnSesion.getInstancia().getUsuarioActual();
+        String rolLetras = String.valueOf(usuario.getRol());
+        System.out.println(String.format("- - - Menu %s - - -", rolLetras.toLowerCase()));
+        Gente rol = usuario.getRol();
+        switch (rol) {
+            case GERENTE:
+                MenuGerente.menuGerente();
                 break;
-            case CAPTURISTA: MenuCapturista.menuCapturista();
+            case CAPTURISTA:
+                MenuCapturista.menuCapturista();
                 break;
-            case EJECUTIVO: MenuEjecutivo.menuEjecutivo();
+            case EJECUTIVO:
+                MenuEjecutivo.menuEjecutivo();
                 break;
-            case INVERSIONISTA: MenuInversionistas.menuInversionista();
+            case INVERSIONISTA:
+                MenuInversionistas.menuInversionista();
                 break;
-            case CLIENTE: MenuClientes.menuCliente();
+            case CLIENTE:
+                MenuClientes.menuCliente();
                 break;
             default:
         }
+        continuar();
     }
 }

@@ -19,6 +19,7 @@ public class Fondos {
         this.id = CANT_FONDOS;
         CANT_FONDOS++;
     }
+    @Override
     public String toString(){
         String cadena = String.format("%d - Inversionista: %s %s; Inversión: %f", id, nombre, apellido, inversion);
         return cadena;
