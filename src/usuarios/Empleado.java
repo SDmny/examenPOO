@@ -61,6 +61,7 @@ DatosComun.scanner.nextLine();
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("Opción inválida, pruebe de nuevo");
+                DatosComun.scanner.next();
             }
         }
 

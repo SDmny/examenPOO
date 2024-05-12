@@ -12,8 +12,19 @@ public class Ejecutivo extends Empleado {
     public Ejecutivo(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth){
         super( nombre,  apellido1,  apellido2,  sexo,  ciudad,  estado,  curp,  direccion,  sucursal,  Gente.EJECUTIVO,  salario,usuario,  contrasena,birth);
     }
-    public static void registrarInversionista(){
-        System.out.println("- - - Registrar Cliente - - -");
+
+    //Esta feo tener todo en gerente
+    //Pase los metodos CRUD a sus clases, solo se repiten los de registrar para pedir la sucursal
+
+    public  void registrarInversionista(){
+      // Inversionista.registrarInversionista(this.getSucursal());
+    }
+
+
+
+    //METODOS EJECUTIVOS
+    protected static void registrarEjecutivos(Sucursal sucursal) {
+        System.out.println("- - - Registrar Ejecutivo de Cuenta - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);
         String apellido1 = datosComun.get(1);
@@ -25,12 +36,80 @@ public class Ejecutivo extends Empleado {
         String direccion = datosComun.get(7);
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
-        LocalDate birth=LocalDate.parse(datosComun.get(10));
-        //Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, usuario, contrasena,birth);
-        if (!Sistema.usuarios.containsKey(Gente.CLIENTE)){
-            Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
+        LocalDate birth = LocalDate.parse(datosComun.get(10));
+        double salario = asignarSalario();
+        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, salario, usuario, contrasena, birth);
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            Sistema.usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         }
-        //Sistema.usuarios.get(Gente.CLIENTE).add(cliente);
-        System.out.println("Cliente registrado");
+        Sistema.usuarios.get(Gente.EJECUTIVO).add(ejecutivo);
+        System.out.println("Ejecutivo registrado");
+    }
+    public static void eliminarEjecutivo(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    Sistema.usuarios.get(Gente.EJECUTIVO).remove(usuario);
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+
+    }
+
+    public static void mostrarEjecutivo(String user) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getUsuario().equals(user)) {
+                    existe = true;
+                    System.out.println(usuario.toString());
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+    }
+
+    public static void modificarEjecutivo(int id) {
+        boolean existe = false;
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                if (usuario.getId() == id) {
+                    existe = true;
+                    ((Empleado) usuario).modificarEmpleado();
+                    break;
+
+                }
+            }
+            if (!existe) {
+                System.out.println("El Ejecutivo no existe");
+            }
+        }
+
+    }
+    public static void mostrarEjecutivos() {
+        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
+            System.out.println("No hay ejecutivos registrados:\n");
+        } else {
+            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
+                System.out.println(usuario);
+            }
+        }
     }
 }

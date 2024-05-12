@@ -138,6 +138,7 @@ public abstract class Usuario {
                 opc = DatosComun.scanner.nextLine();
             } catch (Exception ew) {
                 opc = "4";
+                DatosComun.scanner.next();
 
             }
         }

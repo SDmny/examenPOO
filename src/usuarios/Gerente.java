@@ -71,167 +71,19 @@ public class Gerente extends Empleado {
         geAcue.setSalario(asignarSalario());
     }
 
-
-    //METODOS INVERSIONISTA
-
-    //Le quite el statico a registrar para que quien lo use pueda pasarle su Sucursal, no sé sí es lo más correcto de momento
-    public void registrarInversionista() {
-        System.out.println("- - - Registrar Inversionista - - -");
-        ArrayList<String> datosComun = DatosComun.obtenerDatos();
-        String nombre = datosComun.get(0);
-        String apellido1 = datosComun.get(1);
-        String apellido2 = datosComun.get(2);
-        char sexo = datosComun.get(3).charAt(0);
-        String ciudad = datosComun.get(4);
-        String estado = datosComun.get(5);
-        String curp = datosComun.get(6);
-        String direccion = datosComun.get(7);
-        String usuario = datosComun.get(8);
-        String contrasena = datosComun.get(9);
-        LocalDate birth = LocalDate.parse(datosComun.get(10));
-        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, this.getSucursal(), usuario, contrasena, birth);
-        if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
-            Sistema.usuarios.put(Gente.INVERSIONISTA, new ArrayList<>());
-        }
-        Sistema.usuarios.get(Gente.INVERSIONISTA).add(inversionista);
-        System.out.println("Inversionista registrado");
+    public  void registrarInversionista(){
+       // Inversionista.registrarInversionista(this.getSucursal());
     }
 
-    public static void eliminarInversionista(int id) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
-            System.out.println("No hay inversionistas registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.INVERSIONISTA)) {
-                if (usuario.getId() == id) {
-                    existe = true;
-                    Sistema.usuarios.get(Gente.INVERSIONISTA).remove(usuario);
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Inversionista no existe");
-            }
-        }
-
+    public void registrarEjecutivo() {
+        Ejecutivo.registrarEjecutivos(this.getSucursal());
     }
 
-    public static void mostrarInversionista(String user) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
-            System.out.println("No hay inversionistas registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.INVERSIONISTA)) {
-                if (usuario.getUsuario().equals(user)) {
-                    existe = true;
-                    System.out.println(usuario.toString());
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Inversionista no existe");
-            }
-        }
+    public void registrarCapturista(){
+        Capturista.registrarCapturista(this.getSucursal());
     }
-
-    public static void modificarInversionista(int id) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
-            System.out.println("No hay inversionistas registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.INVERSIONISTA)) {
-                if (usuario.getId() == id) {
-                    existe = true;
-                    usuario.ModificarDato();
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Inversionista no existe");
-            }
-        }
-    }
-
-    public static void mostrarInversionistas() {
-        if (!Sistema.usuarios.containsKey(Gente.INVERSIONISTA)) {
-            System.out.println("No hay inversionistas registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.INVERSIONISTA)) {
-                System.out.println(usuario);
-            }
-        }
-    }
-
-    //METODOS EJECUTIVOS
-    public static void eliminarEjecutivo(int id) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
-            System.out.println("No hay ejecutivos registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
-                if (usuario.getId() == id) {
-                    existe = true;
-                    Sistema.usuarios.get(Gente.EJECUTIVO).remove(usuario);
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Ejecutivo no existe");
-            }
-        }
-
-    }
-
-    public static void mostrarEjecutivo(String user) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
-            System.out.println("No hay ejecutivos registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
-                if (usuario.getUsuario().equals(user)) {
-                    existe = true;
-                    System.out.println(usuario.toString());
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Ejecutivo no existe");
-            }
-        }
-    }
-
-    public static void modificarEjecutivo(int id) {
-        boolean existe = false;
-        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
-            System.out.println("No hay ejecutivos registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
-                if (usuario.getId() == id) {
-                    existe = true;
-                    ((Empleado) usuario).modificarEmpleado();
-                    break;
-
-                }
-            }
-            if (!existe) {
-                System.out.println("El Ejecutivo no existe");
-            }
-        }
-
-    }
-    public static void mostrarEjecutivos() {
-        if (!Sistema.usuarios.containsKey(Gente.EJECUTIVO)) {
-            System.out.println("No hay ejecutivos registrados:\n");
-        } else {
-            for (Usuario usuario : Sistema.usuarios.get(Gente.EJECUTIVO)) {
-                System.out.println(usuario);
-            }
-        }
+    public void registrarCliente(){
+      Cliente.crearCliente();
     }
 
 }
