@@ -1,7 +1,6 @@
 package menus;
 
 import sistema.Sistema;
-import usuarios.Ejecutivo;
 import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 
@@ -24,7 +23,6 @@ public class MenuEjecutivo {
             action = scanner.next();
             switch (action){
                 case "1":
-                    Ejecutivo.registrarCliente();
                     break;
                 case "2":
                     break;
@@ -37,6 +35,7 @@ public class MenuEjecutivo {
                 case "6":
                     break;
                 case "0":
+                    Menu.continuar();
                     break;
                 default:
                     System.out.println("Opcion inexistente");

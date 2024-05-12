@@ -30,7 +30,6 @@ public abstract class Usuario {
         this.curp = curp;
         this.direccion = direccion;
         this.sucursal = sucursal;
-        this.rol = rol;
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.id = cantidadUsuarios;
@@ -139,6 +138,7 @@ public abstract class Usuario {
                 opc = DatosComun.scanner.nextLine();
             } catch (Exception ew) {
                 opc = "4";
+                DatosComun.scanner.next();
 
             }
         }

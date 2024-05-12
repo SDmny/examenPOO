@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Sistema {
-    public static Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
+    public static final Map<Gente, ArrayList<Usuario>> usuarios = new HashMap<Gente, ArrayList<Usuario>>();
     public static  ArrayList<Fondos> fondos = new ArrayList<Fondos>();
     public static  ArrayList<SolicitudTarjetaC> solicitudes = new ArrayList<SolicitudTarjetaC>();
 
@@ -54,14 +54,13 @@ public class Sistema {
     public static Usuario verificarInicioSesion(String nombreUsuario, String contrasena){
         for (Map.Entry<Gente, ArrayList<Usuario>> entry : usuarios.entrySet()){
             for (Usuario usuarioActual : entry.getValue()){
-                if (usuarioActual.getUsuario().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
+                if (usuarioActual.getNombre().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
                     return usuarioActual;
                 }
             }
         }
         return null;
     }
-
     public static void inicializar(){
         usuarios.put(Gente.EJECUTIVO, new ArrayList<>());
         usuarios.put(Gente.CLIENTE, new ArrayList<>());

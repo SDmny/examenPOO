@@ -110,7 +110,7 @@ public class Cliente extends Usuario {
     public static void solicitudTarjetaCredito(Cliente cliente) {
         System.out.println("\tBienvenido\n");
         if (cliente.getTarjetasCredito().size()<3) {//Validación de la cantidad de tarjetas del cliente antes de realizar solicitud.
-            if(cliente.getNumeroSolicitudesEnProceso()==0) Cliente.solicitarTarjetaCredito(cliente);
+            //if(cliente.getNumeroSolicitudesEnProceso()==0) Cliente.solicitarTarjetaCredito(cliente);
             if(cliente.getNumeroSolicitudesEnProceso()==1) System.out.println("Ya tienes una solicitud en curso. Debes esperar a que termine el proceso para poder hacer una nueva solicitud.");
         }
         if (cliente.getTarjetasCredito().size()==3) System.out.println("No puedes solicitar más tarjetas. Límite máximo alcanzado.");
@@ -143,12 +143,12 @@ public class Cliente extends Usuario {
             System.out.println("\tSelecciona la tarjeta a usar");
             System.out.println("\nTarjetas de Crédito Disponibles");
             for(TarjetaCredito tarjetaCredito:cliente.getTarjetasCredito()) {
-                if (tarjetaCredito.getSaldoPendiente() > 0) {
+                if (tarjetaCredito.getCreditoActual() > 0) {
                     System.out.printf("\n%d) Tarjeta %s\n", i, tarjetaCredito.getTipoCredito());
                     System.out.printf("Crédito Máximo: %f\n", tarjetaCredito.getCreditoMaximo());
                     i++;
                 }//Este contador permite registrar cuántas tarjetas están sin saldo pendiente.
-                if (tarjetaCredito.getSaldoPendiente() == 0) {
+                if (tarjetaCredito.getCreditoActual() == 0) {
                     contadorTarjetas++;
                 }
             }
@@ -160,7 +160,7 @@ public class Cliente extends Usuario {
                     }else {
                         seleccion-=1;
                         TarjetaCredito tarjeta = cliente.getTarjetasCredito().get(seleccion);
-                        tarjeta.comprarCredito();
+                        tarjeta.comprar(0);
                         select = false;
                     }
                 } while (select);
@@ -179,12 +179,12 @@ public class Cliente extends Usuario {
             System.out.println("\tSelecciona la tarjeta a pagar");
             System.out.println("\nTarjetas de Crédito");
             for(TarjetaCredito tarjetaCredito:cliente.getTarjetasCredito()) {
-                if (tarjetaCredito.getSaldoPendiente() > 0) {
+                if (tarjetaCredito.getCreditoActual() > 0) {
                     System.out.printf("\n%d) Tarjeta %s\n", k, tarjetaCredito.getTipoCredito());
-                    System.out.printf("Saldo pendiente por pagar: %f", tarjetaCredito.getSaldoPendiente());
+                    System.out.printf("Saldo pendiente por pagar: %f", tarjetaCredito.getCreditoActual());
                     k++;
                 }//Este contador permite registrar cuántas tarjetas están sin saldo pendiente.
-                if (tarjetaCredito.getSaldoPendiente() == 0) {
+                if (tarjetaCredito.getCreditoActual() == 0) {
                     contadorTc++;
                 }
             }
@@ -196,7 +196,7 @@ public class Cliente extends Usuario {
                     }else {
                         opcionPago-=1;
                         TarjetaCredito tarjeta = cliente.getTarjetasCredito().get(opcionPago);
-                        tarjeta.pagarTarjeta();
+                        //tarjeta.pagarTarjeta();
                         pagoValido = false;
                     }
                 } while (pagoValido);
@@ -218,7 +218,7 @@ public class Cliente extends Usuario {
         return tarjetaDebito;
     }
 
-    public static void solicitarTarjetaCredito (Cliente cliente) {
+    /*public static void solicitarTarjetaCredito (Cliente cliente) {
         int opciones=0,opcion;
         boolean band = true;
         SolicitudTarjetaC solicitud;
@@ -310,7 +310,7 @@ public class Cliente extends Usuario {
                 System.out.println("No tienes ofertas disponibles.");
                 break;
         }
-    }
+    }*/
     public void verTodasLasTarjetas() {
         System.out.println("Tarjeta de debito: ");
         System.out.println(tarjetaDebito.toString());

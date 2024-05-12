@@ -20,17 +20,17 @@ package tarjetas;
             return saldo;
         }
     
-        public boolean simplicity(double saldo) {
+        private boolean simplicity(double saldo) {
             if (saldo >= 60000) return true;
             return false;
         }
     
-        public boolean platino(double saldo) {
+        private boolean platino(double saldo) {
             if (saldo >= 150000) return true;
             return false;
         }
     
-        public boolean oro(double saldo) {
+        private boolean oro(double saldo) {
             if (saldo >= 400000) return true;
             return false;
         }
