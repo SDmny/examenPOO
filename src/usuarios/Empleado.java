@@ -24,7 +24,7 @@ public class Empleado extends Usuario {
             try {
                 incorrecto = false;
                 sueldo = DatosComun.scanner.nextDouble();
-DatosComun.scanner.nextLine();
+                DatosComun.scanner.nextLine();
                 if (sueldo <= 0) {
                     throw new Exception();
                 }
