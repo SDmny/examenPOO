@@ -82,7 +82,6 @@ public class Empleado extends Usuario {
 
     @Override
     public String toString() {
-        String cadena = String.format("Id: %d; Nombre completo: %s %s %s; Rol: %s; Nombre de usuario: %s, Salario: %f", id, nombre, apellido1, apellido2, rol, usuario, salario);
-        return cadena;
+        return super.toString()+String.format("Salario: %f",salario);
     }
 }

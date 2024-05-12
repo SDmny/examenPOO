@@ -16,28 +16,41 @@ public class DatosComun {
     //METODO PARA OBTENER DATOS INCOMPLETO
     public static ArrayList obtenerDatos() {
         ArrayList<String> datosComun = new ArrayList<String>();
-        String nombre, apellido1, apellido2, ciudad, estado, curp = "", direccion, homoclave, usuario, contrasena;
+        String nombre = "", apellido1 = "", apellido2 = "", ciudad="", estado = "", curp = "", direccion, homoclave, usuario, contrasena;
         char sexo = ' ';
         Sucursal sucursal;
         Gente rol;
         boolean incorrecto = true;
         LocalDate birth = LocalDate.now();
-        System.out.print("Ingrese nombre: ");
-        nombre = scanner.next();
-        System.out.print("Ingrese primer apellido: ");
-        apellido1 = scanner.next();
-        System.out.print("Ingrese segundo apellido: ");
-        apellido2 = scanner.next();
-        System.out.print("Ingrese ciudad: ");
-        ciudad = scanner.next();
-        System.out.print("Ingrese estado: ");
-        estado = scanner.next();
+        while (incorrecto) {
+            try {
+                incorrecto = false;
+                System.out.print("Ingrese nombre: ");
+                nombre = scanner.next();
+                System.out.print("Ingrese primer apellido: ");
+                apellido1 = scanner.next();
+                System.out.print("Ingrese segundo apellido: ");
+                apellido2 = scanner.next();
+                System.out.print("Ingrese ciudad: ");
+                ciudad = scanner.next();
+                System.out.print("Ingrese estado: ");
+                estado = scanner.next();
+               if(nombre.length()<2||apellido1.length()<2||apellido2.length()<2||estado.length()<2){
+                   throw  new Exception();
+               }
+
+            }
+            catch (Exception ew){
+                incorrecto=true;
+                System.out.println("Los datos deben al menos dos letras");
+            }
+        }
+        incorrecto=true;
         System.out.print("Ingrese dirección: ");
         direccion = scanner.next();
-        usuario = obtenerNombreUsuario();
         System.out.print("Ingrese contraseña: ");
         contrasena = scanner.next();
-
+        usuario = obtenerNombreUsuario();
         while (incorrecto) {
             try {
                 incorrecto = false;
@@ -237,6 +250,7 @@ public class DatosComun {
         boolean incorrecto = true;
 
         while ((dia > 32 || dia < 0) || (mes < 0 || mes > 12) || (ano < 1900) || incorrecto) {
+            boolean mostrar=true;
             try {
                 incorrecto = false;
                 System.out.println("Ingrese día: ");
@@ -252,99 +266,19 @@ public class DatosComun {
 
                 scanner.nextLine();
             } catch (Exception ew) {
+                mostrar=false;
                 incorrecto = true;
                 System.out.println("Datos incorrectos, pruebe de nuevo");
                 scanner.next();
             }
-
+            if(((dia > 31|| dia < 0) || (mes < 0 || mes > 12) || (ano < 1900)) && mostrar){
+                System.out.println("Datos incorrectos, pruebe de nuevo");
+            }
         }
+
+
         fecha = LocalDate.of(ano, mes, dia);
         return fecha;
-    }
-
-    public static int pedirNumeroInt(){ 
-        Scanner sc = new Scanner(System.in);
-        int numero=-1;
-        boolean comprobacion = false;
-        do {
-            comprobacion = false;
-
-            try {
-                System.out.print("Ingresa un dato: ");
-                String input = sc.nextLine();
-
-                if (input.isEmpty()) {
-                    throw new IllegalArgumentException("No has ingresado ningún número.");
-                }
-
-                numero = Integer.parseInt(input);
-
-                if(numero<0){
-                    throw new NumberFormatException("No puedes ingresar un valor negativo");
-                }
-                else{
-                    return numero;
-                }
-
-            } catch(IllegalArgumentException error){
-                System.out.println("Error: "+error.getMessage());
-                comprobacion=true;
-            }
-            catch (InputMismatchException e) {
-                System.out.println("Error: Debes ingresar un número entero.");
-                comprobacion=true;
-            }
-            catch (Exception error) {
-                System.out.println("Error. Intente de nuevo. ");
-                comprobacion=true;
-            }
-
-        } while (comprobacion);
-        sc.nextLine();
-        return numero;
-    }
-
-    public static double pedirValorDouble(){
-        Scanner sc = new Scanner(System.in);
-        double valorDouble=-1;
-        boolean comprobacion = false;
-        do {
-            comprobacion = false;
-            try {
-                System.out.print("Ingresa dato: ");
-                String input = sc.nextLine();
-                if (input.isEmpty()) {
-                    throw new IllegalArgumentException("No ha ingresado ningún número.");
-                }
-
-                valorDouble = Double.parseDouble(input);
-
-                if(valorDouble<0){
-                    throw new NumberFormatException("No puedes ingresar un valor negativo");
-                }
-                else{
-                    return valorDouble;
-                }
-
-            } catch(IllegalArgumentException error){
-                System.out.println("Error: "+error.getMessage());
-                comprobacion=true;
-            }
-            catch (InputMismatchException e) {
-                System.out.println("Error: Debes ingresar un número válido.");
-                comprobacion=true;
-            }
-            catch (Exception error) {
-                System.out.println("Error. Intente de nuevo. ");
-                comprobacion=true;
-            }
-
-        } while (comprobacion);
-        sc.nextLine();
-        return valorDouble;
-    }
-    public static void pedirOpcionValida(ArrayList<Usuario> listaUsuarios){
-
     }
 }
 
