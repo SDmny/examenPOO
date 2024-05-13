@@ -144,6 +144,9 @@ public class Cliente extends Usuario {
         if(!solicitudEncontrada) System.out.println("No tienes solicitudes pendientes.");
     }
 
+
+
+
     public static void realizarCompraCredito(Cliente cliente) {
         int i=1,seleccion,contadorTarjetas=0;//Contador i para las opciones
         boolean select = true;

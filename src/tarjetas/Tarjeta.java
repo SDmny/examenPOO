@@ -13,8 +13,10 @@ public class Tarjeta {
     private String clabeInterbancaria;
     private LocalDate fechaVencimiento;
     private LocalDateTime fechaHoraUltimoMov;
+    private int clave;
 
     public Tarjeta(int clave) {
+        this.clave = clave;
         this.numeroTarjeta = generarTarjeta(clave);
         this.cvv = generarCvv();
         this.fechaCreacion = LocalDate.now();
@@ -74,6 +76,10 @@ public class Tarjeta {
 
     public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
+    }
+
+    public int getClave() {
+        return clave;
     }
 
     @Override

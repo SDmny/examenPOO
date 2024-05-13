@@ -28,8 +28,7 @@ public class SolicitudTarjetaC {
     }
 
     public static void aprobarTarjeta(int id){
-        Generar.generarTarjeta(5579);
-        int credito=0, clave=0;
+        int credito=0;
         for (SolicitudTarjetaC solicitudTarjetaC : Sistema.solicitudes) {
             if (solicitudTarjetaC.getId() == id){
                 solicitudTarjetaC.setStatus("Solicitud Aprobada");
@@ -40,7 +39,7 @@ public class SolicitudTarjetaC {
                 } else if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.SIMPLICITY) {
                     credito = 60000;
                 }
-                TarjetaCredito tarjeta = new TarjetaCredito(clave, credito);
+                TarjetaCredito tarjeta = new TarjetaCredito(5579, credito);
             }
         }
     }

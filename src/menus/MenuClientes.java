@@ -1,6 +1,7 @@
 package menus;
 
 import sistema.Sistema;
+import tarjetas.Tarjeta;
 import tarjetas.utils.SolicitudTarjetaC;
 import tarjetas.utils.TipoTarjetaCredito;
 import usuarios.Cliente;
@@ -39,6 +40,20 @@ public class MenuClientes {
                     System.out.println("Opcion inexistente");
             }
         } while (!action.equals("0"));
+    }
+    private static void depositar(Tarjeta tarjeta){
+        if (tarjeta.getClave() == 1234){
+            // depositar debito
+        } else if (tarjeta.getClave() == 5579) {
+            Cliente.realizarPagoCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
+        }
+    }
+    private static void retirar(Tarjeta tarjeta){
+        if (tarjeta.getClave() == 1234){
+            // retirar debito
+        } else if (tarjeta.getClave() == 5579) {
+            Cliente.realizarCompraCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
+        }
     }
     private static boolean verificarOpcionSolicitud(){
         boolean mostrar = false;
@@ -111,4 +126,5 @@ public class MenuClientes {
         }
         solicitarTarjeta(oro, pla, sim);
     }
+
 }
