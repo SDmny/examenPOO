@@ -107,13 +107,21 @@ public class Cliente extends Usuario {
         if(cliente.getTarjetasCredito()==null) System.out.println("No tienes tarjetas de crédito.");
     }
 
-    public static void solicitudTarjetaCredito(Cliente cliente) {
-        System.out.println("\tBienvenido\n");
+    public static boolean solicitudTarjetaCredito(Cliente cliente) {
+        boolean permiso = true;
+        System.out.println("\tSolicitudes pendientes: \n");
         if (cliente.getTarjetasCredito().size()<3) {//Validación de la cantidad de tarjetas del cliente antes de realizar solicitud.
             //if(cliente.getNumeroSolicitudesEnProceso()==0) Cliente.solicitarTarjetaCredito(cliente);
-            if(cliente.getNumeroSolicitudesEnProceso()==1) System.out.println("Ya tienes una solicitud en curso. Debes esperar a que termine el proceso para poder hacer una nueva solicitud.");
+            if(cliente.getNumeroSolicitudesEnProceso()==1){
+                System.out.println("Ya tienes una solicitud en curso. Debes esperar a que termine el proceso para poder hacer una nueva solicitud.");
+                permiso = false;
+            }
         }
-        if (cliente.getTarjetasCredito().size()==3) System.out.println("No puedes solicitar más tarjetas. Límite máximo alcanzado.");
+        if (cliente.getTarjetasCredito().size()==3){
+            System.out.println("No puedes solicitar más tarjetas. Límite máximo alcanzado.");
+            permiso = false;
+        }
+        return permiso;
     }
 
     public static void revisarStatusSolicitud(Cliente cliente) {

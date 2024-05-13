@@ -18,9 +18,8 @@ public class MenuGerente {
         do {
             System.out.println("1 - Acciones sobre inversionistas");
             System.out.println("2 - Acciones sobre ejecutivos");
-            System.out.println("3 - Ver fondos del banco");
-            System.out.println("4 - Autorizar tarjeta");
-            System.out.println("5 - Ver solicitudes de tarjetas");
+            System.out.println("3 - Acciones de clientes y tarjetas");
+            System.out.println("4 - Ver fondos del banco");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");
             action = scanner.next();
@@ -31,14 +30,12 @@ public class MenuGerente {
                     MenuCapturista.menuCapturista();
                     break;
                 case "3":
-                    mostrarFondos();
+                    MenuEjecutivo.menuEjecutivo();
                     break;
                 case "4":
-                    break;
-                case "5":
+                    mostrarFondos();
                     break;
                 case "0":
-
                     break;
                 default:
                     System.out.println("Opcion inexistente");

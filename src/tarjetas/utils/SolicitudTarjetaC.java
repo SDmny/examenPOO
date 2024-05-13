@@ -1,5 +1,7 @@
 package tarjetas.utils;
 
+import sistema.Sistema;
+import tarjetas.TarjetaCredito;
 import usuarios.Cliente;
 
 import java.time.LocalDate;
@@ -20,16 +22,34 @@ public class SolicitudTarjetaC {
         this.tipoTarjeta = tipo;
         this.idCliente = cliente.getId();
         this.id = IDS;
+        this.fechaSolicitud = LocalDate.now();
         IDS++;
 
     }
 
-    public void aprobarTarjeta(){
-        status = "Solicitud Aprobada";
+    public static void aprobarTarjeta(int id){
         Generar.generarTarjeta(5579);
+        int credito=0, clave=0;
+        for (SolicitudTarjetaC solicitudTarjetaC : Sistema.solicitudes) {
+            if (solicitudTarjetaC.getId() == id){
+                solicitudTarjetaC.setStatus("Solicitud Aprobada");
+                if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.ORO){
+                    credito = 400000;
+                } else if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.PLATINO) {
+                    credito = 150000;
+                } else if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.SIMPLICITY) {
+                    credito = 60000;
+                }
+                TarjetaCredito tarjeta = new TarjetaCredito(clave, credito);
+            }
+        }
     }
-    public void rechazarTarjeta(){
-        status = "Solicitud Rechazada";
+    public static void rechazarTarjeta(int id){
+        for (SolicitudTarjetaC solicitudTarjetaC : Sistema.solicitudes) {
+            if (solicitudTarjetaC.getId() == id){
+                solicitudTarjetaC.setStatus("Solicitud Rechazada");
+            }
+        }
     }
     @Override
     public String toString(){
@@ -58,5 +78,9 @@ public class SolicitudTarjetaC {
 
     public int getId() {
         return id;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
