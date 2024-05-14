@@ -31,8 +31,10 @@ public class MenuClientes {
                     }
                     break;
                 case "2":
+                    depositar(mostrarTarjetas());
                     break;
                 case "3":
+                    retirar(mostrarTarjetas());
                     break;
                 case "0":
                     break;
@@ -40,6 +42,35 @@ public class MenuClientes {
                     System.out.println("Opcion inexistente");
             }
         } while (!action.equals("0"));
+    }
+    private static Tarjeta mostrarTarjetas(){
+        Cliente cliente = (Cliente) UsuarioEnSesion.getInstancia().getUsuarioActual();
+        Tarjeta tarjeta = cliente.getTarjetaDebito();
+        String action="0";
+        System.out.println("Elegir tarjeta: \n1 - Debito");
+        try{
+            if (cliente.getTarjetasCredito().size()>0){
+                for (int i = 0; i < cliente.getTarjetasCredito().size(); i++) {
+                    System.out.println((i+2) + " - Tarjeta "+cliente.getTarjetasCredito().get(i));
+                }
+            }
+            action = scanner.next();
+        } catch (Exception e){
+
+        }
+        switch (action){
+            case "1": tarjeta = cliente.getTarjetaDebito();
+                break;
+            case "2": tarjeta = cliente.getTarjetasCredito().get(0);
+                break;
+            case "3": tarjeta = cliente.getTarjetasCredito().get(1);
+                break;
+            case "4": tarjeta = cliente.getTarjetasCredito().get(2);
+                break;
+            default:
+        }
+        return tarjeta;
+
     }
     private static void depositar(Tarjeta tarjeta){
         if (tarjeta.getClave() == 1234){
