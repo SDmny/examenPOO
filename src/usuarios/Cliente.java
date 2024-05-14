@@ -171,7 +171,7 @@ public class Cliente extends Usuario {
                     }else {
                         seleccion-=1;
                         TarjetaCredito tarjeta = cliente.getTarjetasCredito().get(seleccion);
-                        //tarjeta.comprar(0);
+                        tarjeta.comprarCredito();
                         select = false;
                     }
                 } while (select);
@@ -207,7 +207,7 @@ public class Cliente extends Usuario {
                     }else {
                         opcionPago-=1;
                         TarjetaCredito tarjeta = cliente.getTarjetasCredito().get(opcionPago);
-                        //tarjeta.pagarTarjeta();
+                        tarjeta.pagarTarjeta();
                         pagoValido = false;
                     }
                 } while (pagoValido);
@@ -218,13 +218,14 @@ public class Cliente extends Usuario {
         }
         if (cliente.getTarjetasCredito()==null) System.out.println("\nNo tienes tarjetas de crédito");
     }
+
     @Override
     public String toString () {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String fechaFormateada = fechaRegistro.format(pattern);
         return String.format("ID: %d, %s Fecha registro %s ", id, super.toString(), fechaFormateada);
     }
-    //json no depende del lenguaje
+    
     public TarjetaDebito getTarjetaDebito() {
         return tarjetaDebito;
     }

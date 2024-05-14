@@ -43,14 +43,16 @@ public class MenuClientes {
     }
     private static void depositar(Tarjeta tarjeta){
         if (tarjeta.getClave() == 1234){
-            // depositar debito
+            Cliente cliente = (Cliente) UsuarioEnSesion.getInstancia().getUsuarioActual();
+            cliente.getTarjetaDebito().depositoDebito();
         } else if (tarjeta.getClave() == 5579) {
             Cliente.realizarPagoCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
         }
     }
     private static void retirar(Tarjeta tarjeta){
         if (tarjeta.getClave() == 1234){
-            // retirar debito
+            Cliente cliente = (Cliente) UsuarioEnSesion.getInstancia().getUsuarioActual();
+            cliente.getTarjetaDebito().retirarDebito();
         } else if (tarjeta.getClave() == 5579) {
             Cliente.realizarCompraCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
         }

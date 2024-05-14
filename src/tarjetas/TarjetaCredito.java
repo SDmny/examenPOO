@@ -1,5 +1,7 @@
 package tarjetas;
 
+import java.time.LocalDateTime;
+
 import tarjetas.utils.TipoTarjetaCredito;
 import usuarios.utils.DatosComun;
 
@@ -56,6 +58,7 @@ public class TarjetaCredito extends Tarjeta {
                 saldoPendiente -= pago;
                 System.out.println("Actualizando saldo y crédito disponible...");
                 creditoActual += pago;
+                setFechaHoraUltimoMov(LocalDateTime.now());
                 System.out.println("Pago realizado.");
                 flag = false;
             }
@@ -81,6 +84,7 @@ public class TarjetaCredito extends Tarjeta {
                 creditoActual -= importe;
                 System.out.println("Actualizando saldo y crédito ");
                 saldoPendiente += importe;
+                setFechaHoraUltimoMov(LocalDateTime.now());
                 System.out.println("Compra a crédito realizada.");
                 flag = false;
             }
