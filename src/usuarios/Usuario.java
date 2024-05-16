@@ -31,6 +31,7 @@ public abstract class Usuario {
         this.direccion = direccion;
         this.sucursal = sucursal;
         this.usuario = usuario;
+        this.rol = rol;
         this.contrasena = contrasena;
         this.id = cantidadUsuarios;
         this.birth = birth;
@@ -275,4 +276,5 @@ public abstract class Usuario {
     public String getContrasena() {
         return contrasena;
     }
+
 }

@@ -54,7 +54,7 @@ public class Sistema {
     public static Usuario verificarInicioSesion(String nombreUsuario, String contrasena){
         for (Map.Entry<Gente, ArrayList<Usuario>> entry : usuarios.entrySet()){
             for (Usuario usuarioActual : entry.getValue()){
-                if (usuarioActual.getNombre().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
+                if (usuarioActual.getUsuario().equals(nombreUsuario) && usuarioActual.getContrasena().equals(contrasena)){
                     return usuarioActual;
                 }
             }
