@@ -2,6 +2,7 @@ package menus;
 
 import sistema.Sistema;
 import usuarios.Capturista;
+import usuarios.Cliente;
 import usuarios.Gerente;
 import usuarios.Inversionista;
 import usuarios.utils.DatosComun;
@@ -20,6 +21,7 @@ public class MenuGerente {
             System.out.println("2 - Acciones sobre ejecutivos");
             System.out.println("3 - Acciones de clientes y tarjetas");
             System.out.println("4 - Ver fondos del banco");
+            System.out.println("5 - Acciones de capturistas");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");
             action = scanner.next();
@@ -81,6 +83,64 @@ public class MenuGerente {
                     if(segundaContrasena()){
                         menuMostrarInversionistas();
                     }
+                    break;
+                case "0":
+                    System.out.println("Regresando");
+                    break;
+                default:
+                    System.out.println("Opcion inexistente");
+            }
+        } while (!action.equals("0"));
+    }
+    public static void menuGerenteCapturistas(){
+        int id;
+        String action;
+        do {
+            System.out.println("1 - Registrar capturistas");
+            System.out.println("2 - Modificar capturistas");
+            System.out.println("3 - Eliminar capturistas");
+            System.out.println("4 - Buscar capturistas");
+            System.out.println("0 - Salir");
+            System.out.print("Selección: ");
+            action = scanner.next();
+            switch (action){
+                case "1":
+                    Capturista.registrarCapturista();
+                    break;
+                case "2":
+                    id=obtenerId();
+                    Capturista.modificarCapturista(id);
+                    break;
+                case "3":
+                    id=obtenerId();
+                    Capturista.eliminarCapturista(id);
+                    break;
+                case "4":
+                    menuMostrarCapturistas();
+                    break;
+                case "0":
+                    break;
+                default:
+                    System.out.println("Opcion inexistente");
+            }
+        } while (!action.equals("0"));
+    }
+    private static void menuMostrarCapturistas(){
+        String action, user;
+        do {
+            System.out.println("1 - Mostrar todos los capturistas");
+            System.out.println("2 - Mostrar capturista por usuario");
+            System.out.println("0 - Salir");
+            System.out.print("Selección: ");
+            action = scanner.next();
+            switch (action){
+                case "1":
+                    Capturista.mostrarCapturistas();
+                    break;
+                case "2":
+                    System.out.println("Usuario del capturista: ");
+                    user = scanner.next();
+                    Capturista.mostrarCapturista(user);
                     break;
                 case "0":
                     System.out.println("Regresando");

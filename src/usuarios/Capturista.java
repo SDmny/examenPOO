@@ -18,7 +18,7 @@ public class Capturista extends Empleado {
     //c agradece c:
 
     //METODOS CAPTURISTAS
-    protected static void registrarCapturista() {
+    public static void registrarCapturista() {
         System.out.println("- - - Registrar Capturista de Cuenta - - -");
         ArrayList<String> datosComun = DatosComun.obtenerDatos();
         String nombre = datosComun.get(0);

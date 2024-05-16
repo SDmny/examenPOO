@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e3262af-ad1d-4724-9242-60681e96eddd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/MenuClientes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/MenuClientes.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Cliente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Empleado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Empleado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuClientes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/utils/DatosComun.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/utils/DatosComun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuGerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuGerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Capturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Capturista.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715882244180</updated>
-      <workItem from="1715882249342" duration="2939000" />
+      <workItem from="1715882249342" duration="3241000" />
     </task>
     <servers />
   </component>
