@@ -31,6 +31,7 @@ public class Empleado extends Usuario {
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("No se pudo ingresar el salario, pruebe de nuevo");
+                DatosComun.scanner.nextLine();
             }
         }
         return sueldo;

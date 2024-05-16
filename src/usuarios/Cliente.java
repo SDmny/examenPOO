@@ -25,9 +25,9 @@ public class Cliente extends Usuario {
     private TarjetaDebito tarjetaDebito;
     private int numeroSolicitudesEnProceso;
     private ArrayList<TarjetaCredito> tarjetasCredito=new ArrayList<>();
-    //No me aclaro de qué pedir :´)
+    private boolean eliminar=true;
 
-    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, Sucursal sucursal, String ciudad, String estado, String curp, String direccion, int anioNacimiento, LocalDate fechaNacimiento, String RFC, String nombreUsuario, String contrasena, LocalDate birth){
+    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, Sucursal sucursal, String ciudad, String estado, String curp, String direccion, String RFC, String nombreUsuario, String contrasena, LocalDate birth){
             super(nombre, apellidoPaterno, apellidoMaterno, sexo, ciudad, estado, curp, direccion, sucursal, Gente.CLIENTE, nombreUsuario, contrasena, birth);
             fechaRegistro = LocalDate.now();
             id = num;
@@ -89,6 +89,14 @@ public class Cliente extends Usuario {
 
     public void setNumeroSolicitudesEnProceso(int numeroSolicitudesEnProceso) {
         this.numeroSolicitudesEnProceso = numeroSolicitudesEnProceso;
+    }
+
+    public boolean isEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(boolean eliminar) {
+        this.eliminar = eliminar;
     }
 
     public static void consultarCuentaDebito(TarjetaDebito tarjetaDebito) {
@@ -346,11 +354,11 @@ public class Cliente extends Usuario {
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
-        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
+        Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), ciudad, estado, curp, direccion, DatosComun.generarRFC(nombre, apellido1, apellido2, birth), usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
             Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
         }
-        Sistema.usuarios.get(Gente.CLIENTE).add(inversionista);
+        Sistema.usuarios.get(Gente.CLIENTE).add(cliente);
         System.out.println("Cliente registrado");
     }
 
@@ -360,7 +368,8 @@ public class Cliente extends Usuario {
             System.out.println("No hay clientes registrados:\n");
         } else {
             for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
-                if (usuario.getId() == id) {
+                Cliente cliente = (Cliente) usuario;
+                if (usuario.getId() == id && cliente.eliminar == true) {
                     existe = true;
                     Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
                     break;

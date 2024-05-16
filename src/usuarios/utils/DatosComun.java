@@ -78,7 +78,7 @@ public class DatosComun {
             curp = generarCURP(nombre, apellido1, apellido2, birth, sexo, estado);
         } catch (Exception ew) {
             incorrecto = true;
-            System.out.println("SI SALE ESTE MENSAJE: ERROR EN CURP SOS!!!!");
+            System.out.println("Datos incoherentes, favor de modificar mas tarde");
         }
         datosComun.addAll(Arrays.asList(nombre, apellido1, apellido2, String.valueOf(sexo), ciudad, estado, curp, direccion, usuario, contrasena, String.valueOf(birth)));
         return datosComun;
