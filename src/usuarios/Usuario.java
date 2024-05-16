@@ -152,7 +152,7 @@ public abstract class Usuario {
     // Metodo para imprimir datos basicos
     @Override
     public String toString() {
-        String cadena = String.format("Id: %d; Nombre completo: %s %s %s; Rol: %s; Nombre de usuario: %s,\nCURP: %s, RFC: %s,\n Dirección: %s ", id, nombre, apellido1, apellido2, rol, usuario,curp,rfc,direccion);
+        String cadena = String.format("Id: %d; Nombre completo: %s %s %s; Rol: %s; Nombre de usuario: %s,CURP: %s, RFC: %s, Dirección: %s ", id, nombre, apellido1, apellido2, rol, usuario, curp, rfc, direccion);
         return cadena;
     }
 

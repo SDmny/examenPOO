@@ -37,6 +37,9 @@ public class MenuGerente {
                 case "4":
                     mostrarFondos();
                     break;
+                case "5":
+                    menuGerenteCapturistas();
+                    break;
                 case "0":
                     break;
                 default:
