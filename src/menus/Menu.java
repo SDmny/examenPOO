@@ -16,7 +16,7 @@ public class Menu {
         boolean access = false;
 
         do {
-            System.out.println("- - - Bienvenido al sistema - - -");
+            System.out.println("\n- - - Bienvenido al sistema - - -");
             System.out.println("Inicia sesión para continuar");
 
             System.out.print("Usuario: ");
@@ -40,7 +40,7 @@ public class Menu {
 
     public static void continuar(){
         String next;
-        System.out.println("1 - Volver a iniciar sesión\n2 - Salir del programa");
+        System.out.println("\n1 - Volver a iniciar sesión\n2 - Salir del programa");
         next = scanner.next();
 
         if (next.equals("1")){
@@ -57,7 +57,7 @@ public class Menu {
     public static void menu() {
         Usuario usuario = UsuarioEnSesion.getInstancia().getUsuarioActual();
         String rolLetras = String.valueOf(usuario.getRol());
-        System.out.println(String.format("- - - Menu %s - - -", rolLetras.toLowerCase()));
+        System.out.println(String.format("\n- - - Menu %s - - -", rolLetras.toLowerCase()));
         Gente rol = usuario.getRol();
         switch (rol) {
             case GERENTE:

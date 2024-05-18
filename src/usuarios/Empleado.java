@@ -83,6 +83,6 @@ public class Empleado extends Usuario {
 
     @Override
     public String toString() {
-        return super.toString()+String.format("Salario: %f",salario);
+        return super.toString()+String.format("; Salario: %f",salario);
     }
 }

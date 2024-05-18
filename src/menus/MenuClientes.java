@@ -14,6 +14,7 @@ public class MenuClientes {
     public static void menuCliente(){
         String action;
         do {
+            System.out.println("");
             // metodo para saber si mostrar o no la opcion de solicitud de tarjeta
             if (verificarOpcionSolicitud()){
                 System.out.println("1 - Solicitar tarjeta");

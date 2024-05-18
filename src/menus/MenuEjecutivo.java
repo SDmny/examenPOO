@@ -17,7 +17,7 @@ public class MenuEjecutivo {
         int id;
         String action;
         do {
-            System.out.println("1 - Registrar cliente");
+            System.out.println("\n1 - Registrar cliente");
             System.out.println("2 - Modificar cliente");
             System.out.println("3 - Eliminar cliente");
             System.out.println("4 - Buscar cliente");
@@ -73,7 +73,7 @@ public class MenuEjecutivo {
     private static void menuMostrarClientes(){
         String action, user;
         do {
-            System.out.println("1 - Mostrar todos los clientes");
+            System.out.println("\n1 - Mostrar todos los clientes");
             System.out.println("2 - Mostrar cliente por usuario");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");

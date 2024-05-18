@@ -16,7 +16,7 @@ public class MenuCapturista {
         String action;
         int id;
         do {
-            System.out.println("1 - Registrar ejecutivo de cuenta");
+            System.out.println("\n1 - Registrar ejecutivo de cuenta");
             System.out.println("2 - Modificar ejecutivo de cuenta");
             System.out.println("3 - Eliminar ejecutivo de cuenta");
             System.out.println("4 - Mostrar ejecutivo de cuenta");
@@ -63,7 +63,7 @@ public class MenuCapturista {
     private static void menuMostrarEjecutivos(){
         String action, user;
         do {
-            System.out.println("1 - Mostrar todos los ejecutivos de cuenta");
+            System.out.println("\n1 - Mostrar todos los ejecutivos de cuenta");
             System.out.println("2 - Mostrar ejecutivo por usuario");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");

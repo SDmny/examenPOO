@@ -15,8 +15,8 @@ public class Gerente extends Empleado {
 
     public Gerente(String nombre, String apellido1, String apellido2, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, double salario, String usuario, String contrasena, LocalDate birth) {
         super(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, sucursal, Gente.GERENTE, salario, usuario, contrasena, birth);
-//Contraseña Gerente Madero= a
-// Contraseña Gerente Acueducto= b
+        //Contraseña Gerente Madero= a
+        // Contraseña Gerente Acueducto= b
 
     }
 

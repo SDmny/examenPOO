@@ -11,7 +11,7 @@ public class MenuInversionistas {
         String action;
         Inversionista inversionista = (Inversionista) UsuarioEnSesion.getInstancia().getUsuarioActual();
         do {
-            System.out.println("1 - Proveer fondos al banco");
+            System.out.println("\n1 - Proveer fondos al banco");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");
             action = scanner.next();

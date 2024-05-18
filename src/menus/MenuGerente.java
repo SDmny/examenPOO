@@ -17,7 +17,7 @@ public class MenuGerente {
     public static void menuGerente(){
         String action;
         do {
-            System.out.println("1 - Acciones sobre inversionistas");
+            System.out.println("\n1 - Acciones sobre inversionistas");
             System.out.println("2 - Acciones sobre ejecutivos");
             System.out.println("3 - Acciones de clientes y tarjetas");
             System.out.println("4 - Ver fondos del banco");
@@ -56,7 +56,7 @@ public class MenuGerente {
         String action;
         int id;
         do {
-            System.out.println("1 - Registrar inversionista");
+            System.out.println("\n1 - Registrar inversionista");
             System.out.println("2 - Modificar inversionista");
             System.out.println("3 - Eliminar inversionista");
             System.out.println("4 - Mostrar inversionista");
@@ -99,7 +99,7 @@ public class MenuGerente {
         int id;
         String action;
         do {
-            System.out.println("1 - Registrar capturistas");
+            System.out.println("\n1 - Registrar capturistas");
             System.out.println("2 - Modificar capturistas");
             System.out.println("3 - Eliminar capturistas");
             System.out.println("4 - Buscar capturistas");
@@ -131,7 +131,7 @@ public class MenuGerente {
     private static void menuMostrarCapturistas(){
         String action, user;
         do {
-            System.out.println("1 - Mostrar todos los capturistas");
+            System.out.println("\n1 - Mostrar todos los capturistas");
             System.out.println("2 - Mostrar capturista por usuario");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");
@@ -186,7 +186,7 @@ public class MenuGerente {
     private static void menuMostrarInversionistas(){
         String action, user;
         do {
-            System.out.println("1 - Mostrar todos los inversionistas");
+            System.out.println("\n1 - Mostrar todos los inversionistas");
             System.out.println("2 - Mostrar inversionista por usuario");
             System.out.println("0 - Salir");
             System.out.print("Selección: ");

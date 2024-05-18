@@ -4,6 +4,7 @@ import sistema.Sistema;
 import usuarios.Usuario;
 import usuarios.utils.Gente;
 import usuarios.utils.Sucursal;
+import utils.UsuarioEnSesion;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -36,7 +37,7 @@ public class DatosComun {
                 System.out.print("Ingrese estado: ");
                 estado = scanner.next();
                if(nombre.length()<2||apellido1.length()<2||apellido2.length()<2||estado.length()<2){
-                   throw  new Exception();
+                   throw new Exception();
                }
 
             }
@@ -55,11 +56,13 @@ public class DatosComun {
             try {
                 incorrecto = false;
                 System.out.print("Ingrese sexo (M - Masculino / F - Femenino): ");
-                sexo = (scanner.next()).charAt(0);
+                sexo = (scanner.next()).toUpperCase().charAt(0);
+                if (sexo != 'M' && sexo != 'F'){
+                    throw new Exception();
+                }
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("Hubo un error al ingresar los datos");
-                scanner.next();
             }
         }
         incorrecto = true;
@@ -225,15 +228,24 @@ public class DatosComun {
 
     // metodo para nombre de usuario
     private static String obtenerNombreUsuario() {
-        boolean nombreUsExis = true;
+        boolean nombreUsExis = false;
         String nombUsu = "";
         do {
+            nombreUsExis = false;
             System.out.print("Ingrese nombre de usuario: ");
             nombUsu = scanner.next();
-            nombreUsExis = false;
-            if (Sistema.usuarios.containsKey(nombUsu) == true) {
-                nombreUsExis = true;
+            Usuario usuario = UsuarioEnSesion.getInstancia().getUsuarioActual();
+            for (Map.Entry<Gente, ArrayList<Usuario>> entry : Sistema.usuarios.entrySet()) {
+                for (Usuario user : entry.getValue()) {
+                    if (user.getUsuario().equals(nombUsu)) {
+                        nombreUsExis = true;
+                        break;
+                    }
+                }
             }
+            /*if (Sistema.usuarios.containsKey(nombUsu)) {
+                nombreUsExis = true;
+            }*/
             if (nombreUsExis) {
                 System.out.println("Nombre de usuario existente");
             }
@@ -249,7 +261,7 @@ public class DatosComun {
         int dia = 43, mes = 1, ano = 2024;
         boolean incorrecto = true;
 
-        while ((dia > 32 || dia < 0) || (mes < 0 || mes > 12) || (ano < 1900) || incorrecto) {
+        while ((dia > 32 || dia < 0) || (mes < 0 || mes > 12) || (ano < 1900 || ano > 2024) || incorrecto) {
             boolean mostrar=true;
             try {
                 incorrecto = false;
@@ -271,7 +283,7 @@ public class DatosComun {
                 System.out.println("Datos incorrectos, pruebe de nuevo");
                 scanner.next();
             }
-            if(((dia > 31|| dia < 0) || (mes < 0 || mes > 12) || (ano < 1900)) && mostrar){
+            if(((dia > 31|| dia < 0) || (mes < 0 || mes > 12) || (ano < 1900 || ano > 2024)) && mostrar){
                 System.out.println("Datos incorrectos, pruebe de nuevo");
             }
         }

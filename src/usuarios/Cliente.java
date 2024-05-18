@@ -19,8 +19,6 @@ import java.util.*;
 
 
 public class Cliente extends Usuario {
-    private static int num = 1;
-    private int id;
     private LocalDate fechaRegistro;
     private TarjetaDebito tarjetaDebito;
     private int numeroSolicitudesEnProceso;
@@ -30,33 +28,11 @@ public class Cliente extends Usuario {
     public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, Sucursal sucursal, String ciudad, String estado, String curp, String direccion, String RFC, String nombreUsuario, String contrasena, LocalDate birth){
             super(nombre, apellidoPaterno, apellidoMaterno, sexo, ciudad, estado, curp, direccion, sucursal, Gente.CLIENTE, nombreUsuario, contrasena, birth);
             fechaRegistro = LocalDate.now();
-            id = num;
-            num++;
             tarjetaDebito = new TarjetaDebito(1234);
     }
     public ArrayList<TarjetaCredito> getTarjetasCredito() {
         return tarjetasCredito;
     }
-
-
-//        public static void realizarCompra () {
-//
-//        }
-//        public static void pagarTarjeta () {
-//
-//        }
-        //Método para objetos precargados del sistema.
-        /*public void realizarDeposito(double monto){
-            tarjetaDebito.depositar(monto);
-        }*/
-        //Método para depósitos ingresados por el Usuario en Sesión.
-        /*public void depositarDebito() {
-            tarjetaDebito.depositoDebito();
-        }*/
-
-        /*public void retirarDebito(TarjetaDebito tarjeta) {
-            tarjetaDebito.retirar(tarjeta);
-        }*/
 
         
     public static void buscarCliente(){
@@ -117,11 +93,8 @@ public class Cliente extends Usuario {
 
     public static boolean solicitudTarjetaCredito(Cliente cliente) {
         boolean permiso = true;
-        System.out.println("\tSolicitudes pendientes: \n");
-        if (cliente.getTarjetasCredito().size()<3) {//Validación de la cantidad de tarjetas del cliente antes de realizar solicitud.
-            //if(cliente.getNumeroSolicitudesEnProceso()==0) Cliente.solicitarTarjetaCredito(cliente);
+        if (cliente.getTarjetasCredito().size()<3) {
             if(cliente.getNumeroSolicitudesEnProceso()==1){
-                System.out.println("Ya tienes una solicitud en curso. Debes esperar a que termine el proceso para poder hacer una nueva solicitud.");
                 permiso = false;
             }
         }
@@ -231,106 +204,14 @@ public class Cliente extends Usuario {
     public String toString () {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String fechaFormateada = fechaRegistro.format(pattern);
-        return String.format("ID: %d, %s Fecha registro %s ", id, super.toString(), fechaFormateada);
+        return String.format("%s Fecha registro %s ", super.toString(), fechaFormateada);
     }
     
     public TarjetaDebito getTarjetaDebito() {
         return tarjetaDebito;
     }
 
-    /*public static void solicitarTarjetaCredito (Cliente cliente) {
-        int opciones=0,opcion;
-        boolean band = true;
-        SolicitudTarjetaC solicitud;
-        TarjetaDebito tarjetaDebito = cliente.getTarjetaDebito();
-        if(tarjetaDebito.simplicity(tarjetaDebito.getSaldo())) {
-            opciones=1;
-            if(tarjetaDebito.platino(tarjetaDebito.getSaldo())) {
-                opciones=2;
-                if(tarjetaDebito.oro(tarjetaDebito.getSaldo())) {
-                    opciones=3;
-                }
-            }
-        }
-        switch(opciones) {
-            case 1:
-                do{
-                    System.out.println("Puedes seleccionar el tipo Simplicity");
-                    System.out.println("1.Solicitar\n2. Salir");
-                    opcion=DatosComun.pedirNumeroInt();
-                    if(opcion==1) {
-                        solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                        Sistema.solicitudes.add(solicitud);
-                        cliente.setNumeroSolicitudesEnProceso(1);
-                        System.out.println("Solicitud de tarjeta Simplicity realizada");
-                        band=false;
-                    }else System.out.println("Opción no válida");
-                } while(band);
-                break;
-            case 2:
-                do{
-                    System.out.println("Seleccione el tipo de tarjeta: ");
-                    System.out.println("1. Simplicity\n2. Platino");
-                    opcion = DatosComun.pedirNumeroInt();
-                    switch (opcion) {
-                        case 1:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Simplicity realizada");
-                            band=false;
-                            break;
-                        case 2:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Platino realizada");
-                            band=false;
-                            break;
-                        default:
-                            System.out.println("Opcion no valida");
-                            break;
-                    }
-                } while(band);
-                break;
-            case 3:
-                do{
-                    System.out.println("Seleccione el tipo de tarjeta: ");
-                    System.out.println("1. Simplicity\n2. Platino\n3. Oro");
-                    opcion = DatosComun.pedirNumeroInt();
-                    switch (opcion) {
-                        case 1:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Simplicity realizada");
-                            band=false;
-                            break;
-                        case 2:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Platino realizada");
-                            band=false;
-                            break;
-                        case 3:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.ORO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Oro realizada");
-                            band=false;
-                            break;
-                        default:
-                            System.out.println("Opción no válida");
-                            break;
-                    }
-                } while(band);
-                break;
-            default:
-                System.out.println("No tienes ofertas disponibles.");
-                break;
-        }
-    }*/
+
     public void verTodasLasTarjetas() {
         System.out.println("Tarjeta de debito: ");
         System.out.println(tarjetaDebito.toString());
