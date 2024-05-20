@@ -19,44 +19,20 @@ import java.util.*;
 
 
 public class Cliente extends Usuario {
-    private static int num = 1;
-   // private int id; :0)
     private LocalDate fechaRegistro;
     private TarjetaDebito tarjetaDebito;
     private int numeroSolicitudesEnProceso;
     private ArrayList<TarjetaCredito> tarjetasCredito=new ArrayList<>();
-    //No me aclaro de qué pedir :´)
+    private boolean eliminar=true;
 
-    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, String nombreUsuario, String contrasena, LocalDate birth) {
+    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, Sucursal sucursal, String ciudad, String estado, String curp, String direccion, String RFC, String nombreUsuario, String contrasena, LocalDate birth){
             super(nombre, apellidoPaterno, apellidoMaterno, sexo, ciudad, estado, curp, direccion, sucursal, Gente.CLIENTE, nombreUsuario, contrasena, birth);
             fechaRegistro = LocalDate.now();
-            id = num;
-            num++;
             tarjetaDebito = new TarjetaDebito(1234);
     }
     public ArrayList<TarjetaCredito> getTarjetasCredito() {
         return tarjetasCredito;
     }
-
-
-//        public static void realizarCompra () {
-//
-//        }
-//        public static void pagarTarjeta () {
-//
-//        }
-        //Método para objetos precargados del sistema.
-        /*public void realizarDeposito(double monto){
-            tarjetaDebito.depositar(monto);
-        }*/
-        //Método para depósitos ingresados por el Usuario en Sesión.
-        /*public void depositarDebito() {
-            tarjetaDebito.depositoDebito();
-        }*/
-
-        /*public void retirarDebito(TarjetaDebito tarjeta) {
-            tarjetaDebito.retirar(tarjeta);
-        }*/
 
         
     public static void buscarCliente(){
@@ -79,6 +55,9 @@ public class Cliente extends Usuario {
             }
         }
     }
+    public int getId() {
+        return id;
+    }
 
     public int getNumeroSolicitudesEnProceso() {
         return numeroSolicitudesEnProceso;
@@ -86,6 +65,14 @@ public class Cliente extends Usuario {
 
     public void setNumeroSolicitudesEnProceso(int numeroSolicitudesEnProceso) {
         this.numeroSolicitudesEnProceso = numeroSolicitudesEnProceso;
+    }
+
+    public boolean isEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(boolean eliminar) {
+        this.eliminar = eliminar;
     }
 
     public static void consultarCuentaDebito(TarjetaDebito tarjetaDebito) {
@@ -106,11 +93,8 @@ public class Cliente extends Usuario {
 
     public static boolean solicitudTarjetaCredito(Cliente cliente) {
         boolean permiso = true;
-        System.out.println("\tSolicitudes pendientes: \n");
-        if (cliente.getTarjetasCredito().size()<3) {//Validación de la cantidad de tarjetas del cliente antes de realizar solicitud.
-            //if(cliente.getNumeroSolicitudesEnProceso()==0) Cliente.solicitarTarjetaCredito(cliente);
+        if (cliente.getTarjetasCredito().size()<3) {
             if(cliente.getNumeroSolicitudesEnProceso()==1){
-                System.out.println("Ya tienes una solicitud en curso. Debes esperar a que termine el proceso para poder hacer una nueva solicitud.");
                 permiso = false;
             }
         }
@@ -220,106 +204,14 @@ public class Cliente extends Usuario {
     public String toString () {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String fechaFormateada = fechaRegistro.format(pattern);
-        return String.format(" %s Fecha registro %s ", super.toString(), fechaFormateada);
+        return String.format("%s Fecha registro %s ", super.toString(), fechaFormateada);
     }
     
     public TarjetaDebito getTarjetaDebito() {
         return tarjetaDebito;
     }
 
-    /*public static void solicitarTarjetaCredito (Cliente cliente) {
-        int opciones=0,opcion;
-        boolean band = true;
-        SolicitudTarjetaC solicitud;
-        TarjetaDebito tarjetaDebito = cliente.getTarjetaDebito();
-        if(tarjetaDebito.simplicity(tarjetaDebito.getSaldo())) {
-            opciones=1;
-            if(tarjetaDebito.platino(tarjetaDebito.getSaldo())) {
-                opciones=2;
-                if(tarjetaDebito.oro(tarjetaDebito.getSaldo())) {
-                    opciones=3;
-                }
-            }
-        }
-        switch(opciones) {
-            case 1:
-                do{
-                    System.out.println("Puedes seleccionar el tipo Simplicity");
-                    System.out.println("1.Solicitar\n2. Salir");
-                    opcion=DatosComun.pedirNumeroInt();
-                    if(opcion==1) {
-                        solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                        Sistema.solicitudes.add(solicitud);
-                        cliente.setNumeroSolicitudesEnProceso(1);
-                        System.out.println("Solicitud de tarjeta Simplicity realizada");
-                        band=false;
-                    }else System.out.println("Opción no válida");
-                } while(band);
-                break;
-            case 2:
-                do{
-                    System.out.println("Seleccione el tipo de tarjeta: ");
-                    System.out.println("1. Simplicity\n2. Platino");
-                    opcion = DatosComun.pedirNumeroInt();
-                    switch (opcion) {
-                        case 1:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Simplicity realizada");
-                            band=false;
-                            break;
-                        case 2:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Platino realizada");
-                            band=false;
-                            break;
-                        default:
-                            System.out.println("Opcion no valida");
-                            break;
-                    }
-                } while(band);
-                break;
-            case 3:
-                do{
-                    System.out.println("Seleccione el tipo de tarjeta: ");
-                    System.out.println("1. Simplicity\n2. Platino\n3. Oro");
-                    opcion = DatosComun.pedirNumeroInt();
-                    switch (opcion) {
-                        case 1:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.SIMPLICITY);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Simplicity realizada");
-                            band=false;
-                            break;
-                        case 2:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.PLATINO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Platino realizada");
-                            band=false;
-                            break;
-                        case 3:
-                            solicitud = new SolicitudTarjetaC(cliente, TipoTarjetaCredito.ORO);
-                            Sistema.solicitudes.add(solicitud);
-                            cliente.setNumeroSolicitudesEnProceso(1);
-                            System.out.println("Solicitud de tarjeta Oro realizada");
-                            band=false;
-                            break;
-                        default:
-                            System.out.println("Opción no válida");
-                            break;
-                    }
-                } while(band);
-                break;
-            default:
-                System.out.println("No tienes ofertas disponibles.");
-                break;
-        }
-    }*/
+
     public void verTodasLasTarjetas() {
         System.out.println("Tarjeta de debito: ");
         System.out.println(tarjetaDebito.toString());
@@ -343,7 +235,7 @@ public class Cliente extends Usuario {
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
-        Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
+        Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), ciudad, estado, curp, direccion, DatosComun.generarRFC(nombre, apellido1, apellido2, birth), usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
             Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
         }
@@ -352,58 +244,18 @@ public class Cliente extends Usuario {
     }
 
     public static void eliminarClientes(int id) {
-        int eliminar=0;
         boolean existe = false;
-        boolean nosepuede=false;
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
             System.out.println("No hay clientes registrados:\n");
         } else {
             for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
-                if (usuario.getId() == id) {
-                    existe=true;
-                    if(((Cliente)usuario).numeroSolicitudesEnProceso>0){
-                        System.out.println("El cliente tiene solicitudes de tarjeta en proceso");
-                        nosepuede=true;
-                    }
-                    if (!((Cliente)usuario).getTarjetasCredito().isEmpty()){
-                        System.out.println("El cliente tiene tarjeta(s) de crédito");
-                        nosepuede=true;
-                    }
-                    if(((Cliente)usuario).getTarjetaDebito().getSaldo()>=6000){
-                        System.out.println("El cliente tiene más de 6000 pesos en su tarjeta de debito");
-                        nosepuede=true;
-                    }
-                    if(nosepuede){
-                    System.out.println("El cliente cuenta con datos que impiden eliminarlo, ¿desea eliminar?");
-                    System.out.println("1. Si\n2. No");
-                    try {
-                        eliminar = DatosComun.scanner.nextInt();
-                        DatosComun.scanner.nextLine();
-                        if (eliminar < 1 || eliminar > 2) {
-                            throw new Exception();
-                        }
-                    } catch (Exception ew) {
-                        System.out.println("Esa opción no se encuentra");
-                        System.out.println("Sí el programa no continua, ingrese enter");
-                        DatosComun.scanner.nextLine();
-                    }
-                    if(eliminar==1){
-                        Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
-                        System.out.println("El cliente se ha eliminado");
-                        existe=false;
-                        break;}
-                    else {
-                        System.out.println("El cliente no se eliminó");
-                    }}
-                    else {
-                        Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
-                        existe=false;
-                        break;
-                    }
-
+                Cliente cliente = (Cliente) usuario;
+                if (usuario.getId() == id && cliente.eliminar == true) {
+                    existe = true;
+                    Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
+                    break;
 
                 }
-                break;
             }
             if (!existe) {
                 System.out.println("El Cliente no existe");

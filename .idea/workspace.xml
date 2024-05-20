@@ -6,24 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="8e3262af-ad1d-4724-9242-60681e96eddd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/Menu$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/Menu$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/MenuClientes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/MenuClientes.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/menus/MenuInversionistas.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/menus/MenuInversionistas.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/sistema/Sistema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/sistema/Sistema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/tarjetas/Tarjeta.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/tarjetas/Tarjeta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/tarjetas/TarjetaCredito.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/tarjetas/TarjetaCredito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/tarjetas/TarjetaDebito.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/tarjetas/TarjetaDebito.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Capturista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Capturista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Ejecutivo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Ejecutivo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Empleado.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Empleado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Gerente.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Gerente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Inversionista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Inversionista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Zoo/usuarios/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Zoo/usuarios/Usuario.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sistema/Sistema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sistema/Sistema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuCapturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuCapturista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuClientes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuGerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuGerente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tarjetas/TarjetaDebito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/TarjetaDebito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Capturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Capturista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Empleado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Gerente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/usuarios/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,33 +31,33 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2gYl9R7Do9tImB0Dm1QUfT6wvlW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "examen3",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;examen3&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -85,7 +80,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715882244180</updated>
-      <workItem from="1715882249342" duration="549000" />
+      <workItem from="1715882249342" duration="4082000" />
+      <workItem from="1716003217453" duration="12000" />
+      <workItem from="1716069164608" duration="3135000" />
     </task>
     <servers />
   </component>

@@ -14,6 +14,7 @@ public class MenuClientes {
     public static void menuCliente(){
         String action;
         do {
+            System.out.println("");
             // metodo para saber si mostrar o no la opcion de solicitud de tarjeta
             if (verificarOpcionSolicitud()){
                 System.out.println("1 - Solicitar tarjeta");
@@ -78,6 +79,8 @@ public class MenuClientes {
         } else if (tarjeta.getClave() == 5579) {
             Cliente.realizarPagoCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
         }
+        Cliente cliente = (Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual();
+        cliente.setEliminar(false);
     }
     private static void retirar(Tarjeta tarjeta){
         if (tarjeta.getClave() == 1234){
@@ -86,6 +89,8 @@ public class MenuClientes {
         } else if (tarjeta.getClave() == 5579) {
             Cliente.realizarCompraCredito((Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual());
         }
+        Cliente cliente = (Cliente)UsuarioEnSesion.getInstancia().getUsuarioActual();
+        cliente.setEliminar(false);
     }
     private static boolean verificarOpcionSolicitud(){
         boolean mostrar = false;
@@ -116,6 +121,9 @@ public class MenuClientes {
         SolicitudTarjetaC solicitud;
         System.out.println("Solicitar: ");
         String tarjeta = scanner.next();
+        if (!tarjeta.equals("O")&&!tarjeta.equals("P")&&!tarjeta.equals("S")){
+            cliente.setEliminar(false);
+        }
         switch (tarjeta){
             case "O":
                 if (cliente.getTarjetaDebito().getSaldo() >= 200000 && oro){

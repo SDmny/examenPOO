@@ -50,10 +50,11 @@ public class TarjetaDebito extends Tarjeta {
                 saldo += deposito;
                 setFechaHoraUltimoMov(LocalDateTime.now());
                 System.out.println("Depósito realizado con éxito.");
+                System.out.println("Saldo actual: "+saldo);
                 flag = false;
             }
             if (deposito < 0) {
-                System.out.println("Error. El monto no puede ser menor a 0.");
+                System.out.println("Error. El monto no puede ser menor a 0");
             }else if(deposito == 0) {
                 System.out.println("Cancelando operación...");
                 flag = false;
@@ -73,12 +74,11 @@ public class TarjetaDebito extends Tarjeta {
                 saldo -= retiro;
                 setFechaHoraUltimoMov(LocalDateTime.now());
                 System.out.println("Retiro realizado con éxito");
+                System.out.println("Saldo actual: "+saldo);
                 flag = false;
-            }
-            if (retiro > saldo) {
+            } else if (retiro > saldo) {
                 System.out.println("Error. Fondos insuficientes. Intenta de nuevo");
-            }
-            if (retiro == 0) {
+            } else if (retiro == 0) {
                 System.out.println("Cancelando la operación...");
                 flag = false;
             }

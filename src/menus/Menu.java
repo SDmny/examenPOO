@@ -1,5 +1,7 @@
 package menus;
 import sistema.Sistema;
+import usuarios.Gerente;
+import usuarios.Inversionista;
 import usuarios.Usuario;
 import usuarios.utils.Gente;
 import utils.UsuarioEnSesion;
@@ -41,7 +43,7 @@ public class Menu {
         System.out.println("1 - Volver a iniciar sesión\n2 - Salir del programa");
         next = scanner.next();
 
-        if (Objects.equals(next, "1")){
+        if (next == "1"){
             UsuarioEnSesion.getInstancia().cerrarSesion();
             iniciarSesion();
         } else if (!Objects.equals(next, "2")) {
@@ -74,7 +76,6 @@ public class Menu {
                 MenuClientes.menuCliente();
                 break;
             default:
-                break;
         }
         continuar();
     }

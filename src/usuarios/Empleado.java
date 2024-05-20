@@ -31,6 +31,7 @@ public class Empleado extends Usuario {
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("No se pudo ingresar el salario, pruebe de nuevo");
+                DatosComun.scanner.nextLine();
             }
         }
         return sueldo;
@@ -82,6 +83,6 @@ public class Empleado extends Usuario {
 
     @Override
     public String toString() {
-        return super.toString()+String.format("Salario: %f",salario);
+        return super.toString()+String.format("; Salario: %f",salario);
     }
 }
