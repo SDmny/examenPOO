@@ -9,6 +9,7 @@ import usuarios.utils.DatosComun;
 import usuarios.utils.Gente;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MenuEjecutivo {
@@ -58,7 +59,7 @@ public class MenuEjecutivo {
     private static int obtenerId(){
         int id = 0;
         boolean incorrecto = true;
-        System.out.print("ID del inversionista a eliminar");
+        System.out.print("ID del Cliente: ");
         while (incorrecto) {
             try {
                 incorrecto = false;
@@ -66,6 +67,7 @@ public class MenuEjecutivo {
             } catch (Exception e){
                 incorrecto = true;
                 System.out.println("Error");
+                scanner.nextLine();
             }
         }
         return id;
@@ -112,9 +114,9 @@ public class MenuEjecutivo {
         if (id != 0){
             System.out.print("1 - Aprobar\n2 - Rechazar");
             String action = scanner.next();
-            if (action == "1"){
+            if (Objects.equals(action, "1")){
                 SolicitudTarjetaC.aprobarTarjeta(id);
-            } else if (action == "2") {
+            } else if (Objects.equals(action, "2")) {
                 SolicitudTarjetaC.rechazarTarjeta(id);
             } else {
                 System.out.println("Acción inexistente");

@@ -35,14 +35,16 @@ public class DatosComun {
                 ciudad = scanner.next();
                 System.out.print("Ingrese estado: ");
                 estado = scanner.next();
-               if(nombre.length()<2||apellido1.length()<2||apellido2.length()<2||estado.length()<2){
+               if(nombre.length()<3||apellido1.length()<3||apellido2.length()<3||estado.length()<3){
                    throw  new Exception();
                }
 
             }
             catch (Exception ew){
                 incorrecto=true;
-                System.out.println("Los datos deben al menos dos letras");
+                System.out.println("Los datos deben tener más de dos letras");
+                System.out.println("Si no continua, presione enter");
+                DatosComun.scanner.nextLine();
             }
         }
         incorrecto=true;
@@ -56,16 +58,22 @@ public class DatosComun {
                 incorrecto = false;
                 System.out.print("Ingrese sexo (M - Masculino / F - Femenino): ");
                 sexo = (scanner.next()).charAt(0);
+                if(sexo!='M'){
+                    if(sexo!='F'){
+                        throw new Exception();
+                    }
+                }
             } catch (Exception ew) {
                 incorrecto = true;
                 System.out.println("Hubo un error al ingresar los datos");
-                scanner.next();
+                scanner.nextLine();
             }
         }
         incorrecto = true;
         while (incorrecto) {
             try {
                 incorrecto = false;
+                System.out.println("Ingrese fecha de nacimiento: ");
                 birth = asignarFecha();
             } catch (Exception ew) {
                 incorrecto = true;
@@ -132,7 +140,7 @@ public class DatosComun {
                     } catch (Exception ew) {
                         incorrecto = true;
                         System.out.println("El valor no pudo ser ingresado");
-                        scanner.next();
+                        scanner.nextLine();
                     }
                     break;
                 case 1:
@@ -147,7 +155,7 @@ public class DatosComun {
                         incorrecto = false;
                         System.out.println("Ingrese el nuevo valor: ");
                         dato = scanner.nextLine();
-                        if (dato.length() < 2) {
+                        if (dato.length() < 3) {
                             System.out.println("Debe tener más de dos letras");
                             throw new Exception();
                         }
@@ -155,7 +163,7 @@ public class DatosComun {
                     } catch (Exception ew) {
                         incorrecto = true;
                         System.out.println("El valor no pudo ser ingresado, pruebe de nuevo");
-                        scanner.next();
+                        scanner.nextLine();
                     }
                     break;
                 case 10:
@@ -231,8 +239,14 @@ public class DatosComun {
             System.out.print("Ingrese nombre de usuario: ");
             nombUsu = scanner.next();
             nombreUsExis = false;
-            if (Sistema.usuarios.containsKey(nombUsu) == true) {
-                nombreUsExis = true;
+            for (Map.Entry<Gente, ArrayList<Usuario>> entry : Sistema.usuarios.entrySet()) {
+                for (Usuario user : entry.getValue()) {
+                    if(nombUsu.equals(user.getUsuario())){
+                        nombreUsExis=true;
+                        break;
+
+                    }
+                }
             }
             if (nombreUsExis) {
                 System.out.println("Nombre de usuario existente");
@@ -249,7 +263,7 @@ public class DatosComun {
         int dia = 43, mes = 1, ano = 2024;
         boolean incorrecto = true;
 
-        while ((dia > 32 || dia < 0) || (mes < 0 || mes > 12) || (ano < 1900) || incorrecto) {
+        while ((dia > 32 || dia < 0) || (mes < 0 || mes > 12) || (ano < 1900||ano>2024) || incorrecto) {
             boolean mostrar=true;
             try {
                 incorrecto = false;
@@ -269,9 +283,10 @@ public class DatosComun {
                 mostrar=false;
                 incorrecto = true;
                 System.out.println("Datos incorrectos, pruebe de nuevo");
-                scanner.next();
+                System.out.println("Si no continua, presione enter");
+                scanner.nextLine();
             }
-            if(((dia > 31|| dia < 0) || (mes < 0 || mes > 12) || (ano < 1900)) && mostrar){
+            if(((dia > 31|| dia < 0) || (mes < 0 || mes > 12) || (ano < 1900||ano>2024)) && mostrar){
                 System.out.println("Datos incorrectos, pruebe de nuevo");
             }
         }
@@ -307,6 +322,7 @@ public class DatosComun {
             } catch(IllegalArgumentException error){
                 System.out.println("Error: "+error.getMessage());
                 comprobacion=true;
+                DatosComun.scanner.nextLine();
             }
             catch (InputMismatchException e) {
                 System.out.println("Error: Debes ingresar un número entero.");
@@ -351,6 +367,7 @@ public class DatosComun {
             catch (InputMismatchException e) {
                 System.out.println("Error: Debes ingresar un número válido.");
                 comprobacion=true;
+                DatosComun.scanner.nextLine();
             }
             catch (Exception error) {
                 System.out.println("Error. Intente de nuevo. ");

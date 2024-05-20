@@ -48,7 +48,7 @@ public class MenuCapturista {
     private static int obtenerId(){
         int id = 0;
         boolean incorrecto = true;
-        System.out.print("ID del inversionista a eliminar");
+        System.out.print("ID del Ejecutivo: ");
         while (incorrecto) {
             try {
                 incorrecto = false;
@@ -56,6 +56,7 @@ public class MenuCapturista {
             } catch (Exception e){
                 incorrecto = true;
                 System.out.println("Error");
+                scanner.nextLine();
             }
         }
         return id;

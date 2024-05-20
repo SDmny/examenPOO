@@ -49,14 +49,13 @@ public class MenuClientes {
         String action="0";
         System.out.println("Elegir tarjeta: \n1 - Debito");
         try{
-            if (cliente.getTarjetasCredito().size()>0){
+            if (!cliente.getTarjetasCredito().isEmpty()){
                 for (int i = 0; i < cliente.getTarjetasCredito().size(); i++) {
                     System.out.println((i+2) + " - Tarjeta "+cliente.getTarjetasCredito().get(i));
                 }
             }
             action = scanner.next();
         } catch (Exception e){
-
         }
         switch (action){
             case "1": tarjeta = cliente.getTarjetaDebito();

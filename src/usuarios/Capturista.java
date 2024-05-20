@@ -33,11 +33,11 @@ public class Capturista extends Empleado {
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
         double salario = asignarSalario();
-        Ejecutivo ejecutivo = new Ejecutivo(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), salario, usuario, contrasena, birth);
+        Capturista capturista = new Capturista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), salario, usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.CAPTURISTA)) {
             Sistema.usuarios.put(Gente.CAPTURISTA, new ArrayList<>());
         }
-        Sistema.usuarios.get(Gente.CAPTURISTA).add(ejecutivo);
+        Sistema.usuarios.get(Gente.CAPTURISTA).add(capturista);
         System.out.println("Capturista registrado");
     }
     public static void eliminarCapturista(int id) {

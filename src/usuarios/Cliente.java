@@ -20,14 +20,14 @@ import java.util.*;
 
 public class Cliente extends Usuario {
     private static int num = 1;
-    private int id;
+   // private int id; :0)
     private LocalDate fechaRegistro;
     private TarjetaDebito tarjetaDebito;
     private int numeroSolicitudesEnProceso;
     private ArrayList<TarjetaCredito> tarjetasCredito=new ArrayList<>();
     //No me aclaro de qué pedir :´)
 
-    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, Sucursal sucursal, String ciudad, String estado, String curp, String direccion, int anioNacimiento, LocalDate fechaNacimiento, String RFC, String nombreUsuario, String contrasena, LocalDate birth){
+    public Cliente(String nombre, String apellidoPaterno, String apellidoMaterno, char sexo, String ciudad, String estado, String curp, String direccion, Sucursal sucursal, String nombreUsuario, String contrasena, LocalDate birth) {
             super(nombre, apellidoPaterno, apellidoMaterno, sexo, ciudad, estado, curp, direccion, sucursal, Gente.CLIENTE, nombreUsuario, contrasena, birth);
             fechaRegistro = LocalDate.now();
             id = num;
@@ -78,9 +78,6 @@ public class Cliente extends Usuario {
                 System.out.println("No se encontro este Cliente");
             }
         }
-    }
-    public int getId() {
-        return id;
     }
 
     public int getNumeroSolicitudesEnProceso() {
@@ -223,7 +220,7 @@ public class Cliente extends Usuario {
     public String toString () {
         DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String fechaFormateada = fechaRegistro.format(pattern);
-        return String.format("ID: %d, %s Fecha registro %s ", id, super.toString(), fechaFormateada);
+        return String.format(" %s Fecha registro %s ", super.toString(), fechaFormateada);
     }
     
     public TarjetaDebito getTarjetaDebito() {
@@ -346,26 +343,67 @@ public class Cliente extends Usuario {
         String usuario = datosComun.get(8);
         String contrasena = datosComun.get(9);
         LocalDate birth = LocalDate.parse(datosComun.get(10));
-        Inversionista inversionista = new Inversionista(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
+        Cliente cliente = new Cliente(nombre, apellido1, apellido2, sexo, ciudad, estado, curp, direccion, UsuarioEnSesion.getInstancia().getUsuarioActual().getSucursal(), usuario, contrasena, birth);
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
             Sistema.usuarios.put(Gente.CLIENTE, new ArrayList<>());
         }
-        Sistema.usuarios.get(Gente.CLIENTE).add(inversionista);
+        Sistema.usuarios.get(Gente.CLIENTE).add(cliente);
         System.out.println("Cliente registrado");
     }
 
     public static void eliminarClientes(int id) {
+        int eliminar=0;
         boolean existe = false;
+        boolean nosepuede=false;
         if (!Sistema.usuarios.containsKey(Gente.CLIENTE)) {
             System.out.println("No hay clientes registrados:\n");
         } else {
             for (Usuario usuario : Sistema.usuarios.get(Gente.CLIENTE)) {
                 if (usuario.getId() == id) {
-                    existe = true;
-                    Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
-                    break;
+                    existe=true;
+                    if(((Cliente)usuario).numeroSolicitudesEnProceso>0){
+                        System.out.println("El cliente tiene solicitudes de tarjeta en proceso");
+                        nosepuede=true;
+                    }
+                    if (!((Cliente)usuario).getTarjetasCredito().isEmpty()){
+                        System.out.println("El cliente tiene tarjeta(s) de crédito");
+                        nosepuede=true;
+                    }
+                    if(((Cliente)usuario).getTarjetaDebito().getSaldo()>=6000){
+                        System.out.println("El cliente tiene más de 6000 pesos en su tarjeta de debito");
+                        nosepuede=true;
+                    }
+                    if(nosepuede){
+                    System.out.println("El cliente cuenta con datos que impiden eliminarlo, ¿desea eliminar?");
+                    System.out.println("1. Si\n2. No");
+                    try {
+                        eliminar = DatosComun.scanner.nextInt();
+                        DatosComun.scanner.nextLine();
+                        if (eliminar < 1 || eliminar > 2) {
+                            throw new Exception();
+                        }
+                    } catch (Exception ew) {
+                        System.out.println("Esa opción no se encuentra");
+                        System.out.println("Sí el programa no continua, ingrese enter");
+                        DatosComun.scanner.nextLine();
+                    }
+                    if(eliminar==1){
+                        Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
+                        System.out.println("El cliente se ha eliminado");
+                        existe=false;
+                        break;}
+                    else {
+                        System.out.println("El cliente no se eliminó");
+                    }}
+                    else {
+                        Sistema.usuarios.get(Gente.CLIENTE).remove(usuario);
+                        existe=false;
+                        break;
+                    }
+
 
                 }
+                break;
             }
             if (!existe) {
                 System.out.println("El Cliente no existe");
