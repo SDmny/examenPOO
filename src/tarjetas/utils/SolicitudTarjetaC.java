@@ -10,29 +10,30 @@ public class SolicitudTarjetaC {
 
     private Cliente cliente;
     private LocalDate fechaSolicitud;
-    private TipoTarjetaCredito  tipoTarjeta;
+    private TipoTarjetaCredito tipoTarjeta;
     private String status;
     private int idCliente;
     private int id;
-    private static int IDS=1;
+    private static int IDS = 1;
 
-    public SolicitudTarjetaC(Cliente cliente, TipoTarjetaCredito tipo){
+    public SolicitudTarjetaC(Cliente cliente, TipoTarjetaCredito tipo) {
         this.cliente = cliente;
-        this.status= "En espera";
+        this.status = "En espera";
         this.tipoTarjeta = tipo;
         this.idCliente = cliente.getId();
         this.id = IDS;
         this.fechaSolicitud = LocalDate.now();
         IDS++;
 
+
     }
 
-    public static void aprobarTarjeta(int id){
-        int credito=0;
+    public static void aprobarTarjeta(int id) {
+        int credito = 0;
         for (SolicitudTarjetaC solicitudTarjetaC : Sistema.solicitudes) {
-            if (solicitudTarjetaC.getId() == id){
+            if (solicitudTarjetaC.getId() == id) {
                 solicitudTarjetaC.setStatus("Solicitud Aprobada");
-                if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.ORO){
+                if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.ORO) {
                     credito = 400000;
                 } else if (solicitudTarjetaC.getTipoTarjeta() == TipoTarjetaCredito.PLATINO) {
                     credito = 150000;
@@ -40,19 +41,23 @@ public class SolicitudTarjetaC {
                     credito = 60000;
                 }
                 TarjetaCredito tarjeta = new TarjetaCredito(5579, credito);
+                solicitudTarjetaC.getCliente().getTarjetasCredito().add(tarjeta);
+                Sistema.solicitudes.remove(solicitudTarjetaC);
             }
         }
     }
-    public static void rechazarTarjeta(int id){
+
+    public static void rechazarTarjeta(int id) {
         for (SolicitudTarjetaC solicitudTarjetaC : Sistema.solicitudes) {
-            if (solicitudTarjetaC.getId() == id){
+            if (solicitudTarjetaC.getId() == id) {
                 solicitudTarjetaC.setStatus("Solicitud Rechazada");
             }
         }
     }
+
     @Override
-    public String toString(){
-        return String.format("Cliente solicitante: %s; Fecha de solicitud: %s; Tipo de tarjeta: %s", cliente, fechaSolicitud, tipoTarjeta);
+    public String toString() {
+        return String.format("ID de la solicitud: %s,Cliente solicitante: %s; Fecha de solicitud: %s; Tipo de tarjeta: %s", id, cliente, fechaSolicitud, tipoTarjeta);
     }
 
     public Cliente getCliente() {

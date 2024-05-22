@@ -94,8 +94,8 @@ public class MenuClientes {
     }
     private static boolean verificarOpcionSolicitud(){
         boolean mostrar = false;
-        Cliente cliente = (Cliente) UsuarioEnSesion.getInstancia().getUsuarioActual();
-        if (Cliente.solicitudTarjetaCredito(cliente) && cliente.getTarjetaDebito().getSaldo()>=50000){
+        Cliente cliente = (Cliente) (UsuarioEnSesion.getInstancia()).getUsuarioActual();
+        if (Cliente.solicitudTarjetaCredito(cliente) && cliente.getTarjetaDebito().getSaldo()>=60000){
             mostrar = true;
         }
         return mostrar;

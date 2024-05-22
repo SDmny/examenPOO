@@ -7,17 +7,9 @@
     <list default="true" id="8e3262af-ad1d-4724-9242-60681e96eddd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuCapturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuCapturista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menus/MenuClientes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuClientes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuEjecutivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuGerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuGerente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menus/MenuInversionistas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tarjetas/TarjetaDebito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/TarjetaDebito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Capturista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Capturista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Gerente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Gerente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/usuarios/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tarjetas/utils/SolicitudTarjetaC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tarjetas/utils/SolicitudTarjetaC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/usuarios/utils/DatosComun.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +74,8 @@
       <updated>1715882244180</updated>
       <workItem from="1715882249342" duration="4082000" />
       <workItem from="1716003217453" duration="12000" />
-      <workItem from="1716069164608" duration="3135000" />
+      <workItem from="1716069164608" duration="3336000" />
+      <workItem from="1716390300943" duration="7563000" />
     </task>
     <servers />
   </component>

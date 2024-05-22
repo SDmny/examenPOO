@@ -108,11 +108,12 @@ public class MenuEjecutivo {
         System.out.print("ID de la solicitud: ");
         try {
             id = scanner.nextInt();
+            scanner.nextLine();
         } catch (Exception e){
             System.out.println("ID invalida");
         }
         if (id != 0){
-            System.out.print("1 - Aprobar\n2 - Rechazar");
+            System.out.print("1 - Aprobar\n2 - Rechazar: ");
             String action = scanner.next();
             if (Objects.equals(action, "1")){
                 SolicitudTarjetaC.aprobarTarjeta(id);

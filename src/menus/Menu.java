@@ -43,7 +43,7 @@ public class Menu {
         System.out.println("1 - Volver a iniciar sesión\n2 - Salir del programa");
         next = scanner.next();
 
-        if (next == "1"){
+        if (next.equals("1")){
             UsuarioEnSesion.getInstancia().cerrarSesion();
             iniciarSesion();
         } else if (!Objects.equals(next, "2")) {
